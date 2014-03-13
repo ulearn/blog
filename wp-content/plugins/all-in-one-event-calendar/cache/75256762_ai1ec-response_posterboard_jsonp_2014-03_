@@ -1,0 +1,246 @@
+s:15477:"a:8:{s:4:"html";s:9229:"<div class="clearfix">
+	<h2 class="ai1ec-calendar-title">March – April 2014</h2>
+	<div class="ai1ec-title-buttons btn-toolbar pull-right">
+		<div class="ai1ec-pagination btn-group">
+						<a class="ai1ec-prev-page ai1ec-load-view btn"
+				data-type="jsonp"				href="http://www.ulearn.ie/blog/calendar/action:posterboard/page_offset:-1/time_limit:1395273599/"
+				>
+				<i class="icon-chevron-left"></i>			</a>
+								<a class='ai1ec-minical-trigger btn'  data-date='20/3/2014' data-date-format='d/m/yyyy' data-date-weekstart='1' data-type='jsonp' data-href='http://www.ulearn.ie/blog/calendar/action:posterboard/exact_date:__DATE__/' href='#'><img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/date-icon.png" class="ai1ec-icon-datepicker" /></a>								<a class="ai1ec-next-page ai1ec-load-view btn"
+				data-type="jsonp"				href="http://www.ulearn.ie/blog/calendar/action:posterboard/page_offset:1/time_limit:1396443601/"
+				>
+				<i class="icon-chevron-right"></i>			</a>
+			</div><!--/.ai1ec-pagination-->
+	</div>
+</div>
+<div class="ai1ec-posterboard-view"
+	data-ai1ec-tile-min-width="240">
+																						<div class="ai1ec-event
+						ai1ec-event-id-1946						ai1ec-event-instance-id-6256						">
+						<div class="ai1ec-event-wrap clearfix">
+							<div class="ai1ec-date-block-wrap" >
+								<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action:oneday/exact_date:20-3-2014/" data-type="jsonp" >
+									<div class="ai1ec-month">Mar</div>
+                  <div class="ai1ec-day">20</div>
+									<div class="ai1ec-weekday">Thu</div>
+                  								</a><!--/.ai1ec-load-view-->
+							</div><!--/.ai1ec-date-block-wrap-->
+														<div class="ai1ec-event-title-wrap">
+								<span class="ai1ec-event-title">
+									<a class="ai1ec-load-event"
+									    href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-movie-night/?instance_id=6256"
+									   									   data-type="jsonp"									   title="ULEARN MOVIE NIGHT" >
+										ULEARN MOVIE NIGHT									</a>
+																			<span class="ai1ec-event-location">@ The Savoy Cinema</span>
+																	</span><!--/.ai1ec-event-title-->
+								<div class="ai1ec-event-time">
+																		20/03/2014 @ 00:00								</div>
+							</div>
+							<div class="clearfix">
+								<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-movie-night/?instance_id=6256"><img src="https://scontent-a.xx.fbcdn.net/hphotos-ash3/t1.0-9/c50.0.200.200/p200x200/1625512_433028680162617_713053119_n.jpg" alt="ULEARN MOVIE NIGHT @ The Savoy Cinema | Dublin | Ireland" width="200" height="200" /></a></div>																	<div class="ai1ec-event-description">
+										 Another evening out to enjoy all the glory of the silver screen. Every second Thursday we&#8217;ll see a different movie. www.ulearn.ie ULearn English School [...]									</div>
+															</div>
+													</div><!--/.ai1ec-event-wrap-->
+					</div><!--/.ai1ec-event-->
+																												<div class="ai1ec-event
+						ai1ec-event-id-1883						ai1ec-event-instance-id-6188						">
+						<div class="ai1ec-event-wrap clearfix">
+							<div class="ai1ec-date-block-wrap" style="background-color: #0000aa;">
+								<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action:oneday/exact_date:2-4-2014/" data-type="jsonp" >
+									<div class="ai1ec-month">Apr</div>
+                  <div class="ai1ec-day">2</div>
+									<div class="ai1ec-weekday">Wed</div>
+                  								</a><!--/.ai1ec-load-view-->
+							</div><!--/.ai1ec-date-block-wrap-->
+														<div class="ai1ec-event-title-wrap">
+								<span class="ai1ec-event-title">
+									<a class="ai1ec-load-event"
+									    href="http://www.ulearn.ie/blog/ai1ec_event/chester-beatty-library-visit/?instance_id=6188"
+									   style="color: #0000aa;"									   data-type="jsonp"									   title="Chester Beatty Library Visit" >
+										Chester Beatty Library Visit									</a>
+																			<span class="ai1ec-event-location">@ Chester Beatty Library</span>
+																	</span><!--/.ai1ec-event-title-->
+								<div class="ai1ec-event-time">
+																		02/04/2014 @ 14:00								</div>
+							</div>
+							<div class="clearfix">
+								<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/chester-beatty-library-visit/?instance_id=6188"><img src="https://scontent-b.xx.fbcdn.net/hphotos-ash4/c36.0.200.200/p200x200/1526503_397564067045370_187945719_n.jpg" alt="Chester Beatty Library Visit @ Chester Beatty Library | Dublin | Ireland" width="200" height="200" /></a></div>																	<div class="ai1ec-event-description">
+										 Come and see the wonderful collection at the Chester Beatty Library 									</div>
+															</div>
+															<footer>
+									<div>
+																					<span class="ai1ec-categories">
+												<a data-type="jsonp" class="ai1ec-load-view ai1ec-category ai1ec-term-id-7" href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:7/"><span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#0000aa" title="Dublin"></span> Dublin</a> <a data-type="jsonp" class="ai1ec-load-view ai1ec-category ai1ec-term-id-1" href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:1/"><span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#22bb00" title="ULearn"></span> ULearn</a>											</span>
+																													</div>
+								</footer>
+													</div><!--/.ai1ec-event-wrap-->
+					</div><!--/.ai1ec-event-->
+									<div class="ai1ec-event
+						ai1ec-event-id-1884						ai1ec-event-instance-id-6189						">
+						<div class="ai1ec-event-wrap clearfix">
+							<div class="ai1ec-date-block-wrap" style="background-color: #0000aa;">
+								<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action:oneday/exact_date:2-4-2014/" data-type="jsonp" >
+									<div class="ai1ec-month">Apr</div>
+                  <div class="ai1ec-day">2</div>
+									<div class="ai1ec-weekday">Wed</div>
+                  								</a><!--/.ai1ec-load-view-->
+							</div><!--/.ai1ec-date-block-wrap-->
+														<div class="ai1ec-event-title-wrap">
+								<span class="ai1ec-event-title">
+									<a class="ai1ec-load-event"
+									    href="http://www.ulearn.ie/blog/ai1ec_event/dublin-castle-visit/?instance_id=6189"
+									   style="color: #0000aa;"									   data-type="jsonp"									   title="Dublin Castle Visit" >
+										Dublin Castle Visit									</a>
+																			<span class="ai1ec-event-location">@ Dublin Castle</span>
+																	</span><!--/.ai1ec-event-title-->
+								<div class="ai1ec-event-time">
+																		02/04/2014 @ 14:00								</div>
+							</div>
+							<div class="clearfix">
+								<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/dublin-castle-visit/?instance_id=6189"><img src="https://scontent-a.xx.fbcdn.net/hphotos-frc3/c131.0.200.200/p200x200/1489109_397562313712212_1753136247_n.jpg" alt="Dublin Castle Visit @ Dublin Castle | Dublin | Ireland" width="200" height="200" /></a></div>																	<div class="ai1ec-event-description">
+										 Find out about Dublin Castle&#8217;s impressive history! 									</div>
+															</div>
+															<footer>
+									<div>
+																					<span class="ai1ec-categories">
+												<a data-type="jsonp" class="ai1ec-load-view ai1ec-category ai1ec-term-id-7" href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:7/"><span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#0000aa" title="Dublin"></span> Dublin</a> <a data-type="jsonp" class="ai1ec-load-view ai1ec-category ai1ec-term-id-1" href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:1/"><span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#22bb00" title="ULearn"></span> ULearn</a>											</span>
+																													</div>
+								</footer>
+													</div><!--/.ai1ec-event-wrap-->
+					</div><!--/.ai1ec-event-->
+										</div><!--/.ai1ec-posterboard-view-->
+<div class="pull-right"><div class="ai1ec-pagination btn-group">
+						<a class="ai1ec-prev-page ai1ec-load-view btn"
+				data-type="jsonp"				href="http://www.ulearn.ie/blog/calendar/action:posterboard/page_offset:-1/time_limit:1395273599/"
+				>
+				<i class="icon-chevron-left"></i>			</a>
+								<a class='ai1ec-minical-trigger btn'  data-date='20/3/2014' data-date-format='d/m/yyyy' data-date-weekstart='1' data-type='jsonp' data-href='http://www.ulearn.ie/blog/calendar/action:posterboard/exact_date:__DATE__/' href='#'><img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/date-icon.png" class="ai1ec-icon-datepicker" /></a>								<a class="ai1ec-next-page ai1ec-load-view btn"
+				data-type="jsonp"				href="http://www.ulearn.ie/blog/calendar/action:posterboard/page_offset:1/time_limit:1396443601/"
+				>
+				<i class="icon-chevron-right"></i>			</a>
+			</div><!--/.ai1ec-pagination-->
+</div>
+";s:10:"categories";s:1759:"<li class="dropdown ai1ec-category-filter ">
+	<a class="dropdown-toggle" data-toggle="dropdown">
+		<i class="icon-folder-open"></i>
+		<span class="ai1ec-clear-filter ai1ec-tooltip-trigger"
+			data-href="http://www.ulearn.ie/blog/calendar/action:posterboard/"
+			data-type="jsonp"			title="Clear category filter">
+			<i class="icon-remove-sign"></i>
+		</span>
+		Categories		<span class="caret"></span>
+	</a>
+	<div class="dropdown-menu">
+					<div data-term="7"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="jsonp"					href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:7/">
+					<span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#0000aa" title="Dublin"></span>					Dublin				</a>
+			</div>
+					<div data-term="5"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="jsonp"					href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:5/">
+					<span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#dd55dd" title="Socials"></span>					Socials				</a>
+			</div>
+					<div data-term="8"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="jsonp"					href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:8/">
+					<span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#2266dd" title="Sports"></span>					Sports				</a>
+			</div>
+					<div data-term="1"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="jsonp"					href="http://www.ulearn.ie/blog/calendar/action:posterboard/cat_ids:1/">
+					<span class="ai1ec-category-color ai1ec-tooltip-trigger" style="background:#22bb00" title="ULearn"></span>					ULearn				</a>
+			</div>
+			</div>
+</li>
+
+";s:7:"authors";s:947:"<li class="dropdown ai1ec-author-filter ">
+	<a class="dropdown-toggle" data-toggle="dropdown">
+		<i class="icon-user"></i>
+		<span class="ai1ec-clear-filter ai1ec-tooltip-trigger"
+			data-href="http://www.ulearn.ie/blog/calendar/action:posterboard/"
+			data-type="jsonp"			title="Clear author filter">
+			<i class="icon-remove-sign"></i>
+		</span>
+		Authors		<span class="caret"></span>
+	</a>
+	<div class="dropdown-menu">
+					<div data-term="1"
+								>
+				<a class="ai1ec-load-view ai1ec-author"
+											title="admin"
+										data-type="jsonp"					href="http://www.ulearn.ie/blog/calendar/action:posterboard/auth_ids:1/">
+					admin				</a>
+			</div>
+					<div data-term="3"
+								>
+				<a class="ai1ec-load-view ai1ec-author"
+											title="ULearn English School"
+										data-type="jsonp"					href="http://www.ulearn.ie/blog/calendar/action:posterboard/auth_ids:3/">
+					ULearn English School				</a>
+			</div>
+			</div>
+</li>
+
+";s:4:"tags";s:0:"";s:14:"views_dropdown";s:2275:"<li class="ai1ec-views-dropdown dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown">
+		<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/posterboard-view.png" alt="Posterboard" />
+		Posterboard		<span class="caret"></span>
+	</a>
+	<div class="dropdown-menu">
+					<div class="active" data-action="posterboard">
+				<a id="ai1ec-view-posterboard" data-type="jsonp"					class="ai1ec-load-view posterboard"
+					href="http://www.ulearn.ie/blog/calendar/action:posterboard/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/posterboard-view.png" alt="Posterboard" />
+					Posterboard				</a>
+			</div>
+					<div class="" data-action="stream">
+				<a id="ai1ec-view-stream" data-type="jsonp"					class="ai1ec-load-view stream"
+					href="http://www.ulearn.ie/blog/calendar/action:stream/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/stream-view.png" alt="Stream" />
+					Stream				</a>
+			</div>
+					<div class="" data-action="month">
+				<a id="ai1ec-view-month" data-type="jsonp"					class="ai1ec-load-view month"
+					href="http://www.ulearn.ie/blog/calendar/action:month/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/month-view.png" alt="Month" />
+					Month				</a>
+			</div>
+					<div class="" data-action="week">
+				<a id="ai1ec-view-week" data-type="jsonp"					class="ai1ec-load-view week"
+					href="http://www.ulearn.ie/blog/calendar/action:week/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/week-view.png" alt="Week" />
+					Week				</a>
+			</div>
+					<div class="" data-action="oneday">
+				<a id="ai1ec-view-oneday" data-type="jsonp"					class="ai1ec-load-view oneday"
+					href="http://www.ulearn.ie/blog/calendar/action:oneday/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/oneday-view.png" alt="Day" />
+					Day				</a>
+			</div>
+					<div class="" data-action="agenda">
+				<a id="ai1ec-view-agenda" data-type="jsonp"					class="ai1ec-load-view agenda"
+					href="http://www.ulearn.ie/blog/calendar/action:agenda/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/agenda-view.png" alt="Agenda" />
+					Agenda				</a>
+			</div>
+			</div>
+</li>
+";s:17:"subscribe_buttons";s:865:"<div class="ai1ec-subscribe-container btn-group pull-left">
+	<a class="btn ai1ec-subscribe ai1ec-tooltip-trigger" data-placement="bottom"
+		href="webcal://www.ulearn.ie/blog/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&cb=909781235"
+		title="Subscribe to this calendar in your personal calendar (iCal, Outlook, etc.)" >
+		<i class="icon-plus"></i>
+					Subscribe			</a>
+	<a class="btn ai1ec-subscribe-google ai1ec-tooltip-trigger" target="_blank"
+		data-placement="bottom"
+		href="http://www.google.com/calendar/render?cid=http%3A%2F%2Fwww.ulearn.ie%2Fblog%2F%3Fplugin%3Dall-in-one-event-calendar%26controller%3Dai1ec_exporter_controller%26action%3Dexport_events%26cb%3D909781235"
+		title="Subscribe to this calendar in your Google Calendar" >
+		<i class="icon-google-plus icon-large"></i>
+		Add to Google	</a>
+</div>
+";s:18:"save_view_btngroup";s:178:"<div class='btn-group'  ><a class='btn btn-mini ai1ec-tooltip-trigger' id='save_filtered_views' title='Save this filter as default'><icon class='icon-pushpin'  ></icon></a></div>";s:15:"are_filters_set";b:1;}";
