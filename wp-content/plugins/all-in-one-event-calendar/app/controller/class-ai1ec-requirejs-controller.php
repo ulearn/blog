@@ -274,7 +274,8 @@ JSC;
 	 * 
 	 */
 	public function render_js() {
-		header( 'Content-Type: application/javascript; charset=utf-8' );
+		header( 'HTTP/1.1 200 OK' );
+		header( 'Content-Type: application/javascript; charset=utf-8', true, 200 );
 		// Aggressive caching to save future requests from the same client.
 		$etag = '"' . md5( __FILE__ . $_GET[self::LOAD_JS_PARAMETER] ) . '"';
 		header( 'ETag: ' . $etag );
@@ -293,7 +294,7 @@ JSC;
 			$etag !== stripslashes( $_SERVER['HTTP_IF_NONE_MATCH'] )
 		) {
 			// compress data if possible
-			if ( true === extension_loaded( 'zlib' ) ) {
+			if ( Ai1ec_Http_Utility::client_use_gzip() ) {
 				ob_start( 'ob_gzhandler' );
 				header( 'Content-Encoding: gzip' );
 			} else {
@@ -655,7 +656,7 @@ JS;
 			'url_not_valid'                  => __( 'The URL you have entered seems to be invalid. Please remember that URLs must start with either "http://" or "https://".', AI1EC_PLUGIN_NAME ),
 			'mail_url_required'              => __( 'Both the <em>calendar URL</em> and <em>e-mail address</em> fields are required.', AI1EC_PLUGIN_NAME ),
 			'confirm_reset_theme'            => __( 'Are you sure you want to reset your theme options to their default values?', AI1EC_PLUGIN_NAME ),
-			'license_key'                    => AI1EC_TIMELY_SUBSCRIPTION,
+			'license_key'                    => $this->settings->get_license_key(),
 			'reset_saved_filter_text'        => __( 'Save this filter as default', AI1EC_PLUGIN_NAME ),
 			'clear_saved_filter_text'        => __( 'Remove default filter', AI1EC_PLUGIN_NAME ),
 			'save_filter_text_ok'            => __( 'The active filter has been saved as your default for this calendar.', AI1EC_PLUGIN_NAME ),

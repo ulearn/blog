@@ -61,6 +61,14 @@ class Ai1ec_Wordpress_Template_Adapter implements Ai1ec_Template_Adapter {
 	 * @see Ai1ec_Template_Adapter::get_site_url()
 	 */
 	public function get_site_url() {
-		return get_site_url();
+		if (
+			is_admin() &&
+			defined( 'FORCE_SSL_ADMIN' ) &&
+			true === FORCE_SSL_ADMIN
+		) {
+			return get_home_url( null, '', 'https' );
+		}
+		return get_home_url();
 	}
+
 }

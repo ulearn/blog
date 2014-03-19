@@ -1367,6 +1367,14 @@
       1 => AI1EC_PATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'helper' . DIRECTORY_SEPARATOR . 'class-ai1ec-view-helper.php',
     ),
   ),
+  'Ai1ec_Void_Cache' => 
+  array (
+    0 => 
+    array (
+      0 => '0',
+      1 => AI1EC_PATH . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'strategy' . DIRECTORY_SEPARATOR . 'cache_strategy' . DIRECTORY_SEPARATOR . 'class-ai1ec-void-cache.php',
+    ),
+  ),
   'Ai1ec_Wordpress_Db_Adapter' => 
   array (
     0 => 

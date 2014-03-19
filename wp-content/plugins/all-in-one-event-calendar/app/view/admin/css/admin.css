@@ -36,15 +36,15 @@ div.theme-success {
 }
 
 /* Category colors. */
-.ai1ec-category-color,
-.ai1ec-category-color-empty {
+.ai1ec-color-swatch,
+.ai1ec-color-swatch-empty {
 	display: inline-block;
 	height: 6px;
 	margin: 0 1px;
 	padding: 1px;
 	width: 6px;
 }
-.ai1ec-category-color {
+.ai1ec-color-swatch {
 	-webkit-border-radius:4px;
 	-moz-border-radius:4px;
 	border-radius:4px;

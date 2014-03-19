@@ -1,0 +1,983 @@
+<!-- START All-in-One Event Calendar Plugin - Version 1.11.5-pro -->
+<div id="ai1ec-container" class="ai1ec-container">
+	<!-- AI1EC_PAGE_CONTENT_PLACEHOLDER -->
+	<div id="ai1ec-calendar" class="timely">
+			<div class="timely">
+		<div class="ai1ec-calendar-toolbar clearfix">
+							<div class="pull-right">
+					
+				</div>
+						<ul class="nav nav-pills pull-left"><li class="ai1ec-views-dropdown dropdown">
+	<a class="dropdown-toggle" data-toggle="dropdown">
+		<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/stream-view.png" alt="Stream" />
+		Stream		<span class="caret"></span>
+	</a>
+	<div class="dropdown-menu">
+					<div class="" data-action="posterboard">
+				<a id="ai1ec-view-posterboard" data-type="json"					class="ai1ec-load-view posterboard"
+					href="http://www.ulearn.ie/blog/calendar/action~posterboard/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/posterboard-view.png" alt="Posterboard" />
+					Posterboard				</a>
+			</div>
+					<div class="active" data-action="stream">
+				<a id="ai1ec-view-stream" data-type="json"					class="ai1ec-load-view stream"
+					href="http://www.ulearn.ie/blog/calendar/action~stream/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/stream-view.png" alt="Stream" />
+					Stream				</a>
+			</div>
+					<div class="" data-action="month">
+				<a id="ai1ec-view-month" data-type="json"					class="ai1ec-load-view month"
+					href="http://www.ulearn.ie/blog/calendar/action~month/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/month-view.png" alt="Month" />
+					Month				</a>
+			</div>
+					<div class="" data-action="week">
+				<a id="ai1ec-view-week" data-type="json"					class="ai1ec-load-view week"
+					href="http://www.ulearn.ie/blog/calendar/action~week/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/week-view.png" alt="Week" />
+					Week				</a>
+			</div>
+					<div class="" data-action="oneday">
+				<a id="ai1ec-view-oneday" data-type="json"					class="ai1ec-load-view oneday"
+					href="http://www.ulearn.ie/blog/calendar/action~oneday/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/oneday-view.png" alt="Day" />
+					Day				</a>
+			</div>
+					<div class="" data-action="agenda">
+				<a id="ai1ec-view-agenda" data-type="json"					class="ai1ec-load-view agenda"
+					href="http://www.ulearn.ie/blog/calendar/action~agenda/">
+					<img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/agenda-view.png" alt="Agenda" />
+					Agenda				</a>
+			</div>
+			</div>
+</li>
+</ul>
+							<ul class="nav nav-pills pull-left ai1ec-filters">
+						<li class="dropdown ai1ec-category-filter ">
+	<a class="dropdown-toggle" data-toggle="dropdown">
+		<i class="icon-folder-open"></i>
+		<span class="ai1ec-clear-filter ai1ec-tooltip-trigger"
+			data-href="http://www.ulearn.ie/blog/calendar/action~stream/"
+			data-type="json"			title="Clear category filter">
+			<i class="icon-remove-sign"></i>
+		</span>
+		Categories		<span class="caret"></span>
+	</a>
+	<div class="dropdown-menu">
+					<div data-term="7"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="json"					href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~7/">
+					<span class="ai1ec-color-swatch ai1ec-tooltip-trigger" style="background:#0000aa" title="Dublin"></span>					Dublin				</a>
+			</div>
+					<div data-term="5"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="json"					href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~5/">
+					<span class="ai1ec-color-swatch ai1ec-tooltip-trigger" style="background:#dd55dd" title="Socials"></span>					Socials				</a>
+			</div>
+					<div data-term="8"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="json"					href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~8/">
+					<span class="ai1ec-color-swatch ai1ec-tooltip-trigger" style="background:#2266dd" title="Sports"></span>					Sports				</a>
+			</div>
+					<div data-term="1"
+								>
+				<a class="ai1ec-load-view ai1ec-category"
+										data-type="json"					href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~1/">
+					<span class="ai1ec-color-swatch ai1ec-tooltip-trigger" style="background:#22bb00" title="ULearn"></span>					ULearn				</a>
+			</div>
+			</div>
+</li>
+
+																</ul>
+
+							<div class='pull-left'>
+					<div class='btn-group'  ><a class='btn btn-mini ai1ec-tooltip-trigger' id='save_filtered_views' title='Save this filter as default'><icon class='icon-pushpin'  ></icon></a></div>				</div>
+					</div><!-- /.ai1ec-calendar-toolbar -->
+	</div>
+		<div id="ai1ec-calendar-view-container">
+			<div id="ai1ec-calendar-view-loading" class="ai1ec-loading"></div>
+			<div id="ai1ec-calendar-view">
+				<div class="clearfix">
+	<h2 class="ai1ec-calendar-title">March – April 2014</h2>
+	<div class="ai1ec-title-buttons btn-toolbar pull-right">
+		<div class="ai1ec-pagination btn-group">
+						<a class="ai1ec-prev-page ai1ec-load-view btn"
+				data-type="json"				href="http://www.ulearn.ie/blog/calendar/action~stream/page_offset~-1/time_limit~1395233999/"
+				>
+				<i class="icon-chevron-left"></i>			</a>
+								<a class='ai1ec-minical-trigger btn'  data-date='19/3/2014' data-date-format='d/m/yyyy' data-date-weekstart='1' data-type='json' data-href='http://www.ulearn.ie/blog/calendar/action~stream/exact_date~__DATE__/' href='#'><img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/date-icon.png" class="ai1ec-icon-datepicker" /></a>								<a class="ai1ec-next-page ai1ec-load-view btn"
+				data-type="json"				href="http://www.ulearn.ie/blog/calendar/action~stream/page_offset~1/time_limit~1398081601/"
+				>
+				<i class="icon-chevron-right"></i>			</a>
+			</div><!--/.ai1ec-pagination-->
+	</div>
+</div>
+<div class="ai1ec-stream-view">
+						<div class="ai1ec-date ai1ec-today">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~19-3-2014/" data-type="json">
+													March 19 (Wednesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6812							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6812"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6812"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 19 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~20-3-2014/" data-type="json">
+													March 20 (Thursday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1946							ai1ec-event-instance-id-7523							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-movie-night/?instance_id=7523"
+											 											 data-type="json"											 title="ULEARN MOVIE NIGHT" >
+											ULEARN MOVIE NIGHT										</a>
+																					<span class="ai1ec-event-location">@ The Savoy Cinema</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-movie-night/?instance_id=7523"><img src="https://scontent-a.xx.fbcdn.net/hphotos-ash3/t1.0-9/c50.0.200.200/p200x200/1625512_433028680162617_713053119_n.jpg" alt="ULEARN MOVIE NIGHT @ The Savoy Cinema | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 20 @ 00:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Another evening out to enjoy all the glory of the silver screen. Every second Thursday we&#8217;ll see a different movie. www.ulearn.ie ULearn English School [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6776							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6776"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6776"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 20 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~22-3-2014/" data-type="json">
+													March 22 (Saturday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1960							ai1ec-event-instance-id-7522							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/little-museum-of-dublin-visit/?instance_id=7522"
+											 											 data-type="json"											 title="Walk &amp; Talk Tour" >
+											Walk &amp; Talk Tour										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/little-museum-of-dublin-visit/?instance_id=7522"><img src="https://scontent-a.xx.fbcdn.net/hphotos-ash3/t1.0-9/c0.1.200.200/p200x200/1016848_439273906204761_1016636926_n.jpg" alt="Walk &amp; Talk Tour @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 22 @ 11:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Patrick will lead this activity which will include a 90 minute English &amp; History lesson followed by a guided tour of the National Museum [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~23-3-2014/" data-type="json">
+													March 23 (Sunday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1968							ai1ec-event-instance-id-7521							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/botanic-gardens-visit-2/?instance_id=7521"
+											 											 data-type="json"											 title="ULearn Goes Horse-Riding" >
+											ULearn Goes Horse-Riding										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/botanic-gardens-visit-2/?instance_id=7521"><img src="https://scontent-a.xx.fbcdn.net/hphotos-prn2/t1.0-9/c57.0.200.200/p200x200/1185798_425161574285619_26833201_n.jpg" alt="ULearn Goes Horse-Riding @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 23 @ 12:30										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 This Sunday, 23rd March ULearn is going Horse-Riding! This activity is open to both experienced AND beginners to horse riding. We&#8217;re meeting at ULearn [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~24-3-2014/" data-type="json">
+													March 24 (Monday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6813							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6813"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6813"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 24 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~25-3-2014/" data-type="json">
+													March 25 (Tuesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6777							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6777"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6777"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 25 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1949							ai1ec-event-instance-id-6272							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6272"
+											 											 data-type="json"											 title="Dicey&#8217;s Garden" >
+											Dicey&#8217;s Garden										</a>
+																					<span class="ai1ec-event-location">@ Dicey&#039;s Garden</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6272"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash4/t1/c144.0.200.200/p200x200/993026_432997683499050_1094601025_n.jpg" alt="Dicey&#039;s Garden @ Dicey&#039;s Garden | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 25 @ 17:45										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 It&#8217;s Tuesday night&#8230;. so it has to be Dicey&#8217;s Garden! 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~26-3-2014/" data-type="json">
+													March 26 (Wednesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6814							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6814"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6814"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 26 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~27-3-2014/" data-type="json">
+													March 27 (Thursday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6778							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6778"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6778"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 27 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~31-3-2014/" data-type="json">
+													March 31 (Monday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6815							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6815"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6815"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Mar 31 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~1-4-2014/" data-type="json">
+													April 1 (Tuesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6779							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6779"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6779"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 1 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1949							ai1ec-event-instance-id-6273							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6273"
+											 											 data-type="json"											 title="Dicey&#8217;s Garden" >
+											Dicey&#8217;s Garden										</a>
+																					<span class="ai1ec-event-location">@ Dicey&#039;s Garden</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6273"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash4/t1/c144.0.200.200/p200x200/993026_432997683499050_1094601025_n.jpg" alt="Dicey&#039;s Garden @ Dicey&#039;s Garden | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 1 @ 17:45										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 It&#8217;s Tuesday night&#8230;. so it has to be Dicey&#8217;s Garden! 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~2-4-2014/" data-type="json">
+													April 2 (Wednesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6816							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6816"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6816"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 2 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1883							ai1ec-event-instance-id-6188							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/chester-beatty-library-visit/?instance_id=6188"
+											 style="color: #0000aa;"											 data-type="json"											 title="Chester Beatty Library Visit" >
+											Chester Beatty Library Visit										</a>
+																					<span class="ai1ec-event-location">@ Chester Beatty Library</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/chester-beatty-library-visit/?instance_id=6188"><img src="https://scontent-b.xx.fbcdn.net/hphotos-ash4/c36.0.200.200/p200x200/1526503_397564067045370_187945719_n.jpg" alt="Chester Beatty Library Visit @ Chester Beatty Library | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 2 @ 14:00										</span><!--/.ai1ec-event-time-->
+																					<span class="ai1ec-categories ai1ec-meta-divide">
+												<a data-type="json" class="ai1ec-load-view ai1ec-category-inline ai1ec-term-id-7" style="color: #0000aa;" href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~7/"><i style="color: #0000aa;" class="icon-folder-open"></i>Dublin</a> <a data-type="json" class="ai1ec-load-view ai1ec-category-inline ai1ec-term-id-1" style="color: #22bb00;" href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~1/"><i style="color: #22bb00;" class="icon-folder-open"></i>ULearn</a>											</span>
+																													</div>
+									<div class="ai1ec-event-description">
+										 Come and see the wonderful collection at the Chester Beatty Library 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1884							ai1ec-event-instance-id-6189							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/dublin-castle-visit/?instance_id=6189"
+											 style="color: #0000aa;"											 data-type="json"											 title="Dublin Castle Visit" >
+											Dublin Castle Visit										</a>
+																					<span class="ai1ec-event-location">@ Dublin Castle</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/dublin-castle-visit/?instance_id=6189"><img src="https://scontent-a.xx.fbcdn.net/hphotos-frc3/c131.0.200.200/p200x200/1489109_397562313712212_1753136247_n.jpg" alt="Dublin Castle Visit @ Dublin Castle | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 2 @ 14:00										</span><!--/.ai1ec-event-time-->
+																					<span class="ai1ec-categories ai1ec-meta-divide">
+												<a data-type="json" class="ai1ec-load-view ai1ec-category-inline ai1ec-term-id-7" style="color: #0000aa;" href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~7/"><i style="color: #0000aa;" class="icon-folder-open"></i>Dublin</a> <a data-type="json" class="ai1ec-load-view ai1ec-category-inline ai1ec-term-id-1" style="color: #22bb00;" href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~1/"><i style="color: #22bb00;" class="icon-folder-open"></i>ULearn</a>											</span>
+																													</div>
+									<div class="ai1ec-event-description">
+										 Find out about Dublin Castle&#8217;s impressive history! 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~3-4-2014/" data-type="json">
+													April 3 (Thursday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6780							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6780"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6780"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 3 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~7-4-2014/" data-type="json">
+													April 7 (Monday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6817							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6817"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6817"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 7 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~8-4-2014/" data-type="json">
+													April 8 (Tuesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6781							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6781"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6781"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 8 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1949							ai1ec-event-instance-id-6274							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6274"
+											 											 data-type="json"											 title="Dicey&#8217;s Garden" >
+											Dicey&#8217;s Garden										</a>
+																					<span class="ai1ec-event-location">@ Dicey&#039;s Garden</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6274"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash4/t1/c144.0.200.200/p200x200/993026_432997683499050_1094601025_n.jpg" alt="Dicey&#039;s Garden @ Dicey&#039;s Garden | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 8 @ 17:45										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 It&#8217;s Tuesday night&#8230;. so it has to be Dicey&#8217;s Garden! 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1956							ai1ec-event-instance-id-7520							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-14/?instance_id=7520"
+											 											 data-type="json"											 title="Dicey&#8217;s Garden" >
+											Dicey&#8217;s Garden										</a>
+																					<span class="ai1ec-event-location">@ Dicey&#039;s Garden</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-14/?instance_id=7520"><img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-ash3/t1/c170.0.200.200/p200x200/1899889_437103833088435_1226512513_n.jpg" alt="Dicey&#039;s Garden @ Dicey&#039;s Garden | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 8 @ 17:45										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 It&#8217;s Tuesday night&#8230;. so it has to be Dicey&#8217;s Garden! 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~9-4-2014/" data-type="json">
+													April 9 (Wednesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6818							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6818"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6818"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 9 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1882							ai1ec-event-instance-id-6187							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/botanic-gardens-visit/?instance_id=6187"
+											 style="color: #0000aa;"											 data-type="json"											 title="Botanic Gardens Visit" >
+											Botanic Gardens Visit										</a>
+																					<span class="ai1ec-event-location">@ National Botanic Gardens</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/botanic-gardens-visit/?instance_id=6187"><img src="https://scontent-b.xx.fbcdn.net/hphotos-frc1/t1/c50.0.200.200/p200x200/995011_397569067044870_982010297_n.jpg" alt="Botanic Gardens Visit @ National Botanic Gardens | Glasnevin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 9 @ 13:30										</span><!--/.ai1ec-event-time-->
+																					<span class="ai1ec-categories ai1ec-meta-divide">
+												<a data-type="json" class="ai1ec-load-view ai1ec-category-inline ai1ec-term-id-7" style="color: #0000aa;" href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~7/"><i style="color: #0000aa;" class="icon-folder-open"></i>Dublin</a> <a data-type="json" class="ai1ec-load-view ai1ec-category-inline ai1ec-term-id-1" style="color: #22bb00;" href="http://www.ulearn.ie/blog/calendar/action~stream/cat_ids~1/"><i style="color: #22bb00;" class="icon-folder-open"></i>ULearn</a>											</span>
+																													</div>
+									<div class="ai1ec-event-description">
+										 Spring is in the air at the Botanic Gardens 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~10-4-2014/" data-type="json">
+													April 10 (Thursday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6782							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6782"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6782"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 10 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~14-4-2014/" data-type="json">
+													April 14 (Monday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6819							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6819"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6819"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 14 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~15-4-2014/" data-type="json">
+													April 15 (Tuesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6783							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6783"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6783"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 15 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+											<div class="clearfix ai1ec-event
+							ai1ec-event-id-1949							ai1ec-event-instance-id-6275							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6275"
+											 											 data-type="json"											 title="Dicey&#8217;s Garden" >
+											Dicey&#8217;s Garden										</a>
+																					<span class="ai1ec-event-location">@ Dicey&#039;s Garden</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/diceys-garden-10/?instance_id=6275"><img src="https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-ash4/t1/c144.0.200.200/p200x200/993026_432997683499050_1094601025_n.jpg" alt="Dicey&#039;s Garden @ Dicey&#039;s Garden | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 15 @ 17:45										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 It&#8217;s Tuesday night&#8230;. so it has to be Dicey&#8217;s Garden! 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~16-4-2014/" data-type="json">
+													April 16 (Wednesday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6820							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6820"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6820"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 16 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~17-4-2014/" data-type="json">
+													April 17 (Thursday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1950							ai1ec-event-instance-id-6784							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6784"
+											 											 data-type="json"											 title="ULEARN CONVERSATION / SPEAKING CLASS" >
+											ULEARN CONVERSATION / SPEAKING CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-conversation-speaking-class/?instance_id=6784"><img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-ash3/t1/c40.0.200.200/p200x200/1969296_433000330165452_1930569058_n.jpg" alt="ULEARN CONVERSATION / SPEAKING CLASS @ ULearn Dublin | Dublin | Ireland" width="200" height="200" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 17 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										 Good students (like children) should be seen and not heard &#8211; NO WAY! Not in this class. This free class gives you the opportunity [...]									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+					<div class="ai1ec-date ">
+				<div class="ai1ec-date-title">
+					<a class="ai1ec-load-view" href="http://www.ulearn.ie/blog/calendar/action~oneday/exact_date~21-4-2014/" data-type="json">
+													April 21 (Monday)											</a><!--/.ai1ec-load-view-->
+				</div><!--/.ai1ec-date-title-->
+				<div class="ai1ec-date-events">
+																									<div class="clearfix ai1ec-event
+							ai1ec-event-id-1948							ai1ec-event-instance-id-6821							">
+								<div class="ai1ec-event-inner clearfix">
+																		<div class="ai1ec-event-title">
+										<a class="ai1ec-load-event"
+												href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6821"
+											 											 data-type="json"											 title="ULEARN PRONUNCIATION CLASS" >
+											ULEARN PRONUNCIATION CLASS										</a>
+																					<span class="ai1ec-event-location">@ ULearn Dublin</span>
+																			</div><!--/.ai1ec-event-title-->
+
+									<div class="ai1ec-event-avatar-wrap pull-left">
+										<div class="ai1ec-event-avatar timely  ai1ec-content_img ai1ec-portrait"><a href="http://www.ulearn.ie/blog/ai1ec_event/ulearn-pronunciation-class/?instance_id=6821"><img src="http://www.ulearn.ie/blog/wp-content/uploads/2014/03/conversation-bubble-300x300.jpg" alt="ULEARN PRONUNCIATION CLASS @ ULearn Dublin | Dublin | Ireland" width="300" height="300" /></a></div>									</div>
+									<div class="ai1ec-event-meta">
+										<span class="ai1ec-event-time">
+											<i class="icon-calendar"></i>
+											Apr 21 @ 13:00										</span><!--/.ai1ec-event-time-->
+																													</div>
+									<div class="ai1ec-event-description">
+										This wonderful, free class is a fun way to help you improve your pronunciation. Takes place every Monday &amp; Wednesday from 1pm &#8211; 1.50pm. 									</div>
+								</div><!--/.ai1ec-event-inner-->
+							</div><!--/.ai1ec-event-->
+													</div><!--/.ai1ec-date-events-->
+			</div><!--/.ai1ec-date-->
+			</div><!--/.ai1ec-stream-view-->
+<div class="pull-right"><div class="ai1ec-pagination btn-group">
+						<a class="ai1ec-prev-page ai1ec-load-view btn"
+				data-type="json"				href="http://www.ulearn.ie/blog/calendar/action~stream/page_offset~-1/time_limit~1395233999/"
+				>
+				<i class="icon-chevron-left"></i>			</a>
+								<a class='ai1ec-minical-trigger btn'  data-date='19/3/2014' data-date-format='d/m/yyyy' data-date-weekstart='1' data-type='json' data-href='http://www.ulearn.ie/blog/calendar/action~stream/exact_date~__DATE__/' href='#'><img src="http://www.ulearn.ie/blog/wp-content/themes-ai1ec/vortex/img/date-icon.png" class="ai1ec-icon-datepicker" /></a>								<a class="ai1ec-next-page ai1ec-load-view btn"
+				data-type="json"				href="http://www.ulearn.ie/blog/calendar/action~stream/page_offset~1/time_limit~1398081601/"
+				>
+				<i class="icon-chevron-right"></i>			</a>
+			</div><!--/.ai1ec-pagination-->
+</div>
+			</div>
+		</div>
+
+		<div class="ai1ec-subscribe-container btn-group pull-left">
+	<a class="btn ai1ec-subscribe ai1ec-tooltip-trigger" data-placement="bottom"
+		href="webcal://www.ulearn.ie/blog/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&cb=964101031"
+		title="Subscribe to this calendar in your personal calendar (iCal, Outlook, etc.)" >
+		<i class="icon-plus"></i>
+					Subscribe			</a>
+	<a class="btn ai1ec-subscribe-google ai1ec-tooltip-trigger" target="_blank"
+		data-placement="bottom"
+		href="http://www.google.com/calendar/render?cid=http%3A%2F%2Fwww.ulearn.ie%2Fblog%2F%3Fplugin%3Dall-in-one-event-calendar%26controller%3Dai1ec_exporter_controller%26action%3Dexport_events%26cb%3D964101031"
+		title="Subscribe to this calendar in your Google Calendar" >
+		<i class="icon-google-plus icon-large"></i>
+		Add to Google	</a>
+</div>
+	</div><!-- /.timely -->
+</div>
+<!-- END All-in-One Event Calendar Plugin -->

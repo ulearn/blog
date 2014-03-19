@@ -4,14 +4,14 @@
 Plugin Name: Fullscreen Galleria
 Plugin URI: http://torturedmind.org/
 Description: Fullscreen gallery for Wordpress
-Version: 1.4.2
+Version: 1.4.5
 Author: Petri Damstén
 Author URI: http://torturedmind.org/
 License: MIT
 
 ******************************************************************************/
 
-$fsg_ver = '1.4.2';
+$fsg_ver = '1.4.5';
 $fsg_db_key = 'fsg_plugin_settings';
 
 $fsg_sites = array(
@@ -686,8 +686,8 @@ class FSGPlugin {
         has_shortcode($post->post_content, 'fsg_link')) {
       $in_footer = !$this->options['load_in_header'];
 
-      wp_enqueue_script('galleria', plugins_url('galleria-1.3.3.min.js', __FILE__), array('jquery'), '1.3.3', $in_footer);
-      //wp_enqueue_script('galleria', plugins_url('galleria-1.3.3.js', __FILE__), array('jquery'), '1.3.3', $in_footer);
+      wp_enqueue_script('galleria', plugins_url('galleria-1.3.5.min.js', __FILE__), array('jquery'), '1.3.5', $in_footer);
+      //wp_enqueue_script('galleria', plugins_url('galleria-1.3.5.js', __FILE__), array('jquery'), '1.3.5', $in_footer);
       wp_enqueue_script('galleria-fs', plugins_url('galleria-fs.js', __FILE__), array('galleria'), $fsg_ver, $in_footer);
       wp_enqueue_script('galleria-fs-theme', plugins_url('galleria-fs-theme.js', __FILE__), array('galleria-fs'), $fsg_ver, $in_footer);
       // register here and print conditionally
@@ -760,7 +760,16 @@ class FSGPlugin {
     }
     return $permalink;
   }
-  
+
+  function js_string($str)
+  {
+    $str = addslashes($str);
+    $str = str_replace("\r", "", $str);
+    $str = str_replace("\n", "<br/>", $str);
+    $str = str_replace("\t", " ", $str);
+    return $str;
+  }
+    
   function append_json($id, &$images, $extra = false)
   {
     global $fsg_sites;
@@ -782,21 +791,19 @@ class FSGPlugin {
         if ($this->options['overlay_time'] != 0) {
           if ($this->options['show_title'] && !empty($val['data']->post_title)) {
             $layer_has_info = true;
-            $title = '<h1>'.addslashes($val['data']->post_title).'</h1>';
+            $title = '<h1>'.$this->js_string($val['data']->post_title).'</h1>';
           } else {
             $title = '';
           }
           if ($this->options['show_caption'] && !empty($val['data']->post_excerpt)) {
             $layer_has_info = true;
-            $caption = '<h1>'.addslashes($val['data']->post_excerpt).'</h1>';
+            $caption = '<h1>'.$this->js_string($val['data']->post_excerpt).'</h1>';
           } else {
             $caption = '';
           }
           if ($this->options['show_description'] && !empty($val['data']->post_content)) {
             $layer_has_info = true;
-            $description = addslashes($val['data']->post_content);
-            $description = str_replace("\n", "<br/>", $description);
-            $description = str_replace("\r", "", $description);
+            $description = $this->js_string($val['data']->post_content);
             $description = "<p class=\"galleria-info-description\">".$description."</p>";
           } else {
             $description = '';
@@ -804,7 +811,7 @@ class FSGPlugin {
           if ($this->options['show_camera_info'] && !empty($meta['image_meta']['info'])) {
             $layer_has_info = true;
             $info = "<p class=\"galleria-info-camera\">".$meta['image_meta']['info']."</p>";
-            $info = addslashes($info);
+            $info = $this->js_string($info);
           } else {
             $info = '';
           }

@@ -1830,7 +1830,7 @@ class Ai1ec_Events_Helper {
 		$color = $this->get_category_color( $term_id );
 		if ( NULL !== $color && ! empty( $color ) ) {
 			$cat = get_term( $term_id, 'events_categories' );
-			return '<span class="ai1ec-category-color ai1ec-tooltip-trigger" ' .
+			return '<span class="ai1ec-color-swatch ai1ec-tooltip-trigger" ' .
 				'style="background:' . $color . '" title="' .
 				esc_attr( $cat->name ) . '"></span>';
 		}

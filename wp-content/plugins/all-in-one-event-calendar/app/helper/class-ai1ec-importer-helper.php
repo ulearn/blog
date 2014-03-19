@@ -556,23 +556,33 @@ class Ai1ec_Importer_Helper {
 	 * @return array
 	 */
 	private function add_categories_and_tags(
-		$terms, array $imported_terms, $is_tag, $use_name
+		$terms,
+		array $imported_terms,
+		$is_tag,
+		$use_name
 	) {
-		$taxonomy = $is_tag ? 'events_tags' : 'events_categories';
-		$categories = explode( ',', $terms );
+		$taxonomy    = $is_tag ? 'events_tags' : 'events_categories';
+		$categories  = explode( ',', $terms );
 		$get_term_by = $use_name ? 'name' : 'id';
 		foreach ( $categories as $cat_name ) {
+			$cat_name = trim( $cat_name );
+			if ( empty( $cat_name ) ) {
+				continue;
+			}
 			// check if the category exist
 			$cat = get_term_by( $get_term_by, $cat_name, $taxonomy );
 			// If it doesn't exist
-			if( false === $cat ) {
+			if ( false === $cat ) {
 				$term = wp_insert_term( $cat_name, $taxonomy );
-				$imported_terms[$term['term_id']] = true;
+				if ( ! is_wp_error( $term ) ) {
+					$imported_terms[$term['term_id']] = true;
+				}
 			} else {
 				$imported_terms[$cat->term_id] = true;
 			}
 		}
 		return $imported_terms;
 	}
+
 }
 // END class

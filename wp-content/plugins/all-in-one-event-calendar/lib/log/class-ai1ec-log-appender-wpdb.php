@@ -208,7 +208,7 @@ class Ai1ec_Log_Appender_Wpdb extends LoggerAppender
 			$sql_query = '
 				CREATE TABLE ' . $this->_table() . ' (
 					id          BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-					remote_addr VARCHAR(39) CHARACTER SET ascii COLLATE ascii_general_ci,
+					remote_addr VARCHAR(39),
 					the_time    INT(10) UNSIGNED NOT NULL,
 					http_method VARCHAR(10) NOT NULL,
 					srv_host    VARCHAR(200) NOT NULL,
@@ -220,7 +220,7 @@ class Ai1ec_Log_Appender_Wpdb extends LoggerAppender
 					last_file   VARCHAR(255) NOT NULL,
 					last_line   SMALLINT(5) UNSIGNED NOT NULL,
 					PRIMARY KEY (id)
-				) ENGINE=InnoDB CHARACTER SET ascii COLLATE ascii_general_ci;
+				) ENGINE=InnoDB CHARACTER SET utf8;
 			';
 			if ( Ai1ec_Database::instance()->apply_delta( $sql_query ) ) {
 				update_option( $option, self::DB_VERSION );

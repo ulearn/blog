@@ -327,7 +327,7 @@ class Ai1ecFacebookConnectorPlugin extends Ai1ec_Connector_Plugin {
 				user_name varchar(255) NOT NULL,
 				user_pic varchar(255) NOT NULL,
 				subscribed tinyint(1) NOT NULL DEFAULT '0',
-				type varchar(20) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
+				type varchar(20) NOT NULL,
 				tag varchar(255) NOT NULL DEFAULT '',
 				category varchar(255) NOT NULL DEFAULT '',
 				comments_enabled tinyint(1) NOT NULL DEFAULT '1',

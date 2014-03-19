@@ -50,16 +50,16 @@ class Ai1ec_Duplicate_Controller
 		add_action( 'admin_action_duplicate_post_save_as_new_post_draft' , array( $this , 'duplicate_post_save_as_new_post_draft'));
 
 		// Using our action hooks to copy taxonomies
-		add_action( 'dp_duplicate_page' , array( $this , 'duplicate_post_copy_post_taxonomies' ), 10 , 2 );
+		add_action( 'dp_duplicate_post' , array( $this , 'duplicate_post_copy_post_taxonomies' ), 10 , 2 );
 
 		// Using our action hooks to copy meta fields
-		add_action( 'dp_duplicate_page' , array( $this , 'duplicate_post_copy_post_meta_info' ), 10 , 2 );
+		add_action( 'dp_duplicate_post' , array( $this , 'duplicate_post_copy_post_meta_info' ), 10 , 2 );
 
 		// Using our action hooks to copy attachments
-		add_action( 'dp_duplicate_page' , array( $this , 'duplicate_post_copy_attachments' ), 10 , 2 );
+		add_action( 'dp_duplicate_post' , array( $this , 'duplicate_post_copy_attachments' ), 10 , 2 );
 
 		// Using our action hooks to copy events meta
-		add_action( 'dp_duplicate_page' , array( $this , 'duplicate_event_meta' ), 10 , 2 );
+		add_action( 'dp_duplicate_post' , array( $this , 'duplicate_event_meta' ), 10 , 2 );
 
 		// Using  action hooks to for custom duplicate bulk action
 		add_action( 'admin_footer-edit.php' , array( $this , 'duplicate_custom_bulk_admin_footer' ));
@@ -71,7 +71,7 @@ class Ai1ec_Duplicate_Controller
 		// = FILTERS =
 		// ===========
 		add_filter(
-			'page_row_actions',
+			'post_row_actions',
 			array( $this , 'duplicate_post_make_duplicate_link_row' ),
 			10,
 			2
@@ -97,7 +97,6 @@ class Ai1ec_Duplicate_Controller
 	* Add the link to action list for post_row_actions
 	*/
 	function duplicate_post_make_duplicate_link_row($actions, $post) {
-
 		if( $post->post_type == "ai1ec_event" ) {
 			$actions['clone'] = '<a href="'.$this->duplicate_post_get_clone_post_link( $post->ID , 'display', false).'" title="'
 			. esc_attr(__("Make new copy of event", AI1EC_PLUGIN_NAME))
@@ -453,6 +452,15 @@ class Ai1ec_Duplicate_Controller
 			do_action( 'dp_duplicate_page', $new_post_id, $post );
 		} else {
 			do_action( 'dp_duplicate_post', $new_post_id, $post );
+		}
+
+		if ( 'ai1ec_event' === $post->post_type ) {
+			try {
+				$old_event          = new Ai1ec_Event( $post->ID );
+				$old_event->post_id = $new_post_id;
+				unset( $old_event->post );
+				$old_event->save();
+			} catch ( Ai1ec_Event_Not_Found $exception ) { /* ignore */ }
 		}
 
 		delete_post_meta( $new_post_id, '_dp_original' );

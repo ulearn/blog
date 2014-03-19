@@ -262,6 +262,9 @@ class Ai1ec_Lessphp_Controller {
 		$variables = $db_adapter->get_data_from_config(
 				self::DB_KEY_FOR_LESS_VARIABLES
 		);
+		if ( ! $variables ) {
+			return array();
+		}
 		$variables_with_description = self::get_less_variable_data_from_config_file(
 			Ai1ec_Less_Factory::create_less_file_instance( Ai1ec_Less_File::USER_VARIABLES_FILE )
 		);

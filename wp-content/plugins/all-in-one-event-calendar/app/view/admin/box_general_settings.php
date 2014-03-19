@@ -19,6 +19,15 @@
 
 <div class="tab-content ai1ec-boxed-tabs">
 
+	<div class="ai1ec-gzip-causes-js-failure"><?php
+	printf(
+		__(
+			'If the form below is not working please follow <a href="%s">this link</a>.',
+			AI1EC_PLUGIN_NAME
+		),
+		add_query_arg( 'ai1ec_disable_gzip_compression', '1' )
+	); ?></div>
+
 	<div class="tab-pane" id="ai1ec-viewing-events">
 		<h2><?php _e( 'Viewing Events', AI1EC_PLUGIN_NAME ); ?></h2>
 
@@ -194,6 +203,12 @@
 		<input class="checkbox" name="use_select2_widgets" id="use_select2_widgets" type="checkbox" value="1" <?php echo $use_select2_widgets ?> />
 		<?php _e( 'Use <strong><a href="http://ivaynberg.github.io/select2/">Select2</a></strong> widgets for filters instead of drop-down menus', AI1EC_PLUGIN_NAME ) ?>
 		</label>
+
+		<label for="use_authors_filter">
+			<input class="checkbox" name="use_authors_filter" id="use_authors_filter" type="checkbox" value="1" <?php echo $use_authors_filter; ?> />
+			<?php _e( 'Enable filtering by <strong>event author</strong>', AI1EC_PLUGIN_NAME ) ?>
+		</label>
+
 		<br class="clear" />
 
 		<p></p><p>
@@ -419,6 +434,17 @@
 				<pre>&lt;?php ai1ec_filter_menu(); ?&gt;</pre>
 			</div>
 		</div>
+
+		<label for="disable_gzip_compression">
+			<input class="checkbox" name="disable_gzip_compression" id="disable_gzip_compression" type="checkbox" value="1" <?php echo $disable_gzip_compression; ?> />
+			<?php printf(
+				__(
+					'Disable <strong>gzip</strong> compression. Use this option if calendar is non-responsive. Read <a href="%s">more about</a> the issue.',
+					AI1EC_PLUGIN_NAME
+				),
+				'http://support.time.ly/disable-gzip-compression/'
+			); ?>
+		</label>
 
 		<?php if( $display_event_platform ): ?>
 			<label for="event_platform">

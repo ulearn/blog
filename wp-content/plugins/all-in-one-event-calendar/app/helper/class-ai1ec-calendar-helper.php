@@ -698,7 +698,7 @@ class Ai1ec_Calendar_Helper {
 			if ( 0 == $last_day ) {
 				$last_day = (int)$_SERVER['REQUEST_TIME'];
 			}
-			$filter_date_clause = ' i.start ';
+			$filter_date_clause = ' i.end ';
 			if ( $page_offset < 0 ) {
 				$filter_date_clause .= '<';
 				$order_direction     = 'DESC';

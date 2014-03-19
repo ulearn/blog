@@ -45,7 +45,7 @@ class Ai1ec_File_Cache extends Ai1ec_Cache_Strategy {
 		$value    = maybe_serialize( $value );
 		$result   = $wp_filesystem->put_contents(
 			$this->cache_dir . $filename,
-			maybe_serialize( $value )
+			$value
 		);
 		if ( false === $result ) {
 			$message = 'An error occured while saving data to \'' .

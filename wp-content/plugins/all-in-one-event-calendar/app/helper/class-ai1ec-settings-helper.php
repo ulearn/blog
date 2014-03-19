@@ -423,6 +423,12 @@ class Ai1ec_Settings_Helper {
 		$disable_standard_filter_menu   = $ai1ec_settings->disable_standard_filter_menu
 			? 'checked="checked"'
 			: '';
+		$use_authors_filter             = $ai1ec_settings->use_authors_filter
+			? 'checked="checked"'
+			: '';
+		$disable_gzip_compression       = $ai1ec_settings->disable_gzip_compression
+			? 'checked="checked"'
+			: '';
 
 		$agenda_include_entire_last_day = $ai1ec_settings->agenda_include_entire_last_day
 			? 'checked="checked"'
@@ -461,7 +467,9 @@ class Ai1ec_Settings_Helper {
 		$oauth_twitter_id                = $ai1ec_settings->oauth_twitter_id;
 		$oauth_twitter_pass              = $ai1ec_settings->oauth_twitter_pass;
 		$twitter_notice_interval         = $ai1ec_settings->twitter_notice_interval;
-		$calendar_base_url_for_permalinks = $ai1ec_settings->calendar_base_url_for_permalinks;
+		$calendar_base_url_for_permalinks = $ai1ec_settings->calendar_base_url_for_permalinks
+			? 'checked="checked"'
+			: '';
 		$use_select2_widgets             = $ai1ec_settings->use_select2_widgets ? 'checked="checked"' : '';
 		$require_disclaimer              = $ai1ec_settings->require_disclaimer ? 'checked="checked"' : '';
 		$disclaimer                      = $ai1ec_settings->disclaimer;
@@ -562,7 +570,8 @@ class Ai1ec_Settings_Helper {
 			'oauth_twitter_pass'               => $oauth_twitter_pass,
 			'use_select2_widgets'              => $use_select2_widgets,
 			'twitter_notice_interval'          => $twitter_notice_interval,
-
+			'use_authors_filter'               => $use_authors_filter,
+			'disable_gzip_compression'         => $disable_gzip_compression,
 		);
 		$ai1ec_view_helper->display_admin( 'box_general_settings.php', $args );
 	}

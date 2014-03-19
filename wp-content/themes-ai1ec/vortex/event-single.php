@@ -84,6 +84,7 @@
 		</div>
 	<?php endif; ?>
 
+	<?php if ( $event->cost || $event->is_free ) : ?>
 	<div class="ai1ec-cost">
 		<div class="ai1ec-label"><?php _e( 'Cost:', AI1EC_PLUGIN_NAME ); ?></div>
 		<div class="ai1ec-field-value"><?php
@@ -92,6 +93,7 @@
 		     : esc_html( $event->cost );
 		?></div>
 	</div>
+	<?php endif; ?>
 
 	<?php if ( $contact ) : ?>
 		<div class="ai1ec-contact">

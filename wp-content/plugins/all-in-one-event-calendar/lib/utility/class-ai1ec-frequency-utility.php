@@ -24,6 +24,15 @@ class Ai1ec_Frequency_Utility
 	);
 
 	/**
+	 * @var array Map of WordPress native multipliers
+	 */
+	protected $_wp_names = array(
+		'hourly'     => array( 'h' => 1   ),
+		'twicedaily' => array( 'd' => 0.5 ),
+		'daily'      => array( 'd' => 1   ),
+	);
+
+	/**
 	 * @var string One letter code for lowest available quantifier
 	 */
 	protected $_lowest_quantifier = 's';
@@ -73,6 +82,10 @@ class Ai1ec_Frequency_Utility
 				trim( $input )
 			)
 		);
+		if ( isset( $this->_wp_names[$input] ) ) {
+			$this->_parsed = $this->_wp_names[$input];
+			return true;
+		}
 		$match = $this->_match( $input );
 		if ( ! $match ) {
 			return false;
@@ -91,6 +104,7 @@ class Ai1ec_Frequency_Utility
 		foreach ( $this->_parsed as $quantifier => $number ) {
 			$seconds += $number * $this->_multipliers[$quantifier];
 		}
+		$seconds = (int)$seconds; // discard any fractional part
 		return $seconds;
 	}
 

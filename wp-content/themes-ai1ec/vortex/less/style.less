@@ -97,8 +97,8 @@
 }
 .select2-container,
 .select2-drop {
-	.ai1ec-select2-color,
-	.ai1ec-select2-color-empty {
+	.ai1ec-color-swatch,
+	.ai1ec-color-swatch-empty {
 		width: 7px;
 		height: 7px;
 	}
@@ -280,6 +280,7 @@
 		*border: 0; // Remove the border to prevent IE7's black border on input:focus
 		border-bottom-color: darken(@btnBorder, 10%);
 		.box-shadow( @btnShadow );
+		.box-sizing( content-box );
 		&:hover {
 			color: @btnTextHover;
 		}
@@ -713,6 +714,33 @@
 	}
 }
 
+// Twenty Thirteen fixes
+.entry-content,
+.comment-content,
+.site-footer .widget {
+	.timely {
+		a {
+			color: @linkColor;
+			&:visited {
+				color: @linkColor;
+			}
+			&:hover {
+				color: @linkColorHover;
+			}
+		}
+		.btn {
+			color: @btnTextColor;
+			&:hover {
+				color: @btnTextHover;
+			}
+		}
+	}
+	.ai1ec-agenda-widget-view .ai1ec-date-title,
+	.ai1ec-agenda-view .ai1ec-date-title {
+		color: mix( @textColor, @agendaDateTitleBackground, 85% );
+	}
+}
+
 // Label styling.
 .ai1ec-label {
 	font-size: 0.85em;
@@ -783,15 +811,15 @@
 }
 
 // Category colors.
-.ai1ec-select2-color,
-.ai1ec-select2-color-empty {
+.ai1ec-color-swatch,
+.ai1ec-color-swatch-empty {
 	display: inline-block;
 	height: 6px;
 	margin: 0 1px;
 	padding: 1px;
 	width: 6px;
 }
-.ai1ec-select2-color {
+.ai1ec-color-swatch {
 	.border-radius( 4px );
 	border-color: rgba(0,0,0,0.5);
 	.opacity( 80 );
@@ -1022,11 +1050,11 @@
 			width: 100%;
 		}
 	}
-	.ai1ec-select2-colors {
+	.ai1ec-color-swatches {
 		float: right;
 		font-size: 0.9em;
 	}
-	.ai1ec-select2-color {
+	.ai1ec-color-swatch {
 		padding: 1px;
 	}
 	.post-edit-link {

@@ -45,20 +45,20 @@ class Ai1ec_Platform_Controller {
 		       $ai1ec_settings;
 
 		// Modify role permissions.
-		add_action( 'plugins_loaded',                     array( &$ai1ec_platform_helper, 'modify_roles' ) );
+		add_action( 'ai1ec_upgrade',                     array( $ai1ec_platform_helper, 'modify_roles' ) );
 
 		// Only further modify admin UI if event platform is requested.
-		if( $ai1ec_settings->event_platform_active ) {
+		if ( $ai1ec_settings->event_platform_active ) {
 			// Check Ai1ec & WordPress settings.
-			add_action( 'init',                   array( &$ai1ec_platform_helper, 'check_settings' ) );
+			add_action( 'init',                          array( $ai1ec_platform_helper, 'check_settings' ) );
 			// Modify meta boxes on admin dashboard for Calendar Administrators.
-			add_action( 'admin_init',             array( &$ai1ec_platform_helper, 'modify_dashboard' ) );
+			add_action( 'admin_init',                    array( $ai1ec_platform_helper, 'modify_dashboard' ) );
 			// Scripts/styles for dashboard admin screen.
-			add_action( 'admin_enqueue_scripts',  array( &$ai1ec_platform_helper, 'admin_enqueue_scripts' ) );
+			add_action( 'admin_enqueue_scripts',         array( $ai1ec_platform_helper, 'admin_enqueue_scripts' ) );
 			// Add option to general settings page.
-			add_action( 'ai1ec_general_settings_before', array( &$ai1ec_platform_helper, 'ai1ec_general_settings_before' ) );
+			add_action( 'ai1ec_general_settings_before', array( $ai1ec_platform_helper, 'ai1ec_general_settings_before' ) );
 			// Save general settings page.
-			add_action( 'ai1ec_save_settings',    array( &$ai1ec_platform_helper, 'ai1ec_save_settings' ), 10, 2 );
+			add_action( 'ai1ec_save_settings',           array( $ai1ec_platform_helper, 'ai1ec_save_settings' ), 10, 2 );
 		}
 	}
 }

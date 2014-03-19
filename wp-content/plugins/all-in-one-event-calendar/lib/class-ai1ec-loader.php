@@ -111,9 +111,6 @@ class Ai1ec_Loader
 		if ( ! isset( $this->_included_files[$file] ) ) {
 			$this->_included_files[$file] = true;
 			require $file;
-			if ( $nest ) {
-				$this->_match_dependencies( $file );
-			}
 		}
 		return $this->_included_files[$file];
 	}
@@ -484,33 +481,6 @@ class Ai1ec_Loader
 			}
 		}
 	    return $reverse_map;
-	}
-
-	/**
-	 * _match_dependencies method
-	 *
-	 * Given file name - find related classes and attempt to load these.
-	 * Loading depth is parametrically limited to two tiers - this means
-	 * that only same folder, and direct parent is checked.
-	 *
-	 * @param string $file  Name of file being included
-	 * @param int    $depth Number of parents to check
-	 *
-	 * @return string Path last checked before giving up
-	 */
-	protected function _match_dependencies( $file, $depth = 2 ) {
-		if ( $depth <= 0 ) {
-			return $file;
-		}
-		$file = dirname( $file );
-		if ( isset( $this->_reverse_map[$file] ) ) {
-			$map_used = $this->_reverse_map[$file];
-			unset( $this->_reverse_map[$file] );
-			foreach ( $map_used as $library ) {
-				$this->include_file( $library, false );
-			}
-		}
-		return $this->_match_dependencies( $file, --$depth );
 	}
 
 	/**

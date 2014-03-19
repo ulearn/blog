@@ -113,7 +113,7 @@ class Ai1ec_Href_Helper
 				if( is_array( $this->args[$key] ) ) {
 					$value = implode( ',', $this->args[$key] );
 				}
-				$to_implode[$key] = "$key:$value";
+				$to_implode[$key] = $key . Ai1ec_Uri::DIRECTION_SEPARATOR . $value;
 			}
 		}
 		if( $this->is_category || $this->is_tag || $this->is_author ) {
@@ -164,11 +164,11 @@ class Ai1ec_Href_Helper
 			if( empty( $copy ) ) {
 				unset( $to_implode[$array_key] );
 			} else {
-				$to_implode[$array_key] = $array_key . ':' .
+				$to_implode[$array_key] = $array_key . Ai1ec_Uri::DIRECTION_SEPARATOR .
 					implode( ',', $copy );
 			}
 		} else {
-			$to_implode[$array_key] = $array_key . ':' . $this->term_id;
+			$to_implode[$array_key] = $array_key . Ai1ec_Uri::DIRECTION_SEPARATOR . $this->term_id;
 		}
 		return $to_implode;
 	}

@@ -533,6 +533,108 @@ class Ai1ec_Event {
 	}
 
 	/**
+	 * Restore original URL from loggable event URL
+	 *
+	 * @param string $value URL as seen by visitor
+	 *
+	 * @return string Original URL
+	 */
+	public function get_nonloggable_url( $value ) {
+		if (
+			empty( $value ) ||
+			false === strpos( $value, AI1EC_REDIRECTION_SERVICE )
+		) {
+			return $value;
+		}
+		$decoded = json_decode(
+			base64_decode(
+				trim(
+					substr( $value, strlen( AI1EC_REDIRECTION_SERVICE ) ),
+					'/'
+				)
+			),
+			true
+		);
+		if ( ! isset( $decoded['l'] ) ) {
+			return '';
+		}
+		return $decoded['l'];
+	}
+
+	/**
+	 * Convert URL to a loggable form
+	 *
+	 * @param string $url    URL to which access must be counted
+	 * @param string $intent Char definition: 'b' - buy, 'd' - details
+	 *
+	 * @return string Loggable URL form
+	 */
+	protected function _make_url_loggable( $url, $intent ) {
+		static $options = NULL;
+		$url = trim( $url );
+		if ( ! $url || ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
+			return $url;
+		}
+		if ( ! isset( $options ) ) {
+			$options = array(
+				'l' => NULL,
+				'e' => ( false !== strpos( AI1EC_VERSION, 'pro' ) ) ? 'p' : 's',
+				'v' => (string)AI1EC_VERSION,
+				'i' => NULL,
+				'c' => NULL,
+				'o' => (string)get_site_url(),
+			);
+		}
+		$options['l'] = (string)$url;
+		$options['i'] = (string)$intent;
+		$options['c'] = (string)$this->cost;
+		return AI1EC_REDIRECTION_SERVICE .
+			base64_encode( json_encode( $options ) );
+	}
+
+	/**
+	 * Make `Ticket URL` loggable
+	 *
+	 * @param string $value Ticket URL stored in database
+	 *
+	 * @return bool Success
+	 */
+	protected function _handle_property_construct_ticket_url( $value ) {
+		$this->ticket_url = $this->_make_url_loggable( $value, 'b' );
+		return true;
+	}
+
+	/**
+	 * Make `Contact URL` loggable
+	 *
+	 * @param string $value Contact URL stored in database
+	 *
+	 * @return bool Success
+	 */
+	protected function _handle_property_construct_contact_url( $value ) {
+		$this->contact_url = $this->_make_url_loggable( $value, 'd' );
+		return true;
+	}
+
+	/**
+	 * Store `Ticket URL` in non-loggable form
+	 *
+	 * @return string Non loggable URL
+	 */
+	protected function _handle_property_destruct_ticket_url() {
+		return $this->get_nonloggable_url( $this->ticket_url );
+	}
+
+	/**
+	 * Store `Contact URL` in non-loggable form
+	 *
+	 * @return string Non loggable URL
+	 */
+	protected function _handle_property_destruct_contact_url() {
+		return $this->get_nonloggable_url( $this->contact_url );
+	}
+
+	/**
 	 * _handle_property_construct_cost method
 	 *
 	 * Handle `cost` value reading from permanent storage.
@@ -554,9 +656,6 @@ class Ai1ec_Event {
 		if ( false === $test_value ) {
 			$cost    = trim( $value );
 			$is_free = false;
-			if ( (string)'0' === (string)$value || empty( $value ) ) {
-				$is_free = true;
-			}
 		} else {
 			extract( $test_value, EXTR_IF_EXISTS );
 		}
@@ -578,8 +677,7 @@ class Ai1ec_Event {
 			'is_free' => false,
 		);
 		if (
-			isset( $this->is_free ) && $this->is_free ||
-			empty( $this->cost )
+			isset( $this->is_free ) && $this->is_free
 		) {
 			$cost['is_free'] = true;
 		}
@@ -638,7 +736,7 @@ class Ai1ec_Event {
 			    : __( 'Register', AI1EC_PLUGIN_NAME );
 		}
 		$output = '';
-		if ( $with_image ) {
+		if ( $long ) {
 			$output = apply_filters(
 				'ai1ec_buy_tickets_url_icon',
 				'<i class="icon-shopping-cart"></i>'
@@ -933,7 +1031,7 @@ class Ai1ec_Event {
 				// Append the middle bit(s) (filtering out any zero-length strings)
 				$bits = array_filter( $bits, 'strval' );
 				if ( $bits ) {
-					$location .= join( ',', $bits ) . "\n";
+					$location .= join( ', ', $bits ) . "\n";
 				}
 				if ( $country ) {
 					$location .= $country . "\n";
@@ -1650,9 +1748,9 @@ HTML;
 			'contact_name'     => $this->contact_name,
 			'contact_phone'    => $this->contact_phone,
 			'contact_email'    => $this->contact_email,
-			'contact_url'      => $this->contact_url,
+			'contact_url'      => $this->_handle_property_destruct( 'contact_url' ),
 			'cost'             => $this->_handle_property_destruct( 'cost' ),
-			'ticket_url'       => $this->ticket_url,
+			'ticket_url'       => $this->_handle_property_destruct( 'ticket_url' ),
 			'ical_feed_url'    => $this->ical_feed_url,
 			'ical_source_url'  => $this->ical_source_url,
 			'ical_uid'         => $this->ical_uid,

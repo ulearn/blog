@@ -46,6 +46,10 @@ class Ai1ec_Author
 	 * @return array List of authors
 	 */
 	public function get_all( $flush = false ) {
+		global $ai1ec_settings;
+		if ( ! $ai1ec_settings->use_authors_filter ) {
+			return array();
+		}
 		$persistance = Ai1ec_Strategies_Factory::create_persistence_context(
 			__METHOD__
 		);
@@ -59,7 +63,11 @@ class Ai1ec_Author
 		}
 		if ( NULL === $list ) {
 			$list = $this->_fetch_all();
-			$persistance->write_data_to_persistence( $list );
+			try {
+				$persistance->write_data_to_persistence( $list );
+			} catch ( Ai1ec_Cache_Not_Set_Exception $wrt_exception ) {
+				// ignore write failures
+			}
 		}
 		return $list;
 	}
@@ -71,12 +79,12 @@ class Ai1ec_Author
 	 */
 	public function get_all_for_select2() {
 		$authors_for_select2 = array();
-		$authors = $this->get_all();
-		if( count( $authors ) > 1 ) {
+		$authors             = $this->get_all();
+		if ( count( $authors ) > 1 ) {
 			foreach ( $authors as $author ) {
-				$auth = new stdClass();
-				$auth->term_id = $author->user_id;
-				$auth->name = $author->display_name;
+				$auth                  = new stdClass();
+				$auth->term_id         = $author->user_id;
+				$auth->name            = $author->display_name;
 				$authors_for_select2[] = $auth;
 			}
 		}

@@ -38,7 +38,7 @@
 										<?php echo esc_html( apply_filters( 'the_title', $event->post->post_title, $event->post_id ) ) ?>
 									</a>
 									<?php if ( $show_location_in_title && isset( $event->venue ) && $event->venue != '' ): ?>
-										<span class="ai1ec-event-location"><?php echo sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), $event->venue ); ?></span>
+										<span class="ai1ec-event-location"><?php echo sprintf( __( '@ %s', AI1EC_PLUGIN_NAME ), esc_html( $event->venue ) ); ?></span>
 									<?php endif; ?>
 								</span><!--/.ai1ec-event-title-->
 								<div class="ai1ec-event-time">

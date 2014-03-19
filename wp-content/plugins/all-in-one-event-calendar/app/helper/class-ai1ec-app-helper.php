@@ -105,13 +105,15 @@ class Ai1ec_App_Helper {
 		// Create event contributor role with the same capabilities
 		// as subscriber role, plus event managing capabilities
 		// if we have not created it yet.
-		if ( ! get_role( 'ai1ec_event_assistant' ) ) {
+		$role = get_role( 'ai1ec_event_assistant' );
+		if ( ! $role ) {
 			$caps = get_role( 'subscriber' )->capabilities;
 			$role = add_role(
 				'ai1ec_event_assistant',
 				'Event Contributor',
 				$caps
 			);
+			$role->add_cap( 'publish_ai1ec_events' );
 			$role->add_cap( 'edit_ai1ec_events' );
 			$role->add_cap( 'delete_ai1ec_event' );
 			$role->add_cap( 'read' );

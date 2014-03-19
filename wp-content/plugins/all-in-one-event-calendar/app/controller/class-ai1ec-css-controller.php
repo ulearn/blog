@@ -71,7 +71,8 @@ class Ai1ec_Css_Controller {
 	 * Sets etags to avoid sending not needed data
 	 */
 	public function render_css() {
-		header( 'Content-Type: text/css' );
+		header( 'HTTP/1.1 200 OK' );
+		header( 'Content-Type: text/css', true, 200 );
 		// Aggressive caching to save future requests from the same client.
 		$etag = '"' . md5( __FILE__ . $_GET[self::GET_VARIBALE_NAME] ) . '"';
 		header( 'ETag: ' . $etag );
@@ -90,7 +91,7 @@ class Ai1ec_Css_Controller {
 			$etag !== stripslashes( $_SERVER['HTTP_IF_NONE_MATCH'] )
 		) {
 			// compress data if possible
-			if ( true === extension_loaded( 'zlib' ) ) {
+			if ( Ai1ec_Http_Utility::client_use_gzip() ) {
 				ob_start( 'ob_gzhandler' );
 				header( 'Content-Encoding: gzip' );
 			} else {
@@ -113,13 +114,8 @@ class Ai1ec_Css_Controller {
 	 * @throws Ai1ec_Cache_Write_Exception
 	 */
 	public function update_persistence_layer( $css ) {
-		try {
-			$this->persistance_context->write_data_to_persistence( $css );
-			$this->save_less_parse_time();
-		}
-		catch ( Ai1ec_Cache_Write_Exception $e ) {
-			throw $e;
-		}
+		$this->persistance_context->write_data_to_persistence( $css );
+		$this->save_less_parse_time();
 	}
 
 

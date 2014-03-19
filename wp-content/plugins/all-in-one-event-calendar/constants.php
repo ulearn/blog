@@ -34,14 +34,14 @@ function ai1ec_initiate_constants() {
 	// = Plugin Version =
 	// ==================
 	if ( ! defined( 'AI1EC_VERSION' ) ) {
-		define( 'AI1EC_VERSION',            '1.11-pro' );
+		define( 'AI1EC_VERSION',            '1.11.5-pro' );
 	}
 
 	// ====================
 	// = Database Version =
 	// ====================
 	if ( ! defined( 'AI1EC_DB_VERSION' ) ) {
-		define( 'AI1EC_DB_VERSION',         222 );
+		define( 'AI1EC_DB_VERSION',         225 );
 
 	}
 
@@ -49,23 +49,23 @@ function ai1ec_initiate_constants() {
 	// = Bundled themes version & edition =
 	// ====================================
 	if ( ! defined( 'AI1EC_THEMES_VERSION' ) ) {
-		define( 'AI1EC_THEMES_VERSION',     '29-pro' );
+		define( 'AI1EC_THEMES_VERSION',     '32-pro' );
 	}
 
 	// ================
 	// = Cron Version =
 	// ================
 	if ( ! defined( 'AI1EC_CRON_VERSION' ) ) {
-		define( 'AI1EC_CRON_VERSION',       114 );
+		define( 'AI1EC_CRON_VERSION',       119 );
 	}
 	if ( ! defined( 'AI1EC_N_CRON_VERSION' ) ) {
-		define( 'AI1EC_N_CRON_VERSION',     112 );
+		define( 'AI1EC_N_CRON_VERSION',     117 );
 	}
 	if ( ! defined( 'AI1EC_N_CRON_FREQ' ) ) {
 		define( 'AI1EC_N_CRON_FREQ',        'daily' );
 	}
 	if ( ! defined( 'AI1EC_U_CRON_VERSION' ) ) {
-		define( 'AI1EC_U_CRON_VERSION',     116 );
+		define( 'AI1EC_U_CRON_VERSION',     121 );
 	}
 	if ( ! defined( 'AI1EC_U_CRON_FREQ' ) ) {
 		define( 'AI1EC_U_CRON_FREQ',        'hourly' );
@@ -497,13 +497,20 @@ function ai1ec_initiate_constants() {
 		define( 'AI1EC_LOG_UPLOAD', 'http://api.time.ly/submit_error_log' );
 	}
 
+	// ===============================
+	// = Time.ly redirection service =
+	// ===============================
+	if ( ! defined( 'AI1EC_REDIRECTION_SERVICE' ) ) {
+		define( 'AI1EC_REDIRECTION_SERVICE', 'http://aggregator.time.ly/ticket_redirect/' );
+	}
+
 	// Enable All-in-One-Event-Calendar to work in debug mode, which means,
 	// that cache is ignored, extra output may appear at places, etc.
 	// Do not set this to any other value than `false` on production even if
 	// you know what you are doing, because you will waste valuable
 	// resources - save the Earth, at least.
 	if ( ! defined( 'AI1EC_DEBUG' ) ) {
-		define( 'AI1EC_DEBUG', true );
+		define( 'AI1EC_DEBUG', false );
 	}
 
 	// Enable Ai1EC cache functionality. If you set this to false, only cache

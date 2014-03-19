@@ -551,13 +551,15 @@ class Ai1ec_View_Helper {
 	 * @return void
 	 */
 	function json_response( $data ) {
+		$this->_dump_buffers();
+		header( 'HTTP/1.1 200 OK' );
 		header( 'Cache-Control: no-cache, must-revalidate' );
 		header( 'Pragma: no-cache' );
 		header( 'Content-Type: application/json; charset=UTF-8' );
 
 		// Output JSON-encoded result and quit
 		echo json_encode( ai1ec_utf8( $data ) );
-		exit;
+		return ai1ec_stop( 0 );
 	}
 
 	/**
@@ -570,11 +572,26 @@ class Ai1ec_View_Helper {
 	 * @return void
 	 */
 	function jsonp_response( $data, $callback ) {
+		$this->_dump_buffers();
+		header( 'HTTP/1.1 200 OK' );
 		header( 'Content-Type: application/json; charset=UTF-8' );
 
 		// Output JSONP-encoded result and quit
 		echo $callback . '(' . json_encode( ai1ec_utf8( $data ) ) . ')';
-		exit;
+		return ai1ec_stop( 0 );
+	}
+
+	/**
+	 * Dump output buffers before starting output
+	 *
+	 * @return bool True unless an error occurs
+	 */
+	protected function _dump_buffers() {
+		$result = true;
+		while ( ob_get_level() ) {
+			$result &= ob_end_clean();
+		}
+		return $result;
 	}
 
 	/**
@@ -644,12 +661,12 @@ class Ai1ec_View_Helper {
 	 * Modified instances are events, belonging to some parent having recurrence
 	 * rule, and having some of it's properties altered.
 	 *
-	 * @param array   $actions List of defined actions
-	 * @param WP_Post $post    Instance of WP_Post being rendered
+	 * @param array    $actions List of defined actions
+	 * @param stdClass $post Instance being rendered (WP_Post class instance in WP 3.5+)
 	 *
 	 * @return array Optionally modified $actions list
 	 */
-	public function post_row_actions( array $actions, WP_Post $post ) {
+	public function post_row_actions( array $actions, $post ) {
 		if ( is_ai1ec_post( $post ) ) {
 			global $ai1ec_events_helper;
 			$parent_post_id = $ai1ec_events_helper->event_parent( $post->ID );

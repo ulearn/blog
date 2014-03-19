@@ -142,10 +142,10 @@ class Ai1ec_Adapter_Query_Wordpress implements Ai1ec_Adapter_Query_Interface
 	 * Add serialized (key:value) value to query arguments list
 	 */
 	protected function _add_serialized_var( $element ) {
-		if ( false === strpos( $element, ':' ) ) {
+		if ( false === strpos( $element, Ai1ec_Uri::DIRECTION_SEPARATOR ) ) {
 			return false;
 		}
-		list( $key, $value ) = explode( ':', $element, 2 );
+		list( $key, $value ) = explode( Ai1ec_Uri::DIRECTION_SEPARATOR, $element, 2 );
 		$this->variable( $key, $value );
 		return true;
 	}

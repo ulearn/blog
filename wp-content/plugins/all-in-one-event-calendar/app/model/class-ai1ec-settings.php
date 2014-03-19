@@ -590,6 +590,16 @@ class Ai1ec_Settings {
 	public $user_upcoming_event_mail_subject;
 
 	/**
+	 * @var bool Set to true to enable filtering by authors
+	 */
+	public $use_authors_filter;
+
+	/**
+	 * @var bool Disable GZIP compression for JS/CSS
+	 */
+	public $disable_gzip_compression;
+
+	/**
 	 * __construct function
 	 *
 	 * Default constructor
@@ -639,7 +649,7 @@ class Ai1ec_Settings {
 		if( self::$_instance === NULL || $refresh ) {
 			// if W3TC is enabled, we have to empty the cache
 			// before requesting it
-			if( defined( 'W3TC' ) ) {
+			if ( defined( 'W3TC' ) || defined( 'WP_CACHE' ) ) {
 				wp_cache_delete( 'alloptions', 'options' );
 			}
 			// get the settings from the database
@@ -760,13 +770,8 @@ class Ai1ec_Settings {
 			"An event you have indicated interest in is about to start:\n\nEvent title: [event_title]\nStarting at: [event_start]\n\nView the event’s details here: [event_url]\n\n(You have received this alert because you asked to receive an email notification for this event.)\n\nRegards,\n[site_title]\n[site_url]",
 			AI1EC_PLUGIN_NAME
 		);
-		$license_key = '';
-		if (
-			AI1EC_TIMELY_SUBSCRIPTION != 'REPLACE_ME' &&
-			AI1EC_TIMELY_SUBSCRIPTION != ''
-		)
-			$license_key = AI1EC_TIMELY_SUBSCRIPTION;
-		$defaults = array(
+		$license_key = $this->get_license_key();
+		$defaults    = array(
 			'calendar_page_id'                 => 0,
 			'default_calendar_view'            => 'posterboard',
 			'default_categories'               => array(),
@@ -847,7 +852,8 @@ class Ai1ec_Settings {
 			'oauth_twitter_pass'               => '',
 			'use_select2_widgets'              => false,
 			'twitter_notice_interval'          => '8h',
-
+			'use_authors_filter'               => false,
+			'disable_gzip_compression'         => false,
 		);
 		$ai1ec_purge_events_cache = Ai1ec_Scheduling_Utility::instance()
 			->get_details( 'ai1ec_purge_events_cache' );
@@ -974,6 +980,8 @@ class Ai1ec_Settings {
 			'enable_user_event_notifications',
 			'use_select2_widgets',
 			'require_disclaimer',
+			'use_authors_filter',
+			'disable_gzip_compression',
 		);
 
 		// Save the Buy Tickets Button setting. Since it's a boolean we just set the
@@ -1208,11 +1216,14 @@ class Ai1ec_Settings {
 				$this->default_tags,
 				$this->default_categories
 			);
-		} else {
+		} elseif ( ! empty( $this->{$types[$type]} ) ) {
 			$terms = array_combine(
 				$this->{$types[$type]},
 				$this->{$types[$type]}
 			);
+		}
+		if ( empty( $terms ) ) {
+			return $terms;
 		}
 		return array_combine( $terms, $terms );
 	}
@@ -1235,6 +1246,27 @@ class Ai1ec_Settings {
 				'comment_status' 	=> 'closed'
 			)
 		);
+	}
+
+	/**
+	 * Get a licence key
+	 *
+	 * @return string Time.ly Pro edition license key
+	 */
+	public function get_license_key() {
+		$candidate_keys = array();
+		if ( isset( $this->license_key ) ) {
+			$candidate_keys[] = $this->license_key;
+		}
+		if ( defined( 'AI1EC_TIMELY_SUBSCRIPTION' ) ) {
+			$candidate_keys[] = AI1EC_TIMELY_SUBSCRIPTION;
+		}
+		foreach ( $candidate_keys as $license_key ) {
+			if ( 'REPLACE_ME' !== $license_key && ! empty( $license_key ) ) {
+				return $license_key;
+			}
+		}
+		return ''; // no key available
 	}
 
 }

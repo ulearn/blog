@@ -292,16 +292,26 @@ class Ai1ec_Settings_Controller {
 	}
 
 	/**
-	 * u_cron function
+	 * Cron callback checking for new updates
 	 *
 	 * @return void
-	 **/
-	function u_cron() {
+	 */
+	public function u_cron() {
+		global $ai1ec_settings;
 		update_option( 'ai1ec_update_available', 0 );
-		update_option( 'ai1ec_update_message', '' );
-		update_option( 'ai1ec_package_url', '' );
+		update_option( 'ai1ec_update_message',   '' );
+		update_option( 'ai1ec_package_url',      '' );
 		// get current version
-		$response = wp_remote_get( AI1EC_UPDATES_URL . '?license_key=' . AI1EC_TIMELY_SUBSCRIPTION );
+		$updates_url = str_replace(
+			'ai1ec~licensekey',
+			$ai1ec_settings->get_license_key(),
+			add_query_arg(
+				'license_key',
+				'ai1ec~licensekey',
+				AI1EC_UPDATES_URL
+			)
+		);
+		$response = wp_remote_get( $updates_url );
 		if (
 			! is_wp_error( $response )             &&
 			isset( $response['response'] )         &&
@@ -310,15 +320,16 @@ class Ai1ec_Settings_Controller {
 			isset( $response['body'] )             &&
 			! empty( $response['body'] )
 		) {
-
 			// continue only if there is a result
 			$updater = json_decode( $response['body'] );
-			$new = isset( $updater->version ) ? $updater->version : AI1EC_VERSION;
-			$new = trim( str_replace( '-PRO', '', strtoupper( $new ) ) );
-			$old = str_replace( '-PRO', '', strtoupper( AI1EC_VERSION ) );
-			$old = str_replace( ' PRO', '', $old );
-			$old = trim( str_replace( 'PRO', '', $old ) );
-			if( ( version_compare( $old, $new ) == -1 ) ) {
+			$new     = isset( $updater->version )
+				? $updater->version
+				: AI1EC_VERSION;
+			$new     = trim( str_replace( '-PRO', '', strtoupper( $new ) ) );
+			$old     = str_replace( '-PRO', '', strtoupper( AI1EC_VERSION ) );
+			$old     = str_replace( ' PRO', '', $old );
+			$old     = trim( str_replace( 'PRO', '', $old ) );
+			if ( ( version_compare( $old, $new ) == -1 ) ) {
 				update_option( 'ai1ec_update_available', 1 );
 				update_option( 'ai1ec_update_message', $updater->message );
 				update_option( 'ai1ec_package_url', $updater->package );

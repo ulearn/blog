@@ -35,6 +35,11 @@ class Ai1ec_Database
 	 */
 	protected $_db = NULL;
 
+	/**
+	 * @var bool If set to true - no operations will be performed
+	 */
+	protected $_dry_run  = false;
+
 	protected function __construct( wpdb $db = NULL ) {
 		$this->_db       = $db;
 		$this->_prefixes = array(
@@ -60,30 +65,178 @@ class Ai1ec_Database
 	}
 
 	/**
+	 * Check if dry run is enabled
+	 *
+	 * @param bool $dry Change dryness [optional=NULL]
+	 *
+	 * @return bool Dryness of run or previous value
+	 */
+	public function is_dry( $dry = NULL ) {
+		if ( NULL !== $dry ) {
+			$previous = $this->_dry_run;
+			$this->_dry_run = (bool)$dry;
+			return $previous;
+		}
+		return $this->_dry_run;
+	}
+
+	/**
 	 * Get fully-qualified table name given it's abbreviated form
 	 *
-	 * @param string $name Name (abbreviation) of table to check
+	 * @param string $name         Name (abbreviation) of table to check
+	 * @param bool   $ignore_check Return longest name if no table exist [false]
 	 *
 	 * @return string Fully-qualified table name
 	 *
 	 * @throws Ai1ec_Database_Schema_Exception If no table matches
 	 */
-	public function table( $name ) {
-		$existing = $this->get_all_tables();
-		$table    = NULL;
+	public function table( $name, $ignore_check = false ) {
+		$existing  = $this->get_all_tables();
+		$table     = NULL;
+		$candidate = NULL;
+		$name      = $name;
 		foreach ( $this->_prefixes as $prefix ) {
 			$candidate = $prefix . $name;
-			if ( isset( $existing[$candidate] ) ) {
-				$table = $candidate;
+			$index     = strtolower( $candidate );
+			if ( isset( $existing[$index] ) ) {
+				$table = $existing[$index];
 				break;
 			}
 		}
 		if ( NULL === $table ) {
+			if ( true === $ignore_check ) {
+				return $candidate;
+			}
 			throw new Ai1ec_Database_Schema_Exception(
 				'Table \'' . $name . '\' does not exist'
 			);
 		}
 		return $table;
+	}
+
+	/**
+	 * Drop given indices from table
+	 *
+	 * @param string       $table   Name of table to modify
+	 * @param string|array $indices List, or single, of indices to remove
+	 *
+	 * @return bool Success
+	 *
+	 * @throws Ai1ec_Database_Schema_Exception If table is not found
+	 */
+	public function drop_indices( $table, $indices ) {
+		if ( ! is_array( $indices ) ) {
+			$indices = array( (string)$indices );
+		}
+		$table    = $this->table( $table );
+		$existing = $this->get_indices( $table );
+		$removed  = 0;
+		foreach ( $indices as $index ) {
+			if (
+				! isset( $existing[$index] ) ||
+				$this->_dry_query(
+					'ALTER TABLE ' . $table . ' DROP INDEX ' . $index
+				)
+			) {
+				++$removed;
+			}
+		}
+		return ( count( $indices ) === $removed );
+	}
+
+	/**
+	 * Create indices for given table
+	 *
+	 * Input ({@see $indices}) must be the same, as output of
+	 * method {@see self::get_indices()}.
+	 *
+	 * @param string $table   Name of table to create indices for
+	 * @param array  $indices Indices representation to be created
+	 *
+	 * @return bool Success
+	 *
+	 * @throws Ai1ec_Database_Schema_Exception If table is not found
+	 */
+	public function create_indices( $table, array $indices ) {
+		$table = $this->table( $table );
+		foreach ( $indices as $name => $definition ) {
+			$query = 'ALTER TABLE ' . $table . ' ADD ';
+			if ( $definition['unique'] ) {
+				$query .= 'UNIQUE ';
+			}
+			$query .= 'KEY ' . $name . ' (' .
+				implode( ', ', $definition['columns'] ) .
+				')';
+			if ( ! $this->_dry_query( $query ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * get_indices method
+	 *
+	 * Get map of indices defined for table.
+	 *
+	 * @NOTICE: no optimization will be performed here, and response will not
+	 * be cached, to allow checking result of DDL statements.
+	 *
+	 * Returned array structure (example):
+	 * array(
+	 *     'index_name' => array(
+	 *         'name'    => 'index_name',
+	 *         'columns' => array(
+	 *             'column1',
+	 *             'column2',
+	 *             'column3',
+	 *         ),
+	 *         'unique'  => true,
+	 *     ),
+	 * )
+	 *
+	 * @param string $table Name of table to retrieve index names for
+	 *
+	 * @return array Map of index names and their representation
+	 *
+	 * @throws Ai1ec_Database_Schema_Exception If table is not found
+	 */
+	public function get_indices( $table ) {
+		$sql_query = 'SHOW INDEXES FROM ' . $this->table( $table );
+		$result    = $this->_db->get_results( $sql_query );
+		$indices   = array();
+		foreach ( $result as $index ) {
+			$name = $index->Key_name;
+			if ( ! isset( $indices[$name] ) ) {
+				$indices[$name] = array(
+					'name'    => $name,
+					'columns' => array(),
+					'unique'  => ! (bool)intval( $index->Non_unique ),
+				);
+			}
+			$indices[$name]['columns'][$index->Column_name] = $index->Sub_part;
+		}
+		return $indices;
+	}
+
+	/**
+	 * Perform query, unless `dry_run` is selected. In later case just output
+	 * the final query and return true.
+	 *
+	 * @param string $query SQL Query to execute
+	 *
+	 * @return mixed Query state, or true in dry run mode
+	 */
+	public function _dry_query( $query ) {
+		if ( $this->is_dry() ) {
+			pr( $query );
+			return true;
+		}
+		$result = $this->_db->query( $query );
+		if ( AI1EC_DEBUG ) {
+			echo '<h4>', $query, '</h4><pre>', var_export( $result, true ), '</pre>';
+		}
+		return $result;
 	}
 
 	/**
@@ -104,14 +257,11 @@ class Ai1ec_Database
 	 * @return array Map of tables present
 	 */
 	public function get_all_tables() {
-		static $tables = NULL;
-		if ( NULL === $tables ) {
-			$sql_query = 'SHOW TABLES';
-			$result    = $this->_db->get_col( $sql_query );
-			$tables    = array();
-			foreach ( $result as $table ) {
-				$tables[strtolower( $table )] = $table;
-			}
+		$sql_query = 'SHOW TABLES LIKE \'' . $this->_db->prefix . '%\'';
+		$result    = $this->_db->get_col( $sql_query );
+		$tables    = array();
+		foreach ( $result as $table ) {
+			$tables[strtolower( $table )] = $table;
 		}
 		return $tables;
 	}
@@ -577,19 +727,7 @@ class Ai1ec_Database
 					);
 			}
 
-			$index_list = $this->_db->get_results( 'SHOW INDEXES FROM ' . $table );
-			$indexes = array();
-			foreach ( $index_list as $index_def ) {
-				$name = $index_def->Key_name;
-				if ( ! isset( $indexes[$name] ) ) {
-					$indexes[$name] = array(
-						'columns' => array(),
-						'unique'  => ( 0 !== $index_def->Non_unique ),
-					);
-				}
-				$indexes[$name]['columns'][$index_def->Column_name] =
-					$index_def->Sub_part;
-			}
+			$indexes = $this->get_indices( $table );
 
 			foreach ( $indexes as $name => $definition ) {
 				if ( ! isset( $description['indexes'][$name] ) ) {

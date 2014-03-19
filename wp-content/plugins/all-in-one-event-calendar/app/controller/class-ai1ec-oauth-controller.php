@@ -291,7 +291,7 @@ class Ai1ec_Oauth_Controller
 			);
 		}
 		$class     = $providers[$provider];
-		$keys      = (array)Ai1ec_Meta::instance( 'user' )
+		$keys      = (array)Ai1ec_Meta::instance( 'User' )
 			->get( $user_id, 'ai1ec_oauth_tokens', array() );
 		if ( isset( $keys[0] ) ) {
 			$keys = $keys[0];

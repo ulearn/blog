@@ -499,6 +499,9 @@ class Ai1ec_Facebook_Event {
 		if( empty( $data_to_send['access_token'] ) ) {
 			unset( $data_to_send['access_token'] );
 		}
+		if ( strlen( $data_to_send['name'] ) > 74 ) {
+			$data_to_send['name'] = substr( $data_to_send['name'], 0, 74 );
+		}
 		if( null !== $page_id ) {
 			$data_to_send['page_id'] = $page_id;
 		}

@@ -52,6 +52,32 @@ class Ai1ec_Calendar_Controller {
 	}
 
 	/**
+	 * Removes view cache entries from database
+	 *
+	 * @param string $current_version Current plug-in version
+	 *
+	 * @return int Number of records deleted
+	 */
+	public function clear_db_cache( $current_version ) {
+		if ( version_compare( $current_version, '1.11.1-pro' ) > 0 ) {
+			return 0;
+		}
+		global $wpdb;
+		$ids = $wpdb->get_col(
+			'SELECT option_id FROM ' . $wpdb->options .
+			' WHERE option_name LIKE \'ai1ec-response%\''
+		);
+		if ( ! empty( $ids ) ) {
+			return $wpdb->query(
+				'DELETE FROM ' . $wpdb->options . ' WHERE option_id IN (' .
+				implode( ',', $ids ) .
+				')'
+			);
+		}
+		return 0;
+	}
+
+	/**
 	 * get_cache_key method
 	 *
 	 * Check if given request needs to be cached, and if yes - return the cache
@@ -340,7 +366,11 @@ class Ai1ec_Calendar_Controller {
 			);
 
 			if ( $page_hash ) {
-				$cache->write_data_to_persistence( $generated );
+				try {
+					$cache->write_data_to_persistence( $generated );
+				} catch ( Ai1ec_Cache_Not_Set_Exception $exception ) {
+					// ignore write failures
+				}
 			}
 
 		}

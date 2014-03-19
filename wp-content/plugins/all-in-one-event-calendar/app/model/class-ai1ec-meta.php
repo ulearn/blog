@@ -37,7 +37,8 @@ abstract class Ai1ec_Meta
 	 * @return Ai1ec_Meta Self instance
 	 */
 	static public function instance( $type ) {
-		$class = 'Ai1ec_Meta_' . $type;
+		// @TODO: choose solution w/o string manipulation
+		$class = 'Ai1ec_Meta_' . ucfirst( strtolower( $type ) );
 		if (
 			! isset( self::$_instances[$class] ) ||
 			! ( self::$_instances[$class] instanceof Ai1ec_Meta )

@@ -162,7 +162,11 @@ class Ai1ec_Router
 			return $this;
 		}
 		$base       = '(?:.+/)?' . $base;
-		$named_args = '[a-z][a-z0-9\-_:\/]*:[a-z0-9\-_:\/]';
+		$named_args = str_replace(
+			'[:DS:]',
+			preg_quote( Ai1ec_Uri::DIRECTION_SEPARATOR ),
+			'[a-z][a-z0-9\-_[:DS:]\/]*[:DS:][a-z0-9\-_[:DS:]\/]'
+		);
 		$regexp     = $base . '(\/' . $named_args . ')';
 		$clean_base = trim( $this->_calendar_base, '/' );
 		$clean_site = trim( $this->get_site_url(), '/' );

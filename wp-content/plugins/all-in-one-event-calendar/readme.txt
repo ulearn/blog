@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: calendar, event, events, ics, ics calendar, ical-feed, ics feed, wordpress ics importer, wordpress ical importer, upcoming events, todo, notes, journal, freebusy, availability, web calendar, web events, webcal, google calendar, ical, iCalendar, all-in-one, ai1ec, google calendar sync, ical sync, events sync, holiday calendar, calendar 2011, events 2011, widget, events widget, upcoming events widget, calendar widget, agenda widget, posterboard
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.11-pro
+Stable tag: 1.11.5-pro
 License: EULA.license
 
 A calendar system with many views, upcoming events widget, color-coded categories, recurrence, and import/export of facebook events and .ics feeds.
@@ -107,6 +107,87 @@ http://vimeo.com/55904173
 * Filter by post ids (separate IDs by comma): **[ai1ec post_id="1, 2"]**
 
 == Changelog ==
+
+= Version 1.11.5-pro =
+* Fixed an issue where Pro users are asked to update to the Lite
+version.
+
+= Version 1.11.4-pro =
+* Fixed issue that prevented events from being exported to Facebook if
+title exceeds Facebook character limit. Title is now automatically
+truncated to 74 characters.
+* Fixed issue that caused "Buy Tickets" or "Event website" links
+become unusable in some cases.
+* Fixed issue where upgrade failed indicating database failure. Events
+that occur pre 1970 will be deleted from the database.
+
+= Version 1.11.3-pro =
+* Fixed issue with Super Widget that caused it to fail on some server
+configurations
+* Fixed issue with WordPress Total Cache plugin that caused server
+error
+* Fixed issue that prevented removal of assigned category colours
+* Fixed issue which was triggering error about tables not being
+created
+* Fixed issue which was causing JavaScript error in some
+configurations when navigating on calendar page
+* Fixed issue where Select2 widgets were rendered incorrectly
+* Fixed issue where events listing was not being rendered for admin in
+some installations
+* Removed error causing character set from database schema
+* Fixed issue where Super Widget was not showing additional view
+parameters
+* Fixed issue where failure was experienced when importing external
+feed with categories/tags
+* Fixed issue where only admin side of the site was using SSL
+* Fixed issue with posting to Twitter not working in some
+installations
+* Added ability to turn off gzip compression
+* Created additional checks to prevent data loss during plugin upgrade
+that may occur on some server configurations
+* Fixed the issue that caused the plugin to generate statistics
+reports too frequently resulting in higher than expected server loads
+* Fixed issue that caused events submitted via Front End form by
+Event Contributor to go into Draft state
+* Fixed an issue that caused all events without a cost entered to be
+marked as "Free" automatically
+* Fixed an issue where a notice was generated on some PHP versions
+when calling time manipulation function
+* Fixed an issue where "Post Your Event" modal window was not visible
+when using some themes
+
+= Version 1.11.2-pro =
+* Fixed issue where CSS files were rendered unusable (due to
+compression)
+* Fixed several possible vulnerabilities (courtesy for finding goes to
+Christian Mehlmauer)
+* Fixed issue where JavaScript was not loading in some cases
+* Fixed issue where database was overloaded with cache values
+* Fixed issue with use of get_default_terms() function
+* Improved performance of CSS loading
+* Fixed error with automatic upgrades
+* Added feature which allows to turn on/off authors filter
+* Improved memory usage
+* Restored color swatches in categories filter drop-down and on event
+details page
+* Fixed issue with display of buttons in some themes
+* Fixed issue with navigation not working while some other plugins are
+active
+* Fixed issue where actions were not working on Microsoft IIS server
+* Upgraded LESSPHP library to increase compatibility with other
+plugins
+* Fixed issue where status of plugin permalink setting was not visible
+(checkbox was remaining blank)
+
+= Version 1.11.1-pro =
+* Fixed issue where database was being corrupted on some servers
+* Fixed issue where multi-day events were not being displayed for
+current day
+* Fixed issue where paid events were changed to free after updating
+them
+* Fixed issue where clone function was not working
+* Fixed issue where plugin was hogging CPU resources due to excessive
+cache clearing
 
 = Version 1.11-pro =
 * Added ability to post information about upcoming events on Twitter

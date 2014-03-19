@@ -17,6 +17,8 @@ class Ai1ec_Scheduling_Utility
 	 */
 	const OPTION_NAME           = 'ai1ec_scheduler_hooks';
 
+	const CURRENT_VERSION       = '1.11.1';
+
 	/**
 	 * @var array Map of hooks currently registered
 	 */
@@ -42,18 +44,19 @@ class Ai1ec_Scheduling_Utility
 	/**
 	 * Schedule hook run times
 	 *
-	 * @param string $hook  Name of hook to execute
-	 * @param string $freq  Frequency of runs
-	 * @param int    $first UNIX timestamp of first execution
+	 * @param string $hook    Name of hook to execute
+	 * @param string $freq    Frequency of runs
+	 * @param int    $first   UNIX timestamp of first execution
+	 * @param string $version Arbitrary cron version identifier [optional=0]
 	 *
 	 * @return bool Success
 	 */
-	public function schedule( $hook, $freq, $first = 0 ) {
+	public function schedule( $hook, $freq, $first = 0, $version = '0' ) {
 		$first  = (int)$first;
 		if ( 0 === $first ) {
 			$first = Ai1ec_Time_Utility::current_time();
 		}
-		return $this->_install( $hook, $first, $freq );
+		return $this->_install( $hook, $first, $freq, $version );
 	}
 
 	/**
@@ -63,16 +66,22 @@ class Ai1ec_Scheduling_Utility
 	 * defined differs from given in argument. For more details on action
 	 * {@see self::schedule()} which is called if conditions are met.
 	 *
-	 * @param string $hook Name of hook to reschedule
-	 * @param string $freq Frequency of runs
+	 * @param string $hook    Name of hook to reschedule
+	 * @param string $freq    Frequency of runs
+	 * @param string $version Arbitrary cron version identifier [optional=0]
 	 *
 	 * @return bool Success
 	 */
-	public function reschedule( $hook, $freq ) {
+	public function reschedule( $hook, $freq, $version = '0' ) {
 		$freq     = trim( $freq );
 		$existing = $this->get_details( $hook );
-		if ( NULL === $existing || $existing['freq'] !== $freq ) {
-			return $this->schedule( $hook, $freq );
+		if (
+			NULL === $existing ||
+			$existing['freq'] !== $freq ||
+			! isset( $existing['version'] ) ||
+			(string)$existing['version'] !== (string)$version
+		) {
+			return $this->schedule( $hook, $freq, 0, $version );
 		}
 		return true;
 	}
@@ -159,6 +168,7 @@ class Ai1ec_Scheduling_Utility
 	public function shutdown() {
 		if ( $this->_updated ) {
 			$this->_compact_frequencies();
+			$this->_configuration['version'] = self::CURRENT_VERSION;
 			update_option( self::OPTION_NAME, $this->_configuration );
 		}
 	}
@@ -178,6 +188,23 @@ class Ai1ec_Scheduling_Utility
 			wp_clear_scheduled_hook( $cron['hook'] );
 		}
 		return delete_option( self::OPTION_NAME );
+	}
+
+	/**
+	 * Delete hook from execution queue
+	 *
+	 * @param string $hook Name of hook to delete
+	 *
+	 * @return bool Success
+	 */
+	public function delete( $hook ) {
+		$existing = $this->_get_hooks_list();
+		$success  = wp_clear_scheduled_hook( $hook );
+		if ( isset( $existing[$hook] ) ) {
+			unset( $existing[$hook] );
+			$this->_set_hooks_list( $existing );
+		}
+		return $success;
 	}
 
 	/**
@@ -204,11 +231,33 @@ class Ai1ec_Scheduling_Utility
 		$hook_list = $this->get_default_schedules();
 		foreach ( $hook_list as $hook => $freq ) {
 			$details = $this->get_details( $hook );
-			if ( NULL === $details ) {
+			if (
+				NULL === $details ||
+				$this->_override_default( $hook, $details )
+			) {
 				$this->schedule( $hook, $freq );
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * In some cases we need to override existing values
+	 *
+	 * @param string $hook    Name of hook being checked
+	 * @param array  $current Hook details
+	 *
+	 * @return bool True if hook needs to be re-installed
+	 */
+	protected function _override_default( $hook, array $current ) {
+		if (
+			'ai1ec_purge_events_cache' === $hook &&
+			'5m' === $current['freq'] &&
+			version_compare( '1.11', $this->_configuration['version'] ) >= 0
+		) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -218,7 +267,7 @@ class Ai1ec_Scheduling_Utility
 	 */
 	public function get_default_schedules() {
 		return array(
-			'ai1ec_purge_events_cache' => '5m',
+			'ai1ec_purge_events_cache' => '3h',
 		);
 	}
 
@@ -261,16 +310,18 @@ class Ai1ec_Scheduling_Utility
 	 *
 	 * @param string $hook       Name of hook to execute
 	 * @param int    $timestamp  Time of first run
-	 * @param string $freq       User defined recurrence pattern
+	 * @param string $freq       User defined recurrence pattern [optional=NULL]
+	 * @param string $version    Arbitrary cron version identifier [optional=0]
 	 *
 	 * @return bool Success
 	 */
 	protected function _install(
 		$hook,
 		$timestamp,
-		$freq       = NULL
+		$freq       = NULL,
+		$version    = '0'
 	) {
-		$installable = compact( 'hook', 'timestamp' );
+		$installable = compact( 'hook', 'timestamp', 'version' );
 		if ( NULL !== $freq ) {
 			$parsed_freq               = $this->get_valid_freq_details(
 				$hook,
@@ -283,17 +334,31 @@ class Ai1ec_Scheduling_Utility
 			$installable['freq']       = $parsed_freq->to_string();
 			unset( $parsed_freq );
 		}
+		if ( ! $this->_merge_hook( $hook, $installable ) ) {
+			return false;
+		}
+		wp_clear_scheduled_hook( $installable['hook'] );
+		return wp_schedule_event(
+			$installable['timestamp'],
+			$installable['recurrence'],
+			$installable['hook']
+		);
+	}
+
+	/**
+	 * Convenient method to perform hook description update
+	 *
+	 * @param string $hook        Name of hook to update
+	 * @param array  $installable Object to merge into memory
+	 *
+	 * @return bool Success
+	 */
+	protected function _merge_hook( $hook, array $installable ) {
 		$existing    = $this->_get_hooks_list();
 		if ( isset( $existing[$hook] ) ) {
 			$installable = array_merge( $existing[$hook], $installable );
 		}
 		$existing[$hook] = $installable;
-		wp_clear_scheduled_hook( $installable['hook'] );
-		wp_schedule_event(
-			$installable['timestamp'],
-			$installable['recurrence'],
-			$installable['hook']
-		);
 		return $this->_set_hooks_list( $existing );
 	}
 
@@ -315,7 +380,7 @@ class Ai1ec_Scheduling_Utility
 	protected function _parse_freq( $freq ) {
 		$parsed = new Ai1ec_Frequency_Utility();
 		if ( false === $parsed->parse( $freq ) ) {
-			return false;
+			$parsed->parse( '0' );
 		}
 		return $parsed;
 	}
@@ -398,14 +463,16 @@ class Ai1ec_Scheduling_Utility
 	 */
 	protected function __construct() {
 		$defaults = array(
-			'hooks' => array(),
-			'freqs' => array(),
+			'hooks'   => array(),
+			'freqs'   => array(),
+			'version' => '1.11',
 		);
 		$this->_updated       = false;
 		$this->_configuration = Ai1ec_Meta::get_option(
 			self::OPTION_NAME,
 			$defaults
 		);
+		$this->_configuration = array_merge( $defaults, $this->_configuration );
 		$this->install_default_schedules();
 		Ai1ec_Shutdown_Utility::instance()->register(
 			array( $this, 'shutdown' )

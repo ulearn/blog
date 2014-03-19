@@ -1,4 +1,4 @@
-<h2 class="timely-logo"><a href="http://time.ly/?utm_source=dashboard&utm_medium=button&utm_term=ai1ec-pro&utm_content=1.11&utm_campaign=logo" title="<?php esc_attr_e( 'Timely', AI1EC_PLUGIN_NAME ); ?>" target="_blank"></a></h2>
+<h2 class="timely-logo"><a href="http://time.ly/?utm_source=dashboard&utm_medium=button&utm_term=ai1ec-pro&utm_content=1.11.5&utm_campaign=logo" title="<?php esc_attr_e( 'Timely', AI1EC_PLUGIN_NAME ); ?>" target="_blank"></a></h2>
 
 <div class="timely-intro">
 	<h2>
@@ -8,7 +8,7 @@
 
 <div class="ai1ec-support-placeholder"><span class="ai1ec-loader-icon-small"></span></div>
 <div class="ai1ec-news">
-	<h2><?php _e( 'Timely News', AI1EC_PLUGIN_NAME ); ?> <small><a href="http://time.ly/blog?utm_source=dashboard&utm_medium=blog&utm_term=ai1ec-pro&utm_content=1.11&utm_campaign=news" target="_blank"><?php _e( 'view all news', AI1EC_PLUGIN_NAME ); ?> <i class="icon-arrow-right"></i></a></small></h2>
+	<h2><?php _e( 'Timely News', AI1EC_PLUGIN_NAME ); ?> <small><a href="http://time.ly/blog?utm_source=dashboard&utm_medium=blog&utm_term=ai1ec-pro&utm_content=1.11.5&utm_campaign=news" target="_blank"><?php _e( 'view all news', AI1EC_PLUGIN_NAME ); ?> <i class="icon-arrow-right"></i></a></small></h2>
 	<div>
 	<?php if( count( $news ) > 0 ) : ?>
 		<?php foreach( $news as $n ) : ?>

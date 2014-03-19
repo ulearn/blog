@@ -57,7 +57,7 @@
 									</a>
 									<div class="ai1ec-popup hide">
 										<?php if( $event->get_category_colors() ) : ?>
-											<div class="ai1ec-category-colors"><?php echo $event->get_category_colors(); ?></div>
+											<div class="ai1ec-color-swatches"><?php echo $event->get_category_colors(); ?></div>
 										<?php endif ?>
 
 										<span class="ai1ec-popup-title popover-title">

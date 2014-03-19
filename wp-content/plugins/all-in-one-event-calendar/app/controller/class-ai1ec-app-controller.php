@@ -354,6 +354,12 @@ class Ai1ec_App_Controller {
 				array( $ai1ec_events_helper, 'submit_front_end_create_event_form' ) );
 		}
 
+		// remove entries from DB cache, if any
+		add_action( 'ai1ec_upgrade',         array( $ai1ec_calendar_controller, 'clear_db_cache' ) );
+
+		// Make checks on `pre_http_request`, to filter HTTP requests
+		add_filter( 'pre_http_request',      array( Ai1ec_Http_Utility::instance(), 'pre_http_request' ), 10, 3 );
+
 		// set-up Twitter notifications cron
 		add_action(
 			'ai1ec_send_twitter_messages',
@@ -376,6 +382,22 @@ class Ai1ec_App_Controller {
 		// = Ai1EC hooks =
 		// ===============
 		add_action( 'ai1ec_purge_events_cache',          array( $ai1ec_events_list_helper, 'purge' ) );
+
+		$this->upgrade_actions();
+	}
+
+	/**
+	 * Method fires `ai1ec_upgrade` WordPress action when version is upgraded
+	 *
+	 * @return void Method returns nothing
+	 */
+	public function upgrade_actions() {
+		$option_name = 'ai1ec_upgrade';
+		$existing    = Ai1ec_Meta::get_option( $option_name, '0' );
+		if ( 0 !== strcmp( AI1EC_VERSION, $existing ) ) {
+			do_action( $option_name, AI1EC_VERSION, $existing );
+			update_option( $option_name, AI1EC_VERSION );
+		}
 	}
 
 	/**
@@ -502,8 +524,17 @@ class Ai1ec_App_Controller {
 	 * @return string|bool Given value {$real_value} or false
 	 */
 	public function limit_update_notice( $real_value ) {
-		// In CRON get_current_screen() is not present
-		if( ! function_exists( 'get_current_screen' ) ) {
+		// In CRON `get_current_screen()` is not present
+		// and we wish to have notice on all "our" pages
+		if (
+			isset( $_GET['page'] ) &&
+			0 === strncasecmp(
+				$_GET['page'],
+				AI1EC_PLUGIN_NAME,
+				strlen( AI1EC_PLUGIN_NAME )
+			) ||
+			! function_exists( 'get_current_screen' )
+		) {
 			return $real_value;
 		}
 		$ai1ec_settings = Ai1ec_Settings::get_instance();
@@ -592,8 +623,8 @@ class Ai1ec_App_Controller {
 				contact_url varchar(255),
 				cost varchar(255),
 				ticket_url varchar(255),
-				ical_feed_url varchar(255) CHARACTER SET ascii COLLATE ascii_general_ci,
-				ical_source_url varchar(255) CHARACTER SET ascii COLLATE ascii_general_ci,
+				ical_feed_url varchar(255),
+				ical_source_url varchar(255),
 				ical_organizer varchar(255),
 				ical_contact varchar(255),
 				ical_uid varchar(255),
@@ -675,34 +706,17 @@ class Ai1ec_App_Controller {
 	function install_n_cron() {
 		global $ai1ec_settings;
 
+		$hook_name = 'ai1ec_n_cron';
+		$scheduler = Ai1ec_Scheduling_Utility::instance();
 		// if stats are disabled, cancel the cron
-		if( $ai1ec_settings->allow_statistics == false ) {
-			// delete our scheduled crons
-			wp_clear_scheduled_hook( 'ai1ec_n_cron' );
-
-			// remove the cron version
-			delete_option( 'ai1ec_n_cron_version' );
-
-			// prevent the execution of the code below
-			return;
+		if ( false === $ai1ec_settings->allow_statistics ) {
+			return $scheduler->delete( $hook_name );
 		}
-
-		// If existing CRON version is not consistent with current plugin's version,
-		// or does not exist, then create/update cron using
-		if (
-			Ai1ec_Meta::get_option( 'ai1ec_n_cron_version' ) != AI1EC_N_CRON_VERSION
-		) {
-			// delete our scheduled crons
-			wp_clear_scheduled_hook( 'ai1ec_n_cron_version' );
-			// set the new cron
-			wp_schedule_event(
-				Ai1ec_Time_Utility::current_time(),
-				AI1EC_N_CRON_FREQ,
-				'ai1ec_n_cron'
-			);
-			// update the cron version
-			update_option( 'ai1ec_n_cron_version', AI1EC_N_CRON_VERSION );
-		}
+		return $scheduler->reschedule(
+			$hook_name,
+			AI1EC_N_CRON_FREQ,
+			AI1EC_N_CRON_VERSION
+		);
 	}
 
 	/**

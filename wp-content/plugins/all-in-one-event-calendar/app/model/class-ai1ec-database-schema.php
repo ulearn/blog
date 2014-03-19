@@ -13,11 +13,6 @@ class Ai1ec_Database_Schema
 {
 
 	/**
-	 * @var bool If set to true - no operations will be performed
-	 */
-	protected $_dry_run  = false;
-
-	/**
 	 * @var wpdb Instance of wpdb class
 	 */
 	protected $_db       = NULL;
@@ -30,13 +25,10 @@ class Ai1ec_Database_Schema
 	/**
 	 * Constructor
 	 *
-	 * @param bool $dry_run Enable dry run by setting this to true
-	 *
 	 * @return void Constructor does not return
 	 */
-	public function __construct( $dry_run = false ) {
+	public function __construct() {
 		global $wpdb;
-		$this->_dry_run  = (bool)$dry_run;
 		$this->_db       = $wpdb;
 		$this->_ai1ec_db = Ai1ec_Database::instance();
 	}
@@ -80,21 +72,11 @@ class Ai1ec_Database_Schema
 					return false;
 				}
 			} catch ( Ai1ec_Database_Schema_Exception $exception ) {
+				pr( (string)$exception );
 				return false;
 			}
 		}
 		return true;
-	}
-
-	/**
-	 * is_dry method
-	 *
-	 * Check if dry run is enabled
-	 *
-	 * @return bool Dryness of run
-	 */
-	public function is_dry() {
-		return $this->_dry_run;
 	}
 
 	/**
@@ -131,38 +113,6 @@ class Ai1ec_Database_Schema
 	}
 
 	/**
-	 * get_indices method
-	 *
-	 * Get map of indices defined for table.
-	 *
-	 * @NOTICE: no optimization will be performed here, and response will not
-	 * be cached, to allow checking result of DDL statements.
-	 *
-	 * @param string $table Name of table to retrieve index names for
-	 *
-	 * @return array Map of index names and their representation
-	 *
-	 * @throws Ai1ec_Database_Schema_Exception If an error occurs
-	 */
-	public function get_indices( $table ) {
-		$sql_query = 'SHOW INDEXES FROM ' . $this->_ai1ec_db->table( $table );
-		$result    = $this->_db->get_results( $sql_query );
-		$indices   = array();
-		foreach ( $result as $index ) {
-			$name = $index->Key_name;
-			if ( ! isset( $indices[$name] ) ) {
-				$indices[$name] = array(
-					'name'     => $name,
-					'contents' => array(),
-					'unique'   => ! (bool)intval( $index->Non_unique ),
-				);
-			}
-			$indices[$name]['contents'][$index->Column_name] = $index->Sub_part;
-		}
-		return $indices;
-	}
-
-	/**
 	 * convert_instance_times_to_uint method
 	 *
 	 * Make event_instances `start` and `end` fields INT(10) UNSIGNED
@@ -176,63 +126,215 @@ class Ai1ec_Database_Schema
 	 */
 	public function convert_instance_times_to_uint() {
 		try {
+			$this->_ai1ec_db->table( 'events' );
 			$table   = $this->_ai1ec_db->table( 'event_instances' );
 		} catch ( Ai1ec_Database_Schema_Exception $exception ) {
 			return true; // it will be created - no need to convert
 		}
-		$columns = array( 'start', 'end' );
-		$target  = 'int(10) unsigned';
-		$method  = 'UNIX_TIMESTAMP';
+		$columns   = array( 'start', 'end' );
+		$target    = 'int(10) unsigned';
+		$method    = 'UNIX_TIMESTAMP';
 
 		if ( ! $this->_check_column_types( $table, $columns, $target ) ) {
-			$indices = $this->get_indices( $table );
-			$index   = 'evt_instance';
+			$tmp_table = $table . '_tmp';
 			if (
-				isset( $indices[$index] ) && ! $this->_dry_query(
-					'ALTER TABLE ' . $table . ' DROP INDEX ' . $index
+				! $this->_clean_out_of_bound_dates( $table, $columns ) ||
+				! $this->_clone_table( $table, $tmp_table ) ||
+				$this->_has_zeroed_columns( $tmp_table, $columns ) ||
+				! $this->_ai1ec_db->drop_indices(
+					$tmp_table,
+					'evt_instance'
 				) ||
 				! $this->_change_column_type(
-					$table,
+					$tmp_table,
 					$columns,
 					$target,
 					$method
 				) ||
-				! $this->_dry_query(
-					'ALTER TABLE ' . $table . ' ADD UNIQUE KEY' .
-					' ' . $index . ' (post_id, start)'
-				)
+				$this->_has_zeroed_columns( $tmp_table, $columns ) ||
+				! $this->_ai1ec_db->create_indices(
+					$tmp_table,
+					array(
+						 'evt_instance' => array(
+							'unique'  => true,
+							'columns' => array( 'post_id', 'start' ),
+							'name'    => 'evt_instance',
+						),
+					)
+				) ||
+				! $this->_replace_and_keep( $table, $tmp_table )
 			) {
 				return false;
 			}
 		}
 
-		$table = $this->_ai1ec_db->table( 'events' );
-		if (
-			! $this->_check_column_types( $table, $columns, $target ) &&
-			! $this->_change_column_type(
-				$table,
-				$columns,
-				$target,
-				$method
-			)
-		) {
-			return false;
+		$table     = $this->_ai1ec_db->table( 'events' );
+		if ( ! $this->_check_column_types( $table, $columns, $target ) ) {
+			$tmp_table = $table . '_tmp';
+			if (
+				! $this->_clean_out_of_bound_dates( $table, $columns ) ||
+				! $this->_clone_table( $table, $tmp_table ) ||
+				$this->_has_zeroed_columns( $tmp_table, $columns ) ||
+				! $this->_change_column_type(
+					$tmp_table,
+					$columns,
+					$target,
+					$method
+				) ||
+				$this->_has_zeroed_columns( $tmp_table, $columns ) ||
+				! $this->_replace_and_keep( $table, $tmp_table )
+			) {
+				return false;
+			}
 		}
 
-		$table   = $this->_ai1ec_db->table( 'facebook_users_events' );
+		try {
+			$table   = $this->_ai1ec_db->table( 'facebook_users_events' );
+		} catch ( Ai1ec_Database_Schema_Exception $exception ) {
+			return true; // it will be created - no need to convert
+		}
 		$columns = array( 'start' );
+		if ( ! $this->_check_column_types( $table, $columns, $target ) ) {
+			$tmp_table = $table . '_tmp';
+			if (
+				! $this->_clean_out_of_bound_dates( $table, $columns ) ||
+				! $this->_clone_table( $table, $tmp_table ) ||
+				$this->_has_zeroed_columns( $tmp_table, $columns ) ||
+				! $this->_change_column_type(
+					$tmp_table,
+					$columns,
+					$target,
+					$method
+				) ||
+				$this->_has_zeroed_columns( $tmp_table, $columns ) ||
+				! $this->_replace_and_keep( $table, $tmp_table )
+			) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Check for columns having zeroed value
+	 *
+	 * Note, that 'column = 0' returns true for both int( 0 ) and
+	 * date( '0000-00-00' ) column values
+	 *
+	 * @param string $table   Name of table to check for zeroed values
+	 * @param array  $columns List of columns to check for zeroed values
+	 *
+	 * @return bool True if table has zeroed columns
+	 */
+	protected function _has_zeroed_columns( $table, array $columns ) {
+		$sql_query = 'SELECT COUNT(*) FROM ' . $table . ' WHERE ';
+		foreach ( $columns as $name ) {
+			$sql_query .= ' OR ' . $name . ' = 0';
+		}
+		$count     = $this->_db->get_var( $sql_query );
+		if ( false !== $count && $count > 0 ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Remove entries from tables, that have dates outside UNIX time range
+	 *
+	 * Dates in DATETIME format are expected in columns listed under
+	 * {@see $columns}. The DELETE with WHERE is performed to remove
+	 * indicating full UNIX range explicitly and using INSTR to make
+	 * sure that operations are not carried out against INT fields.
+	 *
+	 * @param string $table   Name of table to delete entries from
+	 * @param array  $columns List of columns to check for dates
+	 *
+	 * @return bool Success
+	 */
+	protected function _clean_out_of_bound_dates( $table, array $columns ) {
+		if ( empty( $columns ) ) {
+			return false;
+		}
+		$conditions = array();
+		foreach ( $columns as $name ) {
+			$conditions[] = '( ' .
+				'`' . $name . '` < "1970-01-01 03:00:00" OR ' .
+				'`' . $name . '` > "2038-01-19 03:14:08" ' .
+				') AND INSTR( `' . $name . '`, "-" ) > 0';
+		}
+		$sql_query  = 'DELETE FROM ' . $table . ' WHERE (' .
+			implode( ') OR (', $conditions ) . ')';
+		return ( false !== $this->_dry_query( $sql_query ) );
+	}
+
+	/**
+	 * Replace old table with new table while keeping a copy of old table
+	 *
+	 * @param string $old_table Old table name
+	 * @param string $new_table New table name
+	 * @param string $suffix    Suffix to add to kept old table
+	 *
+	 * @return bool Success
+	 */
+	protected function _replace_and_keep(
+		$old_table,
+		$new_table,
+		$suffix = '_restore'
+	) {
+		$restore_name = $old_table . $suffix;
+		if ( ! $this->_dry_query( 'DROP TABLE IF EXISTS ' . $restore_name ) ) {
+			return false;
+		}
+		$this->_dry_query(
+			'RENAME TABLE ' . $old_table . ' TO ' . $restore_name .
+			', ' . $new_table . ' TO ' . $old_table
+		);
+		try {
+			$this->_ai1ec_db->table( $restore_name );
+		} catch ( Ai1ec_Database_Schema_Exception $exception ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Clone a table (structure and data)
+	 *
+	 * @param string $existing  Table to be cloned
+	 * @param string $new_table Target table name
+	 *
+	 * @return bool Success
+	 *
+	 * @throws Ai1ec_Database_Schema_Exception If an unexpected is encountered
+	 */
+	protected function _clone_table( $existing, $new_table ) {
+		$existing  = $this->_ai1ec_db->table( $existing );
+		$new_table = $this->_ai1ec_db->table( $new_table, true );
+		$drop      = 'DROP TABLE IF EXISTS ' . $new_table;
+		$create    = 'CREATE TABLE ' . $new_table . ' LIKE ' . $existing;
 		if (
-			! $this->_check_column_types( $table, $columns, $target ) &&
-			! $this->_change_column_type(
-				$table,
-				$columns,
-				$target,
-				$method
-			)
+			! $this->_dry_query( $drop ) ||
+			! $this->_dry_query( $create )
 		) {
 			return false;
 		}
-
+		$query     = 'INSERT INTO ' . $new_table .
+			' SELECT * FROM ' . $existing;
+		if ( false === $this->_dry_query( $query ) ) {
+			return false;
+		}
+		$count_new = $this->_db->get_var(
+			'SELECT COUNT(*) FROM ' . $new_table
+		);
+		$count_old = $this->_db->get_var(
+			'SELECT COUNT(*) FROM ' . $existing
+		);
+		// check if difference between tables records doesn't exceed
+		// several least significant bits of old table entries count
+		if ( absint( $count_new - $count_old ) > ( $count_old >> 4 ) ) {
+			return false;
+		}
 		return true;
 	}
 
@@ -247,11 +349,7 @@ class Ai1ec_Database_Schema
 	 * @return mixed Query state, or true in dry run mode
 	 */
 	protected function _dry_query( $query ) {
-		if ( $this->is_dry() ) {
-			pr( $query );
-			return true;
-		}
-		return $this->_db->query( $query );
+		return $this->_ai1ec_db->_dry_query( $query );
 	}
 
 	/**
@@ -294,7 +392,7 @@ class Ai1ec_Database_Schema
 		if ( $return_count ) {
 			return $converted;
 		}
-		if ( $converted !== count( $columns ) ) {
+		if ( $converted !== count( $column_names ) ) {
 			return false;
 		}
 		return true;

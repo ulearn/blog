@@ -73,7 +73,7 @@
 // View filters.
 .ai1ec-category-filter,
 .ai1ec-tag-filter {
-	.ai1ec-category-color {
+	.ai1ec-color-swatch {
 		height: 7px;
 		width: 7px;
 	}
@@ -331,6 +331,9 @@ table.ai1ec-oneday-view-original {
 		}
 		a {
 			color: @posterboardDateTitleText;
+			&:hover {
+				color: @posterboardDateTitleText;
+			}
 		}
 	}
 	.ai1ec-month {
@@ -946,7 +949,7 @@ table.ai1ec-oneday-view-original {
 	.ai1ec-pagination,
 	.ai1ec-calendar-toolbar,
 	.ai1ec-read-more,
-	.ai1ec-category-color,
+	.ai1ec-color-swatch,
 	.post-edit-link,
 	.ai1ec-event-toggle {
 		display: none !important;
@@ -1118,4 +1121,8 @@ table.ai1ec-oneday-view-original {
 // disclaimer link
 .ai1ec-collapsible-toggle {
 	cursor: pointer;
+}
+// set the body as static when the modal is open
+.ai1ec-modal-open {
+	position: static;
 }

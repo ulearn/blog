@@ -176,13 +176,22 @@ class Ai1ec_Exporter_Controller {
 
 		$filter = array();
 		if ( $ai1ec_cat_ids ) {
-			$filter['cat_ids'] = explode( ',', $ai1ec_cat_ids );
+			$filter['cat_ids']  = Ai1ec_Number_Utility::convert_to_int_list(
+				',',
+				$ai1ec_cat_ids
+			);
 		}
 		if ( $ai1ec_tag_ids ) {
-			$filter['tag_ids'] = explode( ',', $ai1ec_tag_ids );
+			$filter['tag_ids']  = Ai1ec_Number_Utility::convert_to_int_list(
+				',',
+				$ai1ec_tag_ids
+			);
 		}
 		if ( $ai1ec_post_ids ) {
-			$filter['post_ids'] = explode( ',', $ai1ec_post_ids );
+			$filter['post_ids'] = Ai1ec_Number_Utility::convert_to_int_list(
+				',',
+				$ai1ec_post_ids
+			);
 		}
 
 		// when exporting events by post_id, do not look up the event's start/end date/time

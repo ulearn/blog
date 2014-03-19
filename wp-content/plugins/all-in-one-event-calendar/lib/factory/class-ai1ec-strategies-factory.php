@@ -43,11 +43,14 @@ class Ai1ec_Strategies_Factory
 		) {
 			$engine = new Ai1ec_File_Cache( $cache_directory );
 			$name   = 'file';
-		} else {
+		} else if ( true !== $skip_small_bits ) {
 			$engine = new Ai1ec_Db_Cache(
 				Ai1ec_Adapters_Factory::create_db_adapter_instance()
 			);
 			$name   = 'db';
+		} else {
+			$engine = new Ai1ec_Void_Cache();
+			$name   = 'void';
 		}
 		$engine->inject_logger( Logger::getLogger( 'cache.' . $name ) );
 		return $engine;

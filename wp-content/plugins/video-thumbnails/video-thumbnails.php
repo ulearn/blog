@@ -1,12 +1,14 @@
 <?php
 /*
 Plugin Name: Video Thumbnails
-Plugin URI: http://refactored.co/plugins/video-thumbnails
-Description: Automatically retrieve video thumbnails for your posts and display them in your theme. Supports YouTube, Vimeo, Facebook, Vine, Justin.tv, Twitch, Dailymotion, Metacafe, Blip, Google Drive, Funny or Die, CollegeHumor, MPORA, Wistia, Youku, and Rutube.
+Plugin URI: https://refactored.co/plugins/video-thumbnails
+Description: Automatically retrieve video thumbnails for your posts and display them in your theme. Supports YouTube, Vimeo, Facebook, Vine, Justin.tv, Twitch, Dailymotion, Metacafe, VK, Blip, Google Drive, Funny or Die, CollegeHumor, MPORA, Wistia, Youku, and Rutube.
 Author: Sutherland Boswell
 Author URI: http://sutherlandboswell.com
-Version: 2.4
+Version: 2.7.1
 License: GPL2
+Text Domain: video-thumbnails
+Domain Path: /languages/
 */
 /*  Copyright 2014 Sutherland Boswell  (email : sutherland.boswell@gmail.com)
 
@@ -28,7 +30,7 @@ License: GPL2
 
 define( 'VIDEO_THUMBNAILS_PATH', dirname(__FILE__) );
 define( 'VIDEO_THUMBNAILS_FIELD', '_video_thumbnail' );
-define( 'VIDEO_THUMBNAILS_VERSION', '2.4' );
+define( 'VIDEO_THUMBNAILS_VERSION', '2.7.1' );
 
 // Providers
 require_once( VIDEO_THUMBNAILS_PATH . '/php/providers/class-video-thumbnails-providers.php' );
@@ -47,6 +49,9 @@ class Video_Thumbnails {
 	var $settings;
 
 	function __construct() {
+
+		// Load translations
+		add_action( 'plugins_loaded', array( &$this, 'plugin_textdomain' ));
 
 		// Create provider array
 		$this->providers = apply_filters( 'video_thumbnail_providers', $this->providers );
@@ -85,16 +90,39 @@ class Video_Thumbnails {
 	}
 
 	/**
+	 * Load language files
+	 */
+	function plugin_textdomain() {
+		load_plugin_textdomain( 'video-thumbnails', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
+
+	/**
 	 * Adds the admin menu items
 	 */
 	function admin_menu() {
-		add_management_page( 'Bulk Video Thumbnails', 'Bulk Video Thumbs', 'manage_options', 'video-thumbnails-bulk', array( &$this, 'bulk_scanning_page' ) );
+		add_management_page( __( 'Bulk Video Thumbnails', 'video-thumbnails' ), __( 'Bulk Video Thumbs', 'video-thumbnails' ), 'manage_options', 'video-thumbnails-bulk', array( &$this, 'bulk_scanning_page' ) );
 	}
 
 	function admin_scripts( $hook ) {
 		// Bulk tool page
 		if ( 'tools_page_video-thumbnails-bulk' == $hook ) {
 			wp_enqueue_script( 'video-thumbnails-bulk-js', plugins_url( '/js/bulk.js' , __FILE__ ), array( 'jquery' ), VIDEO_THUMBNAILS_VERSION );
+			wp_localize_script( 'video-thumbnails-bulk-js', 'video_thumbnails_bulk_language', array(
+				'working'              => __( 'Working...', 'video-thumbnails' ),
+				'started'              => __( 'Started Scanning', 'video-thumbnails' ),
+				'resumed'              => __( 'Resumed Scanning', 'video-thumbnails' ),
+				'paused'               => __( 'Paused Scanning', 'video-thumbnails' ),
+				'done'                 => __( 'Done!', 'video-thumbnails' ),
+				'final_count_singular' => __( 'Scanned 1 post', 'video-thumbnails' ),
+				'final_count_plural'   => __( 'Scanned %d posts', 'video-thumbnails' ),
+				'queue_singular'       => __( '1 post in queue', 'video-thumbnails' ),
+				'queue_plural'         => __( '%d posts in queue', 'video-thumbnails' ),
+				'scanning_of'          => __( 'Scanning %1$s of %2$s', 'video-thumbnails' ),
+				'no_thumbnail'         => __( 'No thumbnail', 'video-thumbnails' ),
+				'new_thumbnail'        => __( 'New thumbnail:', 'video-thumbnails' ),
+				'existing_thumbnail'   => __( 'Existing thumbnail:', 'video-thumbnails' ),
+				'error'                => __( 'Error:', 'video-thumbnails' ),
+			) );
 			wp_enqueue_style( 'video-thumbnails-bulk-css', plugins_url('/css/bulk.css', __FILE__), false, VIDEO_THUMBNAILS_VERSION );
 		}
 	}
@@ -110,26 +138,15 @@ class Video_Thumbnails {
 
 	// Construct the meta box
 	function meta_box() {
-
+		global $post;
 		// Add hidden troubleshooting info
 		add_thickbox();
 		?>
 		<div id="video-thumbnail-not-found-troubleshooting" style="display:none;">
-			<h2><?php _e( 'Troubleshooting Video Thumbnails' ); ?></h2>
-			<h3>No video thumbnail for this post</h3>
-			<ol>
-				<li>Ensure you have saved any changes to your post.</li>
-				<li>If you are using a a plugin or theme that stores videos in a special location other than the main post content area, be sure you've entered the correct custom field on the <a href="<?php echo admin_url( 'options-general.php?page=video_thumbnails' ); ?>">settings page</a>. If you don't know the name of the field your video is being saved in, please contact the developer of that theme or plugin.</li>
-				<li>Copy and paste your embed code into the "Test Markup for Video" section of the <a href="<?php echo admin_url( 'options-general.php?page=video_thumbnails&tab=debugging' ); ?>">Debugging page</a>. If this doesn't find the thumbnail, you'll want to be sure to include the embed code you scanned when you request support. If it does find a thumbnail, please double check that you have the Custom Field set correctly in the <a href="<?php echo admin_url( 'options-general.php?page=video_thumbnails' ); ?>">settings page</a> if you are using a a plugin or theme that stores videos in a special location.</li>
-				<li>Go to the <a href="<?php echo admin_url( 'options-general.php?page=video_thumbnails&tab=debugging' ); ?>">Debugging page</a> and click "Test Image Downloading" to test your server's ability to save an image from a video source.</li>
-				<li>Try posting a video from other sources to help narrow down the problem.</li>
-				<li>Check the <a href="http://wordpress.org/support/plugin/video-thumbnails">support threads</a> to see if anyone has had the same issue.</li>
-				<li>If you are still unable to resolve the problem, <a href="http://wordpress.org/support/plugin/video-thumbnails">start a thread</a> with a good descriptive title ("Error" or "No thumbnails" is a bad title) and be sure to include the results of your testing as well. Also be sure to include the name of your theme, any video plugins you're using, and any other details you can think of.</li>
-			</ol>
+			<h2><?php _e( 'Troubleshooting Video Thumbnails', 'video-thumbnails' ); ?></h2>
+			<?php $this->no_video_thumbnail_troubleshooting_instructions(); ?>
 		</div>
 		<?php
-
-		global $post;
 		$custom = get_post_custom( $post->ID );
 		if ( isset( $custom[VIDEO_THUMBNAILS_FIELD][0] ) ) $video_thumbnail = $custom[VIDEO_THUMBNAILS_FIELD][0];
 
@@ -138,18 +155,36 @@ class Video_Thumbnails {
 
 		if ( get_post_status() == 'publish' || get_post_status() == 'private' ) {
 			if ( isset( $video_thumbnail ) && $video_thumbnail != '' ) {
-				echo '<p><a href="#" id="video-thumbnails-reset" onclick="video_thumbnails_reset(\'' . $post->ID . '\' );return false;">Reset Video Thumbnail</a></p>';
+				echo '<p><a href="#" id="video-thumbnails-reset" onclick="video_thumbnails_reset(\'' . $post->ID . '\' );return false;">' . __( 'Reset Video Thumbnail', 'video-thumbnails' ) . '</a></p>';
 			} else {
-				echo '<p id="video-thumbnails-preview">No video thumbnail for this post.</p>';
-				echo '<p><a href="#" id="video-thumbnails-reset" onclick="video_thumbnails_reset(\'' . $post->ID . '\' );return false;">Search Again</a> <a href="#TB_inline?width=400&height=600&inlineId=video-thumbnail-not-found-troubleshooting" class="thickbox" style="float:right;">Troubleshoot<a/></p>';
+				echo '<p id="video-thumbnails-preview">' . __( 'No video thumbnail for this post.', 'video-thumbnails' ) . '</p>';
+				echo '<p><a href="#" id="video-thumbnails-reset" onclick="video_thumbnails_reset(\'' . $post->ID . '\' );return false;">' . __( 'Search Again', 'video-thumbnails' ) . '</a> <a href="#TB_inline?width=400&height=600&inlineId=video-thumbnail-not-found-troubleshooting" class="thickbox" style="float:right;">' . __( 'Troubleshoot', 'video-thumbnails' ) . '<a/></p>';
 			}
 		} else {
 			if ( isset( $video_thumbnail ) && $video_thumbnail != '' ) {
-				echo '<p><a href="#" id="video-thumbnails-reset" onclick="video_thumbnails_reset(\'' . $post->ID . '\' );return false;">Reset Video Thumbnail</a></p>';
+				echo '<p><a href="#" id="video-thumbnails-reset" onclick="video_thumbnails_reset(\'' . $post->ID . '\' );return false;">' . __( 'Reset Video Thumbnail', 'video-thumbnails' ) . '</a></p>';
 			} else {
-				echo '<p>A video thumbnail will be found for this post when it is published.</p>';
+				echo '<p>' . __( 'A video thumbnail will be found for this post when it is published.', 'video-thumbnails' ) . '</p>';
 			}
 		}
+	}
+
+	/**
+	 * Prints a guide for troubleshooting no video thumbnails
+	 */
+	public static function no_video_thumbnail_troubleshooting_instructions() {
+		?>
+		<h3><?php _e( 'Fixing "No video thumbnail for this post"', 'video-thumbnails' ); ?></h3>
+		<ol>
+			<li><?php _e( 'Ensure you have saved any changes to your post.', 'video-thumbnails' ); ?></li>
+			<li><?php echo sprintf( __( 'If you are using a a plugin or theme that stores videos in a special location other than the main post content area, be sure you\'ve entered the correct custom field on the <a href="%s">settings page</a>. If you don\'t know the name of the field your video is being saved in, please contact the developer of that theme or plugin.', 'video-thumbnails' ), admin_url( 'options-general.php?page=video_thumbnails' ) ); ?></li>
+			<li><?php echo sprintf( __( 'Copy and paste your embed code into the "Test Markup for Video" section of the <a href="%1$s">Debugging page</a>. If this doesn\'t find the thumbnail, you\'ll want to be sure to include the embed code you scanned when you request support. If it does find a thumbnail, please double check that you have the Custom Field set correctly in the <a href="%2$s">settings page</a> if you are using a a plugin or theme that stores videos in a special location.', 'video-thumbnails' ), admin_url( 'options-general.php?page=video_thumbnails&tab=debugging' ), admin_url( 'options-general.php?page=video_thumbnails' ) ); ?></li>
+			<li><?php echo sprintf( __( 'Go to the <a href="%s">Debugging page</a> and click "Test Image Downloading" to test your server\'s ability to save an image from a video source.', 'video-thumbnails' ), admin_url( 'options-general.php?page=video_thumbnails&tab=debugging' ) ); ?></li>
+			<li><?php _e( 'Try posting a video from other sources to help narrow down the problem.', 'video-thumbnails' ); ?></li>
+			<li><?php _e( 'Search the <a href="http://wordpress.org/support/plugin/video-thumbnails">support threads</a> to see if anyone has had the same issue.', 'video-thumbnails' ); ?></li>
+			<li><?php _e( 'If you are still unable to resolve the problem, <a href="http://wordpress.org/support/plugin/video-thumbnails">start a thread</a> with a <strong>good descriptive</strong> title ("Error" or "No thumbnails" is a <strong>bad</strong> title) and be sure to include the results of your testing as well. Also be sure to include the <strong>name of your theme</strong>, any <strong>video plugins</strong> you\'re using, and any other details you can think of.', 'video-thumbnails' ); ?></li>
+		</ol>
+		<?php
 	}
 
 	/**
@@ -242,7 +277,7 @@ class Video_Thumbnails {
 			}
 
 			// Return the new thumbnail variable and update meta if one is found
-			if ( $new_thumbnail != null ) {
+			if ( $new_thumbnail != null && !is_wp_error( $new_thumbnail ) ) {
 
 				// Save as Attachment if enabled
 				if ( $this->settings->options['save_media'] == 1 ) {
@@ -262,6 +297,7 @@ class Video_Thumbnails {
 					}
 				}
 			}
+
 			return $new_thumbnail;
 
 		}
@@ -284,13 +320,30 @@ class Video_Thumbnails {
 		}
 	}
 
+	/**
+	 * Creates a file name for use when saving an image to the media library.
+	 * It will either use a sanitized version of the title or the post ID.
+	 * @param  int    $post_id The ID of the post to create the filename for
+	 * @return string          A filename (without the extension)
+	 */
+	static function construct_filename( $post_id ) {
+		$filename = get_the_title( $post_id );
+		$filename = sanitize_title( $filename, $post_id );
+		$filename = urldecode( $filename );
+		$filename = preg_replace( '/[^a-zA-Z0-9\-]/', '', $filename );
+		$filename = substr( $filename, 0, 32 );
+		$filename = trim( $filename, '-' );
+		if ( $filename == '' ) $filename = (string) $post_id;
+		return $filename;
+	}
+
 	// Saves to media library
-	public function save_to_media_library( $image_url, $post_id ) {
+	public static function save_to_media_library( $image_url, $post_id ) {
 
 		$error = '';
 		$response = wp_remote_get( $image_url, array( 'sslverify' => false ) );
 		if( is_wp_error( $response ) ) {
-			$error = new WP_Error( 'thumbnail_retrieval', __( 'Error retrieving a thumbnail from the URL <a href="' . $image_url . '">' . $image_url . '</a> using <code>wp_remote_get()</code><br />If opening that URL in your web browser returns anything else than an error page, the problem may be related to your web server and might be something your host administrator can solve.<br />Details: ' . $response->get_error_message() ) );
+			$error = new WP_Error( 'thumbnail_retrieval', sprintf( __( 'Error retrieving a thumbnail from the URL <a href="%1$s">%1$s</a> using <code>wp_remote_get()</code><br />If opening that URL in your web browser returns anything else than an error page, the problem may be related to your web server and might be something your host administrator can solve.', 'video-thumbnails' ), $image_url ) . '<br>' . __( 'Error Details:', 'video-thumbnails' ) . ' ' . $response->get_error_message() );
 		} else {
 			$image_contents = $response['body'];
 			$image_type = wp_remote_retrieve_header( $response, 'content-type' );
@@ -301,20 +354,31 @@ class Video_Thumbnails {
 		} else {
 
 			// Translate MIME type into an extension
-			if ( $image_type == 'image/jpeg' ) $image_extension = '.jpg';
-			elseif ( $image_type == 'image/png' ) $image_extension = '.png';
+			if ( $image_type == 'image/jpeg' ) {
+				$image_extension = '.jpg';
+			} elseif ( $image_type == 'image/png' ) {
+				$image_extension = '.png';
+			} elseif ( $image_type == 'image/gif' ) {
+				$image_extension = '.gif';
+			} else {
+				return new WP_Error( 'thumbnail_upload', __( 'Unsupported MIME type:', 'video-thumbnails' ) . ' ' . $image_type );
+			}
 
-			// Construct a file name using post slug and extension
-			$new_filename = urldecode( basename( get_permalink( $post_id ) ) ) . $image_extension;
+			// Construct a file name with extension
+			$new_filename = self::construct_filename( $post_id ) . $image_extension;
 
 			// Save the image bits using the new filename
+			do_action( 'video_thumbnails/pre_upload_bits', $image_contents );
 			$upload = wp_upload_bits( $new_filename, null, $image_contents );
+			do_action( 'video_thumbnails/after_upload_bits', $upload );
 
 			// Stop for any errors while saving the data or else continue adding the image to the media library
 			if ( $upload['error'] ) {
-				$error = new WP_Error( 'thumbnail_upload', __( 'Error uploading image data:' ) . ' ' . $upload['error'] );
+				$error = new WP_Error( 'thumbnail_upload', __( 'Error uploading image data:', 'video-thumbnails' ) . ' ' . $upload['error'] );
 				return $error;
 			} else {
+
+				do_action( 'video_thumbnails/image_downloaded', $upload['file'] );
 
 				$image_url = $upload['url'];
 
@@ -354,7 +418,7 @@ class Video_Thumbnails {
 		echo '    action: "reset_video_thumbnail",' . PHP_EOL;
 		echo '    post_id: id' . PHP_EOL;
 		echo '  };' . PHP_EOL;
-		echo '  document.getElementById(\'video-thumbnails-preview\').innerHTML=\'Working... <img src="' . home_url( 'wp-admin/images/loading.gif' ) . '"/>\';' . PHP_EOL;
+		echo '  document.getElementById(\'video-thumbnails-preview\').innerHTML=\'' . __( 'Working...', 'video-thumbnails' ) . ' <img src="' . home_url( 'wp-admin/images/loading.gif' ) . '"/>\';' . PHP_EOL;
 		echo '  jQuery.post(ajaxurl, data, function(response){' . PHP_EOL;
 		echo '    document.getElementById(\'video-thumbnails-preview\').innerHTML=response;' . PHP_EOL;
 		echo '  });' . PHP_EOL;
@@ -377,18 +441,25 @@ class Video_Thumbnails {
 		} else if ( $video_thumbnail != null ) {
 			echo '<img src="' . $video_thumbnail . '" style="max-width:100%;" />';
 		} else {
-			echo 'No video thumbnail for this post.';
+			echo __( 'No video thumbnail for this post.', 'video-thumbnails' );
 		}
 
 		die();
 	}
 
 	function bulk_posts_query_callback() {
+		// Some default args
 		$args = array(
-			'showposts' => -1,
+			'posts_per_page' => -1,
 			'post_type' => $this->settings->options['post_types'],
 			'fields'    => 'ids'
 		);
+		// Setup an array for any form data and parse the jQuery serialized data
+		$form_data = array();
+		parse_str( $_POST['params'], $form_data );
+
+		$args = apply_filters( 'video_thumbnails/bulk_posts_query', $args, $form_data );
+
 		$query = new WP_Query( $args );
 		echo json_encode( $query->posts );
 		die();
@@ -425,27 +496,49 @@ class Video_Thumbnails {
 	function bulk_scanning_page() {
 
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'video-thumbnails' ) );
 		}
 
 		?>
 		<div class="wrap">
 
-			<div id="icon-tools" class="icon32"></div><h2>Bulk Video Thumbnail Generator</h2>
+			<div id="icon-tools" class="icon32"></div><h2><?php _e( 'Bulk Video Thumbnail Generator', 'video-thumbnails' ); ?></h2>
 
-			<p>Use this tool to scan all of your posts for Video Thumbnails.</p>
+			<p><?php _e( 'Use this tool to scan all of your posts for Video Thumbnails.', 'video-thumbnails' ); ?></p>
 
-			<p><a id="video-thumbnails-scan-all-posts" href="#" class="button button-primary">Scan All Posts</a></p>
+			<form id="video-thumbnails-bulk-scan-options">
+				<table class="form-table">
+					<tbody>
+						<?php do_action( 'video_thumbnails/bulk_options_form'); ?>
+						<tr valign="top">
+							<th scope="row"><span id="queue-count">...</span></th>
+							<td>
+								<input type="submit" value="<?php esc_attr_e( 'Scan Now', 'video-thumbnails' ); ?>" class="button button-primary">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
 
 			<div id="vt-bulk-scan-results">
 				<div class="progress-bar-container">
 					<span class="percentage">0%</span>
 					<div class="progress-bar">&nbsp;</div>
 				</div>
-				<div class="stats">
-					<div class="scanned"></div>
-					<div class="found"></div>
-				</div>
+				<table class="stats">
+					<thead>
+						<tr>
+							<th><?php _e( 'Scanned', 'video-thumbnails' ); ?></th>
+							<th><?php _e( 'New Thumbnails', 'video-thumbnails' ); ?></th>
+							<th><?php _e( 'Existing', 'video-thumbnails' ); ?></th>
+						</tr>
+					</thead>
+					<tr>
+						<td class="scanned">0</td>
+						<td class="found-new">0</td>
+						<td class="found-existing">0</td>
+					</tr>
+				</table>
 				<ul class="log"></ul>
 			</div>
 

@@ -7,6 +7,17 @@
 //
 
 /**
+ * Named function to return `false`
+ *
+ * Used to distinguish from `__return_false` provided by WordPress
+ *
+ * @return bool Always return false
+ */
+function ai1ec_return_false() {
+	return false;
+}
+
+/**
  * Method to stop script execution
  *
  * @param int|string $code Exit value, expected int [optional=0]
@@ -24,12 +35,16 @@ function ai1ec_stop( $code = 0 ) {
 /**
  * Check if given post is Ai1EC event
  *
- * @param WP_Post $post Instance of WP_Post class
+ * @param stdClass $post Instance (WP_Post class instance in WP 3.5+)
  *
  * @return bool True if it is Ai1EC
  */
-function is_ai1ec_post( WP_Post $post ) {
-	return ( AI1EC_POST_TYPE === $post->post_type );
+function is_ai1ec_post( $post ) {
+	return (
+		is_object( $post ) &&
+		isset( $post->post_type  ) &&
+		AI1EC_POST_TYPE === $post->post_type
+	);
 }
 
 /**

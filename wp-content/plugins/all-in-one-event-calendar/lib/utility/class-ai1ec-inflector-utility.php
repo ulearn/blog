@@ -4,7 +4,7 @@
  * Method responsible for changing case/wrapping of methods/classes
  *
  * @author     Timely Network Inc
- * @since      1.11
+ * @since      1.11.2
  *
  * @package    AllInOneEventCalendar
  * @subpackage AllInOneEventCalendar.Lib.Utility

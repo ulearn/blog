@@ -233,6 +233,8 @@ class Ai1ec_Events_Controller {
 		       $ai1ec_settings,
 		       $ai1ec_importer_plugin_helper;
 
+		$empty_event = new Ai1ec_Event();
+
 		// ==================
 		// = Default values =
 		// ==================
@@ -256,7 +258,7 @@ class Ai1ec_Events_Controller {
 		$contact_email    = '';
 		$contact_url      = '';
 		$cost             = '';
-		$is_free          = '';
+		$is_free          = 'checked="checked"';
 		$rrule            = '';
 		$rrule_text       = '';
 		$repeating_event  = false;
@@ -343,6 +345,7 @@ class Ai1ec_Events_Controller {
 			$exclude_event    = empty( $exrule ) ? false : true;
 			$facebook_status  = $event->facebook_status;
 
+			$is_free = '';
 			if ( ! empty( $event->is_free ) ) {
 				$is_free = 'checked="checked" ';
 				$cost    = '';
@@ -427,6 +430,7 @@ class Ai1ec_Events_Controller {
 			'cost'       => $cost,
 			'is_free'    => $is_free,
 			'ticket_url' => $ticket_url,
+			'event'      => $empty_event,
 		);
 		$boxes[] = $ai1ec_view_helper->get_admin_view(
 			'box_event_cost.php',
@@ -441,6 +445,7 @@ class Ai1ec_Events_Controller {
 			'contact_phone'   => $contact_phone,
 			'contact_email'   => $contact_email,
 			'contact_url'     => $contact_url,
+			'event'           => $empty_event,
 		);
 		$boxes[] = $ai1ec_view_helper->get_admin_view(
 			'box_event_contact.php',
@@ -901,7 +906,9 @@ HTML;
 			'exclude'                 => $event->get_exclude_html(),
 			'categories'              => $event->get_categories_html(),
 			'tags'                    => $event->get_tags_html(),
-			'location'                => nl2br( $event->get_location() ),
+			'location'                => nl2br(
+				esc_html( $event->get_location() )
+			),
 			'map'                     => $this->get_map_view( $event ),
 			'contact'                 => $event->get_contact_html(),
 			'back_to_calendar'        => $event->get_back_to_calendar_button_html(),
@@ -1009,7 +1016,9 @@ HTML;
 		global $ai1ec_view_helper,
 		       $ai1ec_calendar_helper;
 
-		$location = str_replace( "\n", ', ', rtrim( $event->get_location() ) );
+		$location = esc_html(
+			str_replace( "\n", ', ', rtrim( $event->get_location() ) )
+		);
 
 		$args = array(
 			'event'              => $event,
@@ -1033,7 +1042,9 @@ HTML;
 		global $ai1ec_view_helper,
 		       $ai1ec_calendar_helper;
 
-		$location = str_replace( "\n", ', ', rtrim( $event->get_location() ) );
+		$location = esc_html(
+			str_replace( "\n", ', ', rtrim( $event->get_location() ) )
+		);
 
 		$args = array(
 			'event'    => $event,
@@ -1151,7 +1162,7 @@ HTML;
 	 */
 	function edited_events_categories( $term_id ) {
 		global $wpdb;
-		$tag_color_value = NULL;
+		$tag_color_value = '';
 		if (
 			isset( $_POST['tag-color-value'] ) &&
 			! empty( $_POST['tag-color-value'] )
