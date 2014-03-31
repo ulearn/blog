@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="http://www.ulearn.ie/blog/wp-content/plugins/google-sitemap-generator/sitemap.xsl"?><!-- generator="wordpress/3.8.1" -->
 <!-- sitemap-generator-url="http://www.arnebrachhold.de" sitemap-generator-version="3.4" -->
-<!-- generated-on="18/03/2014 10:59" -->
+<!-- generated-on="25/03/2014 11:57" -->
 <!-- Debug: Total comment count: 1 -->
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">	<url>
 		<loc>http://www.ulearn.ie/blog/</loc>
-		<lastmod>2014-03-18T10:59:52+00:00</lastmod>
+		<lastmod>2014-03-25T01:56:59+00:00</lastmod>
 		<changefreq>daily</changefreq>
 		<priority>1.0</priority>
 	</url>
 <!-- Debug: Start Postings -->
+<!-- Debug: Priority report of postID 1993: Comments: 0 of 1 = 0 points -->
+	<url>
+		<loc>http://www.ulearn.ie/blog/ulearn-english-school-visits-giants-causeway/</loc>
+		<lastmod>2014-03-24T18:11:29+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
+<!-- Debug: Priority report of postID 1980: Comments: 0 of 1 = 0 points -->
+	<url>
+		<loc>http://www.ulearn.ie/blog/ulearn-goes-horse-riding/</loc>
+		<lastmod>2014-03-24T13:03:37+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.2</priority>
+	</url>
 <!-- Debug: Priority report of postID 1970: Comments: 0 of 1 = 0 points -->
 	<url>
 		<loc>http://www.ulearn.ie/blog/st-patricks-day-around-the-world/</loc>

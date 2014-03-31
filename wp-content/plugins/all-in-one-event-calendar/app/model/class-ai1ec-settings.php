@@ -604,7 +604,7 @@ class Ai1ec_Settings {
 	 *
 	 * Default constructor
 	 **/
-	private function __construct() {
+	public function __construct() {
 		$this->set_defaults(); // set default settings
 	}
 
