@@ -13,7 +13,7 @@
  *
  * @package WordPress
  */
-
+ 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'ulearn_blog');
@@ -22,7 +22,7 @@ define('DB_NAME', 'ulearn_blog');
 define('DB_USER', 'ulearn_admin');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'Pa22w0rd');
+define('DB_PASSWORD', 'Aracna5bia*');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

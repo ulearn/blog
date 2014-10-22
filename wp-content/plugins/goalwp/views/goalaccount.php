@@ -18,7 +18,7 @@ function goalWPclear(){
 			<input type="submit" value="<?php echo __('Clear API Key', 'goalWP');?>">
 		</form>
 	</div>
-	<?
+	<?php
 };
 ?>
 <style>
@@ -74,7 +74,7 @@ table{
 			<li><a href="http://kb.mailchimp.com/article/how-can-i-add-additional-tracking-options-to-my-campaigns"><?php echo __('Knowledge Base aritcle: How do I add additional tracking options to my campaigns?', 'goalWP');?></a></li>
 		</ul>
 	</div>
-<?
+<?php
 goalWPclear();
 ?>
 

@@ -19,14 +19,15 @@ $goalWP = get_option('goalWP');
 if($_POST['clear']){
 	delete_option('goalWP');
 }elseif($_POST['mcapi']){
-	include(plugin_dir_path( __FILE__ ).'/lib/Mailchimp.php');
+	require_once(plugin_dir_path( __FILE__ ).'/lib/Mailchimp.php');
 	$goalWPapikey = trim(strip_tags($_POST['mcapi']));
 	try{
 		$api = new Mailchimp($goalWPapikey);
 		$account_details = $api->helper->accountDetails();
 		$options['user_id'] = $account_details['user_id'];
 		$options['apikey'] = $goalWPapikey;
-		$options['dc'] = substr($goalWPapikey, -3);
+		$dc = explode("-",$goalWPapikey,2);
+		$options['dc'] = $dc[1];
 		$options['contact'] = $account_details['contact']['email'];
 		$options['username'] = $account_details['username'];
 		update_option('goalWP', $options);
