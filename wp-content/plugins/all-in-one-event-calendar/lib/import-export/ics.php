@@ -70,6 +70,8 @@ class Ai1ec_Ics_Import_Export_Engine
 			$post_ids[] = $event->get( 'post_id' );
 		}
 		$this->_taxonomy_model->update_meta( $post_ids );
+		$this->_registry->get( 'controller.content-filter' )
+			->clear_the_content_filters();
 		foreach ( $arguments['events'] as $event ) {
 			$c = $this->_insert_event_in_calendar(
 				$event,
@@ -78,6 +80,8 @@ class Ai1ec_Ics_Import_Export_Engine
 				$params
 			);
 		}
+		$this->_registry->get( 'controller.content-filter' )
+			->restore_the_content_filters();
 		$str = ltrim( $c->createCalendar() );
 		return $str;
 	}
@@ -272,30 +276,39 @@ class Ai1ec_Ics_Import_Export_Engine
 			// ===================
 			// = Exception dates =
 			// ===================
-			$exdate_array = array();
+			$exdate = '';
 			if ( $exdates = $e->createExdate() ){
 				// We may have two formats:
 				// one exdate with many dates ot more EXDATE rules
-				$exdates = explode( "EXDATE", $exdates );
+				$exdates      = explode( 'EXDATE', $exdates );
+				$def_timezone = $this->_get_import_timezone( $timezone );
 				foreach ( $exdates as $exd ) {
 					if ( empty( $exd ) ) {
 						continue;
 					}
-					$exploded = explode( ':', $exd );
-					$exdate_array[] = trim( end( $exploded ) );
+					$exploded       = explode( ':', $exd );
+					$excpt_timezone = $def_timezone;
+					$excpt_date     = null;
+					foreach ( $exploded as $particle ) {
+						if ( ';TZID=' === substr( $particle, 0, 6 ) ) {
+							$excpt_timezone = substr( $particle, 6 );
+						} else {
+							$excpt_date = trim( $particle );
+						}
+					}
+					$ex_dt = $this->_registry->get(
+						'date.time',
+						$excpt_date,
+						$excpt_timezone
+					);
+					if ( $ex_dt ) {
+						if ( isset( $exdate{0} ) ) {
+							$exdate .= ',';
+						}
+						$exdate .= $ex_dt->format( 'Ymd\THis', $excpt_timezone );
+					}
 				}
 			}
-			// This is the local string.
-			$exdate_loc = implode( ',', $exdate_array );
-			$gmt_exdates = array();
-			// Now we convert the string to gmt. I must do it here
-			// because EXDATE:date1,date2,date3 must be parsed
-			if( ! empty( $exdate_loc ) ) {
-				foreach ( explode( ',', $exdate_loc ) as $date ) {
-					$gmt_exdates[] = substr( (string)$date, 0, 8 );
-				}
-			}
-			$exdate = implode( ',', $gmt_exdates );
 
 			// ========================
 			// = Latitude & longitude =
@@ -532,6 +545,22 @@ class Ai1ec_Ics_Import_Export_Engine
 	}
 
 	/**
+	 * Parse importable feed timezone to sensible value.
+	 *
+	 * @param string $def_timezone Timezone value from feed.
+	 *
+	 * @return string Valid timezone name to use.
+	 */
+	protected function _get_import_timezone( $def_timezone ) {
+		$parser   = $this->_registry->get( 'date.timezone' );
+		$timezone = $parser->get_name( $def_timezone );
+		if ( false === $timezone ) {
+			return 'sys.default';
+		}
+		return $timezone;
+	}
+
+	/**
 	 * time_array_to_timestamp function
 	 *
 	 * Converts time array to time string.
@@ -635,7 +664,13 @@ class Ai1ec_Ics_Import_Export_Engine
 				)
 			)
 		);
-		$content = apply_filters( 'the_content', $event->get( 'post' )->post_content );
+		$content = apply_filters(
+			'ai1ec_the_content',
+			apply_filters(
+				'the_content',
+				$event->get( 'post' )->post_content
+			)
+		);
 		$content = str_replace(']]>', ']]&gt;', $content);
 		$content = html_entity_decode( $content, ENT_QUOTES, 'UTF-8' );
 		// Prepend featured image if available.
@@ -953,8 +988,10 @@ class Ai1ec_Ics_Import_Export_Engine
 				explode( ',', $exception_dates )
 				as $exdate
 			) {
+				// date-time string in EXDATES is formatted as 'Ymd\THis\Z', that
+				// means - in UTC timezone, thus we use `format_to_gmt` here.
 				$exdate = $this->_registry->get( 'date.time', $exdate )
-					->format( 'Ymd' );
+					->format_to_gmt( 'Ymd' );
 				$e->setProperty(
 					'exdate',
 					array( $exdate . $dt_suffix ),

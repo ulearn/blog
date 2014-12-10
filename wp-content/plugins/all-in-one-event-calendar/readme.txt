@@ -4,8 +4,8 @@ Tags: calendar, events, ics, ics feed, wordpress ical importer, google
 calendar, ical, iCalendar, all-in-one, events sync, events widget,
 calendar widget
 Requires WorPress at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 2.1.1
+Tested up to: 4.0
+Stable tag: 2.1.5
 License: GNU General Public License, version 3 (GPL-3.0)
 
 A calendar system with many views, upcoming events widget, color-coded
@@ -171,6 +171,43 @@ http://vimeo.com/55904173
 **[ai1ec post_id="1, 2"]**
 
 == Changelog ==
+
+= Version 2.1.5 =
+* Confirmed compatibility with WordPress 4.0 and added new Timely icon
+
+= Version 2.1.4 =
+* Improved context awareness of cache clean-up function to protect
+from accidentally removing files that do not belong to the plugin
+
+= Version 2.1.3 =
+* Added possibility to keep old events during ICS feeds update
+* Made subscribe dropdown button mobile friendly
+* Implemented microformats 2 improving SEO and reducing theme and plugin
+conflicts 
+* Improved compatibility with JetPack - sharing elements no longer
+appear on empty pop-over elements
+* Enabled translation of some previously untranslatable strings
+* Made it possible to translate view names
+* Fixed ICS import which was failing due to unrecognized timezones for
+excluded dates
+* Fixed pagination in Agenda view
+* Fixed `the_title` filter to only add hEvent class names to our post
+titles
+* Improved cache behavior - no longer stressing when write to file cache
+fails
+* Improved cache fall-back to database when faster means are unavailable
+* Fixed potential error which could have prevented settings from being
+saved on some systems
+* Fixed JetPack compatibility
+* Fixed widget pop-up which was displaying event sharing information in
+some cases
+
+= Version 2.1.2 =
+* Fixed issue where settings weren't saving in some cases
+* Fixed issue where permalinks for events weren't working until "save"
+  was clicked in permalinks settings page
+* Fixed issue where excluded dates from ICS feeds weren't correctly
+  imported
 
 = Version 2.1.1 =
 * Added ability to select mobile specific default views

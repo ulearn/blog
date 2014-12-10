@@ -4,7 +4,7 @@ Plugin Name: MailChimp Goal for WordPress
 Plugin URI: http://kb.mailchimp.com/article/how-do-i-use-goals-tracking/
 Description: Plugin for adding MailChimp's Goal tracking code to your WordPress site.
 Author: Nate Ranson
-Version: 1.1.1
+Version: 1.1.2
 Author URI: http://www.mailchimp.com
 */
 

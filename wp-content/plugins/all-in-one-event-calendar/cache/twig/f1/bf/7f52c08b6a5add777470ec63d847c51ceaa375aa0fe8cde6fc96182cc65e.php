@@ -22,8 +22,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
         echo "
 ";
         // line 3
-        if (isset($context["navigation"])) { $_navigation_ = $context["navigation"]; } else { $_navigation_ = null; }
-        echo $_navigation_;
+        echo (isset($context["navigation"]) ? $context["navigation"] : null);
         echo "
 
 <table class=\"ai1ec-";
@@ -34,9 +33,8 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 \t\t<tr>
 \t\t\t";
         // line 8
-        if (isset($context["cell_array"])) { $_cell_array_ = $context["cell_array"]; } else { $_cell_array_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_cell_array_);
+        $context['_seq'] = twig_ensure_traversable((isset($context["cell_array"]) ? $context["cell_array"] : null));
         $context['loop'] = array(
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -55,8 +53,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
             echo "\t\t\t\t<th scope=\"col\" class=\"ai1ec-weekday
 \t\t\t\t\t";
             // line 10
-            if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
-            if ((!twig_test_empty($this->getAttribute($_day_, "today")))) {
+            if ((!twig_test_empty($this->getAttribute((isset($context["day"]) ? $context["day"] : null), "today")))) {
                 echo "ai1ec-today";
             }
             echo "\">
@@ -64,9 +61,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 \t\t\t\t\t";
             // line 13
             echo "\t\t\t\t\t";
-            if (isset($context["show_reveal_button"])) { $_show_reveal_button_ = $context["show_reveal_button"]; } else { $_show_reveal_button_ = null; }
-            if (isset($context["loop"])) { $_loop_ = $context["loop"]; } else { $_loop_ = null; }
-            if (($_show_reveal_button_ && $this->getAttribute($_loop_, "last"))) {
+            if (((isset($context["show_reveal_button"]) ? $context["show_reveal_button"] : null) && $this->getAttribute((isset($context["loop"]) ? $context["loop"] : null), "last"))) {
                 // line 14
                 echo "\t\t\t\t\t\t<div class=\"ai1ec-reveal-full-day\">
 \t\t\t\t\t\t\t<button class=\"ai1ec-btn ai1ec-btn-info ai1ec-btn-xs
@@ -74,8 +69,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 \t\t\t\t\t\t\t\tdata-placement=\"left\"
 \t\t\t\t\t\t\t\ttitle=\"";
                 // line 18
-                if (isset($context["text_full_day"])) { $_text_full_day_ = $context["text_full_day"]; } else { $_text_full_day_ = null; }
-                echo twig_escape_filter($this->env, $_text_full_day_, "html_attr");
+                echo twig_escape_filter($this->env, (isset($context["text_full_day"]) ? $context["text_full_day"] : null), "html_attr");
                 echo "\">
 \t\t\t\t\t\t\t\t<i class=\"ai1ec-fa ai1ec-fa-expand\"></i>
 \t\t\t\t\t\t\t</button>
@@ -108,9 +102,8 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 \t\t<tr>
 \t\t\t";
         // line 36
-        if (isset($context["cell_array"])) { $_cell_array_ = $context["cell_array"]; } else { $_cell_array_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_cell_array_);
+        $context['_seq'] = twig_ensure_traversable((isset($context["cell_array"]) ? $context["cell_array"] : null));
         $context['loop'] = array(
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -129,20 +122,17 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
             echo "\t\t\t\t<td class=\"ai1ec-allday-events
 \t\t\t\t\t";
             // line 38
-            if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
-            if ((!twig_test_empty($this->getAttribute($_day_, "today")))) {
+            if ((!twig_test_empty($this->getAttribute((isset($context["day"]) ? $context["day"] : null), "today")))) {
                 echo "ai1ec-today";
             }
             echo "\">
 
 \t\t\t\t\t";
             // line 40
-            if (isset($context["loop"])) { $_loop_ = $context["loop"]; } else { $_loop_ = null; }
-            if ($this->getAttribute($_loop_, "first")) {
+            if ($this->getAttribute((isset($context["loop"]) ? $context["loop"] : null), "first")) {
                 // line 41
                 echo "\t\t\t\t\t\t<div class=\"ai1ec-allday-label\">";
-                if (isset($context["text_all_day"])) { $_text_all_day_ = $context["text_all_day"]; } else { $_text_all_day_ = null; }
-                echo twig_escape_filter($this->env, $_text_all_day_, "html", null, true);
+                echo twig_escape_filter($this->env, (isset($context["text_all_day"]) ? $context["text_all_day"] : null), "html", null, true);
                 echo "</div>
 \t\t\t\t\t";
             }
@@ -150,9 +140,8 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
             echo "
 \t\t\t\t\t";
             // line 44
-            if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_day_, "allday"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["day"]) ? $context["day"] : null), "allday"));
             $context['loop'] = array(
               'parent' => $context['_parent'],
               'index0' => 0,
@@ -169,35 +158,29 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
             foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
                 // line 45
                 echo "\t\t\t\t\t\t<a href=\"";
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "instance_permalink"), "method"), "html_attr");
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "instance_permalink"), "method"), "html_attr");
                 echo "\"
 \t\t\t\t\t\t\t";
                 // line 46
-                if (isset($context["data_type_events"])) { $_data_type_events_ = $context["data_type_events"]; } else { $_data_type_events_ = null; }
-                echo $_data_type_events_;
+                echo (isset($context["data_type_events"]) ? $context["data_type_events"] : null);
                 echo "
 \t\t\t\t\t\t\tdata-instance-id=\"";
                 // line 47
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "instance_id"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "instance_id"), "method"), "html", null, true);
                 echo "\"
 \t\t\t\t\t\t\tclass=\"ai1ec-event-container ai1ec-load-event ai1ec-popup-trigger
 \t\t\t\t\t\t\t\tai1ec-event-id-";
                 // line 49
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "post_id"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "post_id"), "method"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\tai1ec-event-instance-id-";
                 // line 50
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "instance_id"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "instance_id"), "method"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\tai1ec-allday
 \t\t\t\t\t\t\t\t";
                 // line 52
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if ($this->getAttribute($_event_, "is_multiday")) {
+                if ($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "is_multiday")) {
                     echo "ai1ec-multiday";
                 }
                 echo "\"
@@ -205,27 +188,21 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 \t\t\t\t\t\t\t<div class=\"ai1ec-event\"
 \t\t\t\t\t\t\t\tstyle=\"";
                 // line 55
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "color_style"), "method"), "html_attr");
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "color_style"), "method"), "html_attr");
                 echo "\">
 \t\t\t\t\t\t\t\t<span class=\"ai1ec-event-title\">
 \t\t\t\t\t\t\t\t\t";
                 // line 57
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo $this->getAttribute($_event_, "get_runtime", array(0 => "filtered_title"), "method");
+                echo $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "filtered_title"), "method");
                 echo "
 \t\t\t\t\t\t\t\t\t";
                 // line 58
-                if (isset($context["show_location_in_title"])) { $_show_location_in_title_ = $context["show_location_in_title"]; } else { $_show_location_in_title_ = null; }
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if (($_show_location_in_title_ && (!twig_test_empty($this->getAttribute($_event_, "get", array(0 => "venue"), "method"))))) {
+                if (((isset($context["show_location_in_title"]) ? $context["show_location_in_title"] : null) && (!twig_test_empty($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "venue"), "method"))))) {
                     // line 59
                     echo "\t\t\t\t\t\t\t\t\t\t<span class=\"ai1ec-event-location\"
 \t\t\t\t\t\t\t\t\t\t\t>";
                     // line 60
-                    if (isset($context["text_venue_separator"])) { $_text_venue_separator_ = $context["text_venue_separator"]; } else { $_text_venue_separator_ = null; }
-                    if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                    echo twig_escape_filter($this->env, sprintf($_text_venue_separator_, $this->getAttribute($_event_, "get", array(0 => "venue"), "method")), "html", null, true);
+                    echo twig_escape_filter($this->env, sprintf((isset($context["text_venue_separator"]) ? $context["text_venue_separator"] : null), $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "venue"), "method")), "html", null, true);
                     echo "</span>
 \t\t\t\t\t\t\t\t\t";
                 }
@@ -282,9 +259,8 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
         echo "\">
 \t\t\t";
         // line 81
-        if (isset($context["cell_array"])) { $_cell_array_ = $context["cell_array"]; } else { $_cell_array_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_cell_array_);
+        $context['_seq'] = twig_ensure_traversable((isset($context["cell_array"]) ? $context["cell_array"] : null));
         $context['loop'] = array(
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -301,16 +277,14 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
         foreach ($context['_seq'] as $context["_key"] => $context["day"]) {
             // line 82
             echo "\t\t\t\t<td ";
-            if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
-            if ((!twig_test_empty($this->getAttribute($_day_, "today")))) {
+            if ((!twig_test_empty($this->getAttribute((isset($context["day"]) ? $context["day"] : null), "today")))) {
                 echo "class=\"ai1ec-today\"";
             }
             echo ">
 
 \t\t\t\t\t";
             // line 84
-            if (isset($context["loop"])) { $_loop_ = $context["loop"]; } else { $_loop_ = null; }
-            if ($this->getAttribute($_loop_, "first")) {
+            if ($this->getAttribute((isset($context["loop"]) ? $context["loop"] : null), "first")) {
                 // line 85
                 echo "\t\t\t\t\t\t<div class=\"ai1ec-grid-container\">
 \t\t\t\t\t\t\t";
@@ -322,22 +296,18 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
                     echo "\t\t\t\t\t\t\t\t<div class=\"ai1ec-hour-marker
 \t\t\t\t\t\t\t\t\t";
                     // line 88
-                    if (isset($context["hour"])) { $_hour_ = $context["hour"]; } else { $_hour_ = null; }
-                    if ((($_hour_ >= 8) && ($_hour_ < 18))) {
+                    if ((((isset($context["hour"]) ? $context["hour"] : null) >= 8) && ((isset($context["hour"]) ? $context["hour"] : null) < 18))) {
                         echo "ai1ec-business-hour";
                     }
                     echo "\"
 \t\t\t\t\t\t\t\t\tstyle=\"top: ";
                     // line 89
-                    if (isset($context["hour"])) { $_hour_ = $context["hour"]; } else { $_hour_ = null; }
-                    echo twig_escape_filter($this->env, ($_hour_ * 60), "html", null, true);
+                    echo twig_escape_filter($this->env, ((isset($context["hour"]) ? $context["hour"] : null) * 60), "html", null, true);
                     echo "px;\">
 \t\t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t\t";
                     // line 91
-                    if (isset($context["hour"])) { $_hour_ = $context["hour"]; } else { $_hour_ = null; }
-                    if (isset($context["time_format"])) { $_time_format_ = $context["time_format"]; } else { $_time_format_ = null; }
-                    echo twig_escape_filter($this->env, $this->env->getExtension('ai1ec')->date_i18n($this->env->getExtension('ai1ec')->hour_to_datetime($_hour_), $_time_format_), "html", null, true);
+                    echo twig_escape_filter($this->env, $this->env->getExtension('ai1ec')->date_i18n($this->env->getExtension('ai1ec')->hour_to_datetime((isset($context["hour"]) ? $context["hour"] : null)), (isset($context["time_format"]) ? $context["time_format"] : null)), "html", null, true);
                     echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -350,9 +320,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
                         echo "\t\t\t\t\t\t\t\t\t<div class=\"ai1ec-quarter-marker\"
 \t\t\t\t\t\t\t\t\t\tstyle=\"top: ";
                         // line 96
-                        if (isset($context["hour"])) { $_hour_ = $context["hour"]; } else { $_hour_ = null; }
-                        if (isset($context["quarter"])) { $_quarter_ = $context["quarter"]; } else { $_quarter_ = null; }
-                        echo twig_escape_filter($this->env, (($_hour_ * 60) + ($_quarter_ * 15)), "html", null, true);
+                        echo twig_escape_filter($this->env, (((isset($context["hour"]) ? $context["hour"] : null) * 60) + ((isset($context["quarter"]) ? $context["quarter"] : null) * 15)), "html", null, true);
                         echo "px;\"></div>
 \t\t\t\t\t\t\t\t";
                     }
@@ -367,21 +335,17 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
                 $context = array_intersect_key($context, $_parent) + $_parent;
                 // line 99
                 echo "\t\t\t\t\t\t\t";
-                if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
-                if ((!twig_test_empty($this->getAttribute($_day_, "today")))) {
+                if ((!twig_test_empty($this->getAttribute((isset($context["day"]) ? $context["day"] : null), "today")))) {
                     // line 100
                     echo "\t\t\t\t\t\t\t\t<div class=\"ai1ec-now-marker\" style=\"top: ";
-                    if (isset($context["now_top"])) { $_now_top_ = $context["now_top"]; } else { $_now_top_ = null; }
-                    echo twig_escape_filter($this->env, $_now_top_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["now_top"]) ? $context["now_top"] : null), "html", null, true);
                     echo "px;\">
 \t\t\t\t\t\t\t\t\t<div>
 \t\t\t\t\t\t\t\t\t\t";
                     // line 102
-                    if (isset($context["text_now_label"])) { $_text_now_label_ = $context["text_now_label"]; } else { $_text_now_label_ = null; }
-                    echo twig_escape_filter($this->env, $_text_now_label_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["text_now_label"]) ? $context["text_now_label"] : null), "html", null, true);
                     echo " ";
-                    if (isset($context["now_text"])) { $_now_text_ = $context["now_text"]; } else { $_now_text_ = null; }
-                    echo twig_escape_filter($this->env, $_now_text_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["now_text"]) ? $context["now_text"] : null), "html", null, true);
                     echo "
 \t\t\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t\t\t</div>
@@ -397,9 +361,8 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 
 \t\t\t\t\t\t";
             // line 111
-            if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
             $context['_parent'] = (array) $context;
-            $context['_seq'] = twig_ensure_traversable($this->getAttribute($_day_, "notallday"));
+            $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["day"]) ? $context["day"] : null), "notallday"));
             $context['loop'] = array(
               'parent' => $context['_parent'],
               'index0' => 0,
@@ -416,142 +379,112 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
             foreach ($context['_seq'] as $context["_key"] => $context["day_array"]) {
                 // line 112
                 echo "\t\t\t\t\t\t\t";
-                if (isset($context["day_array"])) { $_day_array_ = $context["day_array"]; } else { $_day_array_ = null; }
-                $context["event"] = $this->getAttribute($_day_array_, "event");
+                $context["event"] = $this->getAttribute((isset($context["day_array"]) ? $context["day_array"] : null), "event");
                 // line 113
                 echo "\t\t\t\t\t\t\t<a href=\"";
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "instance_permalink"), "method"), "html_attr");
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "instance_permalink"), "method"), "html_attr");
                 echo "\"
 \t\t\t\t\t\t\t\t";
                 // line 114
-                if (isset($context["data_type_events"])) { $_data_type_events_ = $context["data_type_events"]; } else { $_data_type_events_ = null; }
-                echo $_data_type_events_;
+                echo (isset($context["data_type_events"]) ? $context["data_type_events"] : null);
                 echo "
 \t\t\t\t\t\t\t\tdata-instance-id=\"";
                 // line 115
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "instance_id"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "instance_id"), "method"), "html", null, true);
                 echo "\"
 \t\t\t\t\t\t\t\tclass=\"ai1ec-event-container ai1ec-load-event ai1ec-popup-trigger
 \t\t\t\t\t\t\t\t\tai1ec-event-id-";
                 // line 117
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "post_id"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "post_id"), "method"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\tai1ec-event-instance-id-";
                 // line 118
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "instance_id"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "instance_id"), "method"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\t";
                 // line 119
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if ($this->getAttribute($_event_, "get", array(0 => "start_truncated"), "method")) {
+                if ($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "start_truncated"), "method")) {
                     echo "ai1ec-start-truncated";
                 }
                 // line 120
                 echo "\t\t\t\t\t\t\t\t\t";
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if ($this->getAttribute($_event_, "get", array(0 => "end_truncated"), "method")) {
+                if ($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "end_truncated"), "method")) {
                     echo "ai1ec-end-truncated";
                 }
                 // line 121
                 echo "\t\t\t\t\t\t\t\t\t";
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if ($this->getAttribute($this->getAttribute($_event_, "get", array(0 => "_orig"), "method"), "is_multiday")) {
+                if ($this->getAttribute($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "_orig"), "method"), "is_multiday")) {
                     echo "ai1ec-multiday";
                 }
                 echo "\"
 \t\t\t\t\t\t\t\tstyle=\"top: ";
                 // line 122
-                if (isset($context["day_array"])) { $_day_array_ = $context["day_array"]; } else { $_day_array_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_day_array_, "top"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["day_array"]) ? $context["day_array"] : null), "top"), "html", null, true);
                 echo "px;
 \t\t\t\t\t\t\t\t\theight: ";
                 // line 123
-                if (isset($context["day_array"])) { $_day_array_ = $context["day_array"]; } else { $_day_array_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_day_array_, "height"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["day_array"]) ? $context["day_array"] : null), "height"), "html", null, true);
                 echo "px;
 \t\t\t\t\t\t\t\t\tleft: ";
                 // line 124
-                if (isset($context["day_array"])) { $_day_array_ = $context["day_array"]; } else { $_day_array_ = null; }
-                echo twig_escape_filter($this->env, (($this->getAttribute($_day_array_, "indent") * $this->renderBlock("indent_multiplier", $context, $blocks)) + $this->renderBlock("indent_offset", $context, $blocks)), "html", null, true);
+                echo twig_escape_filter($this->env, (($this->getAttribute((isset($context["day_array"]) ? $context["day_array"] : null), "indent") * $this->renderBlock("indent_multiplier", $context, $blocks)) + $this->renderBlock("indent_offset", $context, $blocks)), "html", null, true);
                 echo "px;
 \t\t\t\t\t\t\t\t\t";
                 // line 125
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "color_style"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "color_style"), "method"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\t";
                 // line 126
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                $context["faded_color"] = $this->getAttribute($_event_, "get_runtime", array(0 => "faded_color"), "method");
+                $context["faded_color"] = $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "faded_color"), "method");
                 // line 127
                 echo "\t\t\t\t\t\t\t\t\t";
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                $context["rgba_color"] = $this->getAttribute($_event_, "get_runtime", array(0 => "rgba_color"), "method");
+                $context["rgba_color"] = $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "rgba_color"), "method");
                 // line 128
                 echo "\t\t\t\t\t\t\t\t\t";
-                if (isset($context["faded_color"])) { $_faded_color_ = $context["faded_color"]; } else { $_faded_color_ = null; }
-                if ((!twig_test_empty($_faded_color_))) {
+                if ((!twig_test_empty((isset($context["faded_color"]) ? $context["faded_color"] : null)))) {
                     // line 129
                     echo "\t\t\t\t\t\t\t\t\t\t";
-                    if (isset($context["rgba_color"])) { $_rgba_color_ = $context["rgba_color"]; } else { $_rgba_color_ = null; }
-                    $context["rgba1"] = sprintf($_rgba_color_, "0.05");
+                    $context["rgba1"] = sprintf((isset($context["rgba_color"]) ? $context["rgba_color"] : null), "0.05");
                     // line 130
                     echo "\t\t\t\t\t\t\t\t\t\t";
-                    if (isset($context["rgba_color"])) { $_rgba_color_ = $context["rgba_color"]; } else { $_rgba_color_ = null; }
-                    $context["rgba3"] = sprintf($_rgba_color_, "0.3");
+                    $context["rgba3"] = sprintf((isset($context["rgba_color"]) ? $context["rgba_color"] : null), "0.3");
                     // line 131
                     echo "\t\t\t\t\t\t\t\t\t\tborder: 1px solid ";
-                    if (isset($context["faded_color"])) { $_faded_color_ = $context["faded_color"]; } else { $_faded_color_ = null; }
-                    echo twig_escape_filter($this->env, $_faded_color_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["faded_color"]) ? $context["faded_color"] : null), "html", null, true);
                     echo ";
 \t\t\t\t\t\t\t\t\t\tborder-color: ";
                     // line 132
-                    if (isset($context["rgba_color"])) { $_rgba_color_ = $context["rgba_color"]; } else { $_rgba_color_ = null; }
-                    echo twig_escape_filter($this->env, sprintf($_rgba_color_, "0.5"), "html", null, true);
+                    echo twig_escape_filter($this->env, sprintf((isset($context["rgba_color"]) ? $context["rgba_color"] : null), "0.5"), "html", null, true);
                     echo ";
 \t\t\t\t\t\t\t\t\t\tbackground-image: -webkit-linear-gradient( top, ";
                     // line 133
-                    if (isset($context["rgba1"])) { $_rgba1_ = $context["rgba1"]; } else { $_rgba1_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba1_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba1"]) ? $context["rgba1"] : null), "html", null, true);
                     echo ", ";
-                    if (isset($context["rgba3"])) { $_rgba3_ = $context["rgba3"]; } else { $_rgba3_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba3_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba3"]) ? $context["rgba3"] : null), "html", null, true);
                     echo " 50px );
 \t\t\t\t\t\t\t\t\t\tbackground-image: -moz-linear-gradient( top, ";
                     // line 134
-                    if (isset($context["rgba1"])) { $_rgba1_ = $context["rgba1"]; } else { $_rgba1_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba1_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba1"]) ? $context["rgba1"] : null), "html", null, true);
                     echo ", ";
-                    if (isset($context["rgba3"])) { $_rgba3_ = $context["rgba3"]; } else { $_rgba3_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba3_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba3"]) ? $context["rgba3"] : null), "html", null, true);
                     echo " 50px );
 \t\t\t\t\t\t\t\t\t\tbackground-image: -ms-linear-gradient( top, ";
                     // line 135
-                    if (isset($context["rgba1"])) { $_rgba1_ = $context["rgba1"]; } else { $_rgba1_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba1_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba1"]) ? $context["rgba1"] : null), "html", null, true);
                     echo ", ";
-                    if (isset($context["rgba3"])) { $_rgba3_ = $context["rgba3"]; } else { $_rgba3_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba3_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba3"]) ? $context["rgba3"] : null), "html", null, true);
                     echo " 50px );
 \t\t\t\t\t\t\t\t\t\tbackground-image: -o-linear-gradient( top, ";
                     // line 136
-                    if (isset($context["rgba1"])) { $_rgba1_ = $context["rgba1"]; } else { $_rgba1_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba1_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba1"]) ? $context["rgba1"] : null), "html", null, true);
                     echo ", ";
-                    if (isset($context["rgba3"])) { $_rgba3_ = $context["rgba3"]; } else { $_rgba3_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba3_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba3"]) ? $context["rgba3"] : null), "html", null, true);
                     echo " 50px );
 \t\t\t\t\t\t\t\t\t\tbackground-image: linear-gradient( top, ";
                     // line 137
-                    if (isset($context["rgba1"])) { $_rgba1_ = $context["rgba1"]; } else { $_rgba1_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba1_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba1"]) ? $context["rgba1"] : null), "html", null, true);
                     echo ", ";
-                    if (isset($context["rgba3"])) { $_rgba3_ = $context["rgba3"]; } else { $_rgba3_ = null; }
-                    echo twig_escape_filter($this->env, $_rgba3_, "html", null, true);
+                    echo twig_escape_filter($this->env, (isset($context["rgba3"]) ? $context["rgba3"] : null), "html", null, true);
                     echo " 50px );
 \t\t\t\t\t\t\t\t\t";
                 }
@@ -560,16 +493,14 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 
 \t\t\t\t\t\t\t\t";
                 // line 141
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if ($this->getAttribute($_event_, "get", array(0 => "start_truncated"), "method")) {
+                if ($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "start_truncated"), "method")) {
                     // line 142
                     echo "\t\t\t\t\t\t\t\t\t<div class=\"ai1ec-start-truncator\">◤</div>
 \t\t\t\t\t\t\t\t";
                 }
                 // line 144
                 echo "\t\t\t\t\t\t\t\t";
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if ($this->getAttribute($_event_, "get", array(0 => "end_truncated"), "method")) {
+                if ($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "end_truncated"), "method")) {
                     // line 145
                     echo "\t\t\t\t\t\t\t\t\t<div class=\"ai1ec-end-truncator\">◢</div>
 \t\t\t\t\t\t\t\t";
@@ -580,28 +511,22 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 \t\t\t\t\t\t\t\t\t<span class=\"ai1ec-event-time\">
 \t\t\t\t\t\t\t\t\t\t";
                 // line 150
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "short_start_time"), "method"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "short_start_time"), "method"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t\t</span>
 \t\t\t\t\t\t\t\t\t<span class=\"ai1ec-event-title\">
 \t\t\t\t\t\t\t\t\t\t";
                 // line 153
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                echo $this->getAttribute($_event_, "get_runtime", array(0 => "filtered_title"), "method");
+                echo $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "filtered_title"), "method");
                 echo "
 \t\t\t\t\t\t\t\t\t\t";
                 // line 154
-                if (isset($context["show_location_in_title"])) { $_show_location_in_title_ = $context["show_location_in_title"]; } else { $_show_location_in_title_ = null; }
-                if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                if (($_show_location_in_title_ && (!twig_test_empty($this->getAttribute($_event_, "get", array(0 => "venue"), "method"))))) {
+                if (((isset($context["show_location_in_title"]) ? $context["show_location_in_title"] : null) && (!twig_test_empty($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "venue"), "method"))))) {
                     // line 155
                     echo "\t\t\t\t\t\t\t\t\t\t\t<span class=\"ai1ec-event-location\"
 \t\t\t\t\t\t\t\t\t\t\t\t>";
                     // line 156
-                    if (isset($context["text_venue_separator"])) { $_text_venue_separator_ = $context["text_venue_separator"]; } else { $_text_venue_separator_ = null; }
-                    if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-                    echo twig_escape_filter($this->env, sprintf($_text_venue_separator_, $this->getAttribute($_event_, "get", array(0 => "venue"), "method")), "html", null, true);
+                    echo twig_escape_filter($this->env, sprintf((isset($context["text_venue_separator"]) ? $context["text_venue_separator"] : null), $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "venue"), "method")), "html", null, true);
                     echo "</span>
 \t\t\t\t\t\t\t\t\t\t";
                 }
@@ -656,8 +581,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 
 <div class=\"ai1ec-pull-left\">";
         // line 173
-        if (isset($context["pagination_links"])) { $_pagination_links_ = $context["pagination_links"]; } else { $_pagination_links_ = null; }
-        echo $_pagination_links_;
+        echo (isset($context["pagination_links"]) ? $context["pagination_links"] : null);
         echo "</div>
 ";
     }
@@ -672,23 +596,19 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
     {
         // line 25
         echo "\t\t\t\t\t\t<a class=\"ai1ec-load-view\" href=\"";
-        if (isset($context["day"])) { $_day_ = $context["day"]; } else { $_day_ = null; }
-        echo twig_escape_filter($this->env, $this->getAttribute($_day_, "href"), "html_attr");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["day"]) ? $context["day"] : null), "href"), "html_attr");
         echo "\"
 \t\t\t\t\t\t\t";
         // line 26
-        if (isset($context["data_type"])) { $_data_type_ = $context["data_type"]; } else { $_data_type_ = null; }
-        echo $_data_type_;
+        echo (isset($context["data_type"]) ? $context["data_type"] : null);
         echo ">
 \t\t\t\t\t\t\t<span class=\"ai1ec-weekday-date\">";
         // line 27
-        if (isset($context["date"])) { $_date_ = $context["date"]; } else { $_date_ = null; }
-        echo twig_escape_filter($this->env, $this->env->getExtension('ai1ec')->day($_date_), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('ai1ec')->day((isset($context["date"]) ? $context["date"] : null)), "html", null, true);
         echo "</span>
 \t\t\t\t\t\t\t<span class=\"ai1ec-weekday-day\">";
         // line 28
-        if (isset($context["date"])) { $_date_ = $context["date"]; } else { $_date_ = null; }
-        echo twig_escape_filter($this->env, $this->env->getExtension('ai1ec')->weekday($_date_), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('ai1ec')->weekday((isset($context["date"]) ? $context["date"] : null)), "html", null, true);
         echo "</span>
 \t\t\t\t\t\t</a>
 \t\t\t\t\t";
@@ -699,9 +619,7 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
     {
         // line 67
         echo "\t\t\t\t\t\t\t";
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        if (isset($context["text_venue_separator"])) { $_text_venue_separator_ = $context["text_venue_separator"]; } else { $_text_venue_separator_ = null; }
-        $this->env->loadTemplate("event-popup.twig")->display(array_merge($context, array("popup_timespan" => $this->env->getExtension('ai1ec')->timespan($this->getAttribute($_event_, "get", array(0 => "_orig"), "method"), "short"), "text_venue_separator" => $_text_venue_separator_)));
+        $this->env->loadTemplate("event-popup.twig")->display(array_merge($context, array("popup_timespan" => $this->env->getExtension('ai1ec')->timespan($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "_orig"), "method"), "short"), "text_venue_separator" => (isset($context["text_venue_separator"]) ? $context["text_venue_separator"] : null))));
         // line 71
         echo "\t\t\t\t\t\t";
     }
@@ -718,6 +636,6 @@ class __TwigTemplate_f1bf7f52c08b6a5add777470ec63d847c51ceaa375aa0fe8cde6fc96182
 
     public function getDebugInfo()
     {
-        return array (  706 => 71,  701 => 67,  698 => 66,  690 => 28,  685 => 27,  680 => 26,  674 => 25,  671 => 24,  666 => 5,  659 => 173,  653 => 169,  651 => 168,  635 => 166,  633 => 165,  616 => 163,  609 => 158,  602 => 156,  599 => 155,  595 => 154,  590 => 153,  583 => 150,  578 => 147,  574 => 145,  570 => 144,  566 => 142,  563 => 141,  559 => 139,  550 => 137,  542 => 136,  534 => 135,  526 => 134,  518 => 133,  513 => 132,  507 => 131,  503 => 130,  499 => 129,  495 => 128,  491 => 127,  488 => 126,  483 => 125,  478 => 124,  473 => 123,  468 => 122,  460 => 121,  454 => 120,  449 => 119,  444 => 118,  439 => 117,  433 => 115,  428 => 114,  422 => 113,  418 => 112,  400 => 111,  395 => 108,  391 => 106,  380 => 102,  373 => 100,  369 => 99,  363 => 98,  353 => 96,  350 => 95,  346 => 94,  338 => 91,  332 => 89,  325 => 88,  322 => 87,  318 => 86,  315 => 85,  312 => 84,  303 => 82,  285 => 81,  281 => 80,  276 => 77,  274 => 76,  258 => 74,  256 => 73,  241 => 72,  239 => 66,  233 => 62,  226 => 60,  223 => 59,  219 => 58,  214 => 57,  208 => 55,  199 => 52,  193 => 50,  188 => 49,  182 => 47,  177 => 46,  171 => 45,  153 => 44,  150 => 43,  143 => 41,  140 => 40,  132 => 38,  129 => 37,  111 => 36,  107 => 34,  91 => 31,  89 => 24,  86 => 23,  77 => 18,  71 => 14,  66 => 13,  58 => 10,  55 => 9,  37 => 8,  31 => 5,  25 => 3,  22 => 2,  42 => 7,  36 => 5,  30 => 3,);
+        return array (  621 => 67,  618 => 66,  611 => 28,  603 => 26,  598 => 25,  595 => 24,  590 => 5,  584 => 173,  578 => 169,  560 => 166,  558 => 165,  541 => 163,  534 => 158,  529 => 156,  526 => 155,  524 => 154,  520 => 153,  514 => 150,  509 => 147,  505 => 145,  502 => 144,  498 => 142,  496 => 141,  492 => 139,  473 => 135,  467 => 134,  461 => 133,  452 => 131,  446 => 129,  443 => 128,  440 => 127,  438 => 126,  434 => 125,  430 => 124,  426 => 123,  415 => 121,  410 => 120,  406 => 119,  402 => 118,  398 => 117,  393 => 115,  389 => 114,  384 => 113,  364 => 111,  359 => 108,  346 => 102,  340 => 100,  337 => 99,  331 => 98,  323 => 96,  289 => 85,  262 => 81,  251 => 76,  235 => 74,  218 => 72,  38 => 5,  261 => 74,  255 => 72,  191 => 55,  171 => 40,  120 => 29,  321 => 132,  316 => 94,  310 => 91,  305 => 89,  295 => 78,  292 => 86,  285 => 111,  268 => 105,  256 => 99,  237 => 92,  215 => 56,  187 => 46,  165 => 46,  150 => 61,  146 => 60,  136 => 58,  105 => 36,  85 => 31,  133 => 49,  118 => 49,  98 => 31,  69 => 23,  33 => 7,  47 => 18,  100 => 42,  88 => 37,  298 => 115,  288 => 112,  281 => 110,  279 => 82,  263 => 103,  253 => 77,  244 => 94,  239 => 93,  228 => 87,  226 => 61,  220 => 58,  200 => 58,  195 => 48,  193 => 72,  177 => 61,  155 => 63,  121 => 50,  92 => 25,  44 => 10,  313 => 125,  306 => 118,  302 => 120,  299 => 88,  296 => 87,  294 => 80,  280 => 74,  274 => 71,  266 => 104,  260 => 66,  209 => 79,  178 => 50,  175 => 60,  159 => 64,  152 => 62,  148 => 32,  144 => 46,  102 => 26,  90 => 38,  78 => 23,  42 => 9,  39 => 7,  217 => 57,  211 => 80,  194 => 50,  183 => 52,  168 => 64,  161 => 61,  143 => 44,  116 => 38,  111 => 24,  93 => 27,  86 => 21,  81 => 24,  59 => 15,  287 => 84,  283 => 105,  276 => 75,  267 => 102,  254 => 97,  248 => 69,  242 => 94,  236 => 89,  233 => 73,  231 => 64,  224 => 84,  221 => 84,  216 => 66,  210 => 62,  207 => 56,  204 => 77,  202 => 59,  197 => 51,  189 => 65,  180 => 71,  176 => 42,  174 => 49,  170 => 69,  153 => 55,  140 => 43,  137 => 46,  132 => 40,  122 => 37,  112 => 36,  107 => 29,  101 => 34,  99 => 27,  95 => 26,  91 => 17,  83 => 24,  79 => 28,  58 => 15,  50 => 12,  45 => 11,  29 => 10,  25 => 3,  164 => 37,  156 => 36,  145 => 49,  139 => 44,  131 => 42,  127 => 47,  123 => 29,  114 => 25,  104 => 52,  96 => 19,  77 => 23,  74 => 16,  68 => 14,  60 => 17,  27 => 4,  66 => 14,  640 => 354,  632 => 348,  624 => 71,  615 => 336,  613 => 334,  607 => 27,  605 => 329,  602 => 328,  596 => 325,  593 => 324,  591 => 323,  588 => 322,  581 => 318,  576 => 168,  572 => 315,  569 => 314,  566 => 313,  563 => 311,  554 => 305,  545 => 299,  539 => 296,  530 => 290,  521 => 284,  516 => 281,  513 => 280,  506 => 274,  500 => 272,  493 => 269,  491 => 268,  485 => 137,  479 => 136,  472 => 259,  470 => 258,  465 => 255,  457 => 132,  449 => 130,  435 => 233,  429 => 229,  422 => 122,  416 => 221,  409 => 218,  407 => 217,  401 => 213,  395 => 211,  388 => 208,  386 => 207,  381 => 112,  375 => 199,  369 => 197,  362 => 194,  360 => 193,  355 => 106,  350 => 186,  344 => 183,  341 => 182,  335 => 179,  329 => 176,  326 => 175,  324 => 174,  320 => 95,  317 => 170,  311 => 166,  308 => 123,  300 => 119,  297 => 117,  293 => 77,  291 => 79,  284 => 75,  278 => 76,  271 => 106,  269 => 106,  264 => 67,  258 => 80,  245 => 93,  243 => 130,  238 => 127,  225 => 61,  212 => 84,  208 => 117,  203 => 78,  192 => 77,  188 => 48,  179 => 70,  166 => 57,  158 => 88,  141 => 45,  134 => 41,  124 => 30,  115 => 48,  109 => 23,  97 => 28,  80 => 23,  71 => 15,  62 => 19,  49 => 12,  35 => 6,  30 => 5,  63 => 13,  57 => 14,  54 => 12,  43 => 17,  31 => 5,  24 => 4,  21 => 2,  82 => 35,  73 => 22,  70 => 24,  64 => 15,  55 => 11,  52 => 10,  48 => 11,  46 => 7,  41 => 6,  37 => 8,  32 => 3,  22 => 2,  265 => 123,  259 => 73,  252 => 98,  250 => 97,  247 => 96,  241 => 112,  234 => 91,  232 => 122,  229 => 107,  227 => 62,  219 => 82,  213 => 81,  205 => 60,  201 => 79,  199 => 74,  196 => 57,  190 => 76,  186 => 84,  184 => 67,  181 => 82,  173 => 67,  169 => 47,  167 => 39,  162 => 38,  160 => 45,  157 => 52,  151 => 35,  149 => 47,  142 => 59,  135 => 42,  130 => 40,  128 => 31,  125 => 38,  117 => 34,  113 => 48,  108 => 45,  106 => 22,  103 => 21,  94 => 18,  89 => 26,  87 => 24,  84 => 25,  76 => 27,  72 => 18,  67 => 19,  65 => 18,  61 => 16,  56 => 10,  53 => 9,  51 => 13,  40 => 8,  34 => 12,  28 => 5,  26 => 3,  36 => 8,  23 => 3,  19 => 1,);
     }
 }

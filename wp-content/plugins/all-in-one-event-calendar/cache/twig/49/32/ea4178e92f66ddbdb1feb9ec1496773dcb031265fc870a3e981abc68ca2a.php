@@ -21,17 +21,14 @@ class __TwigTemplate_4932ea4178e92f66ddbdb1feb9ec1496773dcb031265fc870a3e981abc6
     ai1ec-tooltip-trigger\"
 \t";
         // line 4
-        if (isset($context["attributes"])) { $_attributes_ = $context["attributes"]; } else { $_attributes_ = null; }
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($_attributes_);
+        $context['_seq'] = twig_ensure_traversable((isset($context["attributes"]) ? $context["attributes"] : null));
         foreach ($context['_seq'] as $context["attribute"] => $context["value"]) {
             // line 5
             echo "\t\t";
-            if (isset($context["attribute"])) { $_attribute_ = $context["attribute"]; } else { $_attribute_ = null; }
-            echo twig_escape_filter($this->env, $_attribute_, "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["attribute"]) ? $context["attribute"] : null), "html", null, true);
             echo "=\"";
-            if (isset($context["value"])) { $_value_ = $context["value"]; } else { $_value_ = null; }
-            echo twig_escape_filter($this->env, $_value_, "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["value"]) ? $context["value"] : null), "html", null, true);
             echo "\"
 \t";
         }
@@ -40,25 +37,21 @@ class __TwigTemplate_4932ea4178e92f66ddbdb1feb9ec1496773dcb031265fc870a3e981abc6
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 7
         echo "\t";
-        if (isset($context["data_type"])) { $_data_type_ = $context["data_type"]; } else { $_data_type_ = null; }
-        echo $_data_type_;
+        echo (isset($context["data_type"]) ? $context["data_type"] : null);
         echo "
 \ttitle=\"";
         // line 8
-        if (isset($context["text_date"])) { $_text_date_ = $context["text_date"]; } else { $_text_date_ = null; }
-        echo twig_escape_filter($this->env, $_text_date_, "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["text_date"]) ? $context["text_date"] : null), "html", null, true);
         echo "\"
 \t>
 \t<i class=\"ai1ec-fa ai1ec-fa-calendar-o ai1ec-fa-fw ai1ec-fa-lg\"></i>
   <span class=\"ai1ec-calendar-title\">";
         // line 11
-        if (isset($context["title"])) { $_title_ = $context["title"]; } else { $_title_ = null; }
-        echo twig_escape_filter($this->env, $_title_, "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["title"]) ? $context["title"] : null), "html", null, true);
         echo "</span>
   <span class=\"ai1ec-calendar-title-short\">";
         // line 12
-        if (isset($context["title_short"])) { $_title_short_ = $context["title_short"]; } else { $_title_short_ = null; }
-        echo twig_escape_filter($this->env, $_title_short_, "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["title_short"]) ? $context["title_short"] : null), "html", null, true);
         echo "</span>
 </a>
 ";
@@ -76,6 +69,6 @@ class __TwigTemplate_4932ea4178e92f66ddbdb1feb9ec1496773dcb031265fc870a3e981abc6
 
     public function getDebugInfo()
     {
-        return array (  48 => 8,  29 => 5,  24 => 4,  184 => 68,  178 => 66,  172 => 65,  168 => 63,  165 => 62,  157 => 58,  151 => 56,  145 => 55,  134 => 48,  128 => 46,  122 => 45,  111 => 38,  105 => 36,  100 => 35,  89 => 28,  78 => 25,  71 => 20,  67 => 19,  63 => 17,  60 => 12,  53 => 14,  46 => 12,  35 => 9,  25 => 5,  127 => 35,  115 => 31,  108 => 29,  104 => 27,  101 => 26,  96 => 25,  83 => 26,  80 => 21,  76 => 19,  72 => 18,  68 => 17,  62 => 16,  57 => 15,  49 => 11,  42 => 7,  37 => 7,  116 => 30,  103 => 25,  95 => 22,  90 => 24,  84 => 20,  79 => 19,  74 => 18,  69 => 17,  64 => 16,  55 => 11,  50 => 14,  40 => 9,  32 => 8,  27 => 5,  22 => 2,  19 => 1,);
+        return array (  100 => 31,  88 => 26,  298 => 115,  288 => 112,  281 => 111,  279 => 110,  263 => 103,  253 => 98,  244 => 94,  239 => 92,  228 => 87,  226 => 86,  220 => 83,  200 => 76,  195 => 73,  193 => 72,  177 => 61,  155 => 50,  121 => 37,  92 => 25,  44 => 8,  313 => 94,  306 => 118,  302 => 116,  299 => 88,  296 => 114,  294 => 80,  280 => 74,  274 => 71,  266 => 68,  260 => 66,  209 => 79,  178 => 43,  175 => 60,  159 => 52,  152 => 33,  148 => 32,  144 => 46,  102 => 26,  90 => 27,  78 => 19,  42 => 11,  39 => 7,  217 => 82,  211 => 80,  194 => 50,  183 => 72,  168 => 64,  161 => 61,  143 => 45,  116 => 35,  111 => 35,  93 => 27,  86 => 21,  81 => 24,  59 => 15,  287 => 106,  283 => 105,  276 => 72,  267 => 102,  254 => 97,  248 => 94,  242 => 63,  236 => 89,  233 => 88,  231 => 88,  224 => 84,  221 => 84,  216 => 82,  210 => 78,  207 => 56,  204 => 77,  202 => 53,  197 => 51,  189 => 65,  180 => 65,  176 => 60,  174 => 59,  170 => 57,  153 => 55,  140 => 47,  137 => 46,  132 => 40,  122 => 38,  112 => 32,  107 => 29,  101 => 27,  99 => 27,  95 => 26,  91 => 24,  83 => 23,  79 => 24,  58 => 14,  50 => 11,  45 => 11,  29 => 9,  25 => 4,  164 => 37,  156 => 77,  145 => 49,  139 => 44,  131 => 42,  127 => 39,  123 => 29,  114 => 33,  104 => 52,  96 => 24,  77 => 23,  74 => 19,  68 => 16,  60 => 28,  27 => 6,  66 => 16,  640 => 354,  632 => 348,  624 => 343,  615 => 336,  613 => 334,  607 => 330,  605 => 329,  602 => 328,  596 => 325,  593 => 324,  591 => 323,  588 => 322,  581 => 318,  576 => 316,  572 => 315,  569 => 314,  566 => 313,  563 => 311,  554 => 305,  545 => 299,  539 => 296,  530 => 290,  521 => 284,  516 => 281,  513 => 280,  506 => 274,  500 => 272,  493 => 269,  491 => 268,  485 => 264,  479 => 262,  472 => 259,  470 => 258,  465 => 255,  457 => 249,  449 => 244,  435 => 233,  429 => 229,  422 => 223,  416 => 221,  409 => 218,  407 => 217,  401 => 213,  395 => 211,  388 => 208,  386 => 207,  381 => 204,  375 => 199,  369 => 197,  362 => 194,  360 => 193,  355 => 190,  350 => 186,  344 => 183,  341 => 182,  335 => 179,  329 => 176,  326 => 175,  324 => 174,  320 => 172,  317 => 170,  311 => 166,  308 => 91,  300 => 159,  297 => 158,  293 => 156,  291 => 79,  284 => 75,  278 => 148,  271 => 70,  269 => 106,  264 => 67,  258 => 101,  245 => 93,  243 => 130,  238 => 127,  225 => 61,  212 => 118,  208 => 117,  203 => 78,  192 => 49,  188 => 48,  179 => 70,  166 => 57,  158 => 88,  141 => 45,  134 => 41,  124 => 68,  115 => 61,  109 => 57,  97 => 28,  80 => 39,  71 => 21,  62 => 15,  49 => 12,  35 => 7,  30 => 6,  63 => 18,  57 => 14,  54 => 12,  43 => 17,  31 => 6,  24 => 4,  21 => 2,  82 => 20,  73 => 22,  70 => 24,  64 => 15,  55 => 14,  52 => 15,  48 => 14,  46 => 18,  41 => 14,  37 => 9,  32 => 6,  22 => 2,  265 => 123,  259 => 100,  252 => 134,  250 => 97,  247 => 115,  241 => 112,  234 => 89,  232 => 122,  229 => 107,  227 => 62,  219 => 82,  213 => 81,  205 => 93,  201 => 91,  199 => 74,  196 => 77,  190 => 86,  186 => 84,  184 => 67,  181 => 82,  173 => 67,  169 => 39,  167 => 76,  162 => 54,  160 => 72,  157 => 52,  151 => 50,  149 => 47,  142 => 63,  135 => 42,  130 => 40,  128 => 38,  125 => 38,  117 => 34,  113 => 48,  108 => 33,  106 => 28,  103 => 28,  94 => 29,  89 => 26,  87 => 24,  84 => 25,  76 => 38,  72 => 27,  67 => 19,  65 => 17,  61 => 17,  56 => 16,  53 => 13,  51 => 13,  40 => 10,  34 => 10,  28 => 5,  26 => 4,  36 => 9,  23 => 3,  19 => 1,);
     }
 }

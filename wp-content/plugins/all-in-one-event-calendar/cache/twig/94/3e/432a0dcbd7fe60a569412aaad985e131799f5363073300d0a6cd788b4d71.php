@@ -17,22 +17,18 @@ class __TwigTemplate_943e432a0dcbd7fe60a569412aaad985e131799f5363073300d0a6cd788
     {
         // line 1
         echo "<div class=\"ai1ec-popover ai1ec-popup ";
-        if (isset($context["popup_classes"])) { $_popup_classes_ = $context["popup_classes"]; } else { $_popup_classes_ = null; }
-        echo twig_escape_filter($this->env, $_popup_classes_, "html", null, true);
+        echo twig_escape_filter($this->env, (isset($context["popup_classes"]) ? $context["popup_classes"] : null), "html", null, true);
         echo "\">
 
 \t";
         // line 3
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        $context["category_colors"] = $this->getAttribute($_event_, "get_runtime", array(0 => "category_colors"), "method");
+        $context["category_colors"] = $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "category_colors"), "method");
         // line 4
         echo "\t";
-        if (isset($context["category_colors"])) { $_category_colors_ = $context["category_colors"]; } else { $_category_colors_ = null; }
-        if ((!twig_test_empty($_category_colors_))) {
+        if ((!twig_test_empty((isset($context["category_colors"]) ? $context["category_colors"] : null)))) {
             // line 5
             echo "\t\t<div class=\"ai1ec-color-swatches\">";
-            if (isset($context["category_colors"])) { $_category_colors_ = $context["category_colors"]; } else { $_category_colors_ = null; }
-            echo $_category_colors_;
+            echo (isset($context["category_colors"]) ? $context["category_colors"] : null);
             echo "</div>
 \t";
         }
@@ -41,46 +37,36 @@ class __TwigTemplate_943e432a0dcbd7fe60a569412aaad985e131799f5363073300d0a6cd788
 \t<span class=\"ai1ec-popup-title\">
 \t\t<a href=\"";
         // line 9
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "instance_permalink"), "method"), "html_attr");
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "instance_permalink"), "method"), "html_attr");
         echo "\"
 \t\t\t>";
         // line 10
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        echo $this->env->getExtension('ai1ec')->truncate($this->getAttribute($_event_, "get_runtime", array(0 => "filtered_title"), "method"));
+        echo $this->env->getExtension('ai1ec')->truncate($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "filtered_title"), "method"));
         echo "</a>
 \t\t";
         // line 11
-        if (isset($context["show_location_in_title"])) { $_show_location_in_title_ = $context["show_location_in_title"]; } else { $_show_location_in_title_ = null; }
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        if (($_show_location_in_title_ && (!twig_test_empty($this->getAttribute($_event_, "get", array(0 => "venue"), "method"))))) {
+        if (((isset($context["show_location_in_title"]) ? $context["show_location_in_title"] : null) && (!twig_test_empty($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "venue"), "method"))))) {
             // line 12
             echo "\t\t\t<span class=\"ai1ec-event-location\"
 \t\t\t\t>";
             // line 13
-            if (isset($context["text_venue_separator"])) { $_text_venue_separator_ = $context["text_venue_separator"]; } else { $_text_venue_separator_ = null; }
-            if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-            echo twig_escape_filter($this->env, sprintf($_text_venue_separator_, $this->getAttribute($_event_, "get", array(0 => "venue"), "method")), "html", null, true);
+            echo twig_escape_filter($this->env, sprintf((isset($context["text_venue_separator"]) ? $context["text_venue_separator"] : null), $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "venue"), "method")), "html", null, true);
             echo "</span>
 \t\t";
         }
         // line 15
         echo "\t\t";
-        if (isset($context["is_ticket_button_enabled"])) { $_is_ticket_button_enabled_ = $context["is_ticket_button_enabled"]; } else { $_is_ticket_button_enabled_ = null; }
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        if (($_is_ticket_button_enabled_ && (!twig_test_empty($this->getAttribute($_event_, "get", array(0 => "ticket_url"), "method"))))) {
+        if (((isset($context["is_ticket_button_enabled"]) ? $context["is_ticket_button_enabled"] : null) && (!twig_test_empty($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "ticket_url"), "method"))))) {
             // line 16
             echo "\t\t\t<a class=\"ai1ec-pull-right ai1ec-btn ai1ec-btn-primary ai1ec-btn-xs
 \t\t\t\tai1ec-buy-tickets\" target=\"_blank\"
 \t\t\t\thref=\"";
             // line 18
-            if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get", array(0 => "ticket_url"), "method"), "html_attr");
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get", array(0 => "ticket_url"), "method"), "html_attr");
             echo "\"
 \t\t\t\t>";
             // line 19
-            if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-            echo twig_escape_filter($this->env, $this->getAttribute($_event_, "get_runtime", array(0 => "ticket_url_label"), "method"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "ticket_url_label"), "method"), "html", null, true);
             echo "</a>
 \t\t";
         }
@@ -89,21 +75,17 @@ class __TwigTemplate_943e432a0dcbd7fe60a569412aaad985e131799f5363073300d0a6cd788
 
 \t";
         // line 23
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        $context["edit_post_link"] = $this->getAttribute($_event_, "get_runtime", array(0 => "edit_post_link"), "method");
+        $context["edit_post_link"] = $this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "edit_post_link"), "method");
         // line 24
         echo "\t";
-        if (isset($context["edit_post_link"])) { $_edit_post_link_ = $context["edit_post_link"]; } else { $_edit_post_link_ = null; }
-        if ((!twig_test_empty($_edit_post_link_))) {
+        if ((!twig_test_empty((isset($context["edit_post_link"]) ? $context["edit_post_link"] : null)))) {
             // line 25
             echo "\t\t<a class=\"post-edit-link\" href=\"";
-            if (isset($context["edit_post_link"])) { $_edit_post_link_ = $context["edit_post_link"]; } else { $_edit_post_link_ = null; }
-            echo $_edit_post_link_;
+            echo (isset($context["edit_post_link"]) ? $context["edit_post_link"] : null);
             echo "\">
 \t\t\t<i class=\"ai1ec-fa ai1ec-fa-pencil\"></i> ";
             // line 26
-            if (isset($context["text_edit"])) { $_text_edit_ = $context["text_edit"]; } else { $_text_edit_ = null; }
-            echo twig_escape_filter($this->env, $_text_edit_, "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["text_edit"]) ? $context["text_edit"] : null), "html", null, true);
             echo "
 \t\t</a>
 \t";
@@ -113,19 +95,16 @@ class __TwigTemplate_943e432a0dcbd7fe60a569412aaad985e131799f5363073300d0a6cd788
 \t<div class=\"ai1ec-event-time\">
 \t\t";
         // line 31
-        if (isset($context["popup_timespan"])) { $_popup_timespan_ = $context["popup_timespan"]; } else { $_popup_timespan_ = null; }
-        if (twig_test_empty($_popup_timespan_)) {
+        if (twig_test_empty((isset($context["popup_timespan"]) ? $context["popup_timespan"] : null))) {
             // line 32
             echo "\t\t\t";
-            if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-            echo $this->env->getExtension('ai1ec')->timespan($_event_, "short");
+            echo $this->env->getExtension('ai1ec')->timespan((isset($context["event"]) ? $context["event"] : null), "short");
             echo "
 \t\t";
         } else {
             // line 34
             echo "\t\t\t";
-            if (isset($context["popup_timespan"])) { $_popup_timespan_ = $context["popup_timespan"]; } else { $_popup_timespan_ = null; }
-            echo $_popup_timespan_;
+            echo (isset($context["popup_timespan"]) ? $context["popup_timespan"] : null);
             echo "
 \t\t";
         }
@@ -134,23 +113,19 @@ class __TwigTemplate_943e432a0dcbd7fe60a569412aaad985e131799f5363073300d0a6cd788
 
 \t";
         // line 38
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        echo $this->env->getExtension('ai1ec')->avatar($_event_, array(0 => "post_thumbnail", 1 => "content_img", 2 => "location_avatar", 3 => "category_avatar"));
+        echo $this->env->getExtension('ai1ec')->avatar((isset($context["event"]) ? $context["event"] : null), array(0 => "post_thumbnail", 1 => "content_img", 2 => "location_avatar", 3 => "category_avatar"));
         // line 43
         echo "
 
 \t";
         // line 45
-        if (isset($context["event"])) { $_event_ = $context["event"]; } else { $_event_ = null; }
-        $context["post_excerpt"] = trim($this->getAttribute($_event_, "get_runtime", array(0 => "post_excerpt"), "method"));
+        $context["post_excerpt"] = trim($this->getAttribute((isset($context["event"]) ? $context["event"] : null), "get_runtime", array(0 => "post_excerpt"), "method"));
         // line 46
         echo "\t";
-        if (isset($context["post_excerpt"])) { $_post_excerpt_ = $context["post_excerpt"]; } else { $_post_excerpt_ = null; }
-        if ((!twig_test_empty($_post_excerpt_))) {
+        if ((!twig_test_empty((isset($context["post_excerpt"]) ? $context["post_excerpt"] : null)))) {
             // line 47
             echo "\t\t<div class=\"ai1ec-popup-excerpt\">";
-            if (isset($context["post_excerpt"])) { $_post_excerpt_ = $context["post_excerpt"]; } else { $_post_excerpt_ = null; }
-            echo $_post_excerpt_;
+            echo (isset($context["post_excerpt"]) ? $context["post_excerpt"] : null);
             echo "</div>
 \t";
         }
@@ -172,6 +147,6 @@ class __TwigTemplate_943e432a0dcbd7fe60a569412aaad985e131799f5363073300d0a6cd788
 
     public function getDebugInfo()
     {
-        return array (  158 => 49,  151 => 47,  147 => 46,  144 => 45,  140 => 43,  137 => 38,  133 => 36,  126 => 34,  119 => 32,  116 => 31,  112 => 29,  105 => 26,  99 => 25,  95 => 24,  92 => 23,  88 => 21,  82 => 19,  77 => 18,  68 => 15,  61 => 13,  58 => 12,  54 => 11,  49 => 10,  44 => 9,  33 => 5,  29 => 4,  324 => 78,  322 => 77,  307 => 76,  305 => 75,  290 => 74,  288 => 73,  284 => 72,  282 => 71,  277 => 69,  262 => 67,  259 => 64,  254 => 61,  247 => 58,  244 => 57,  241 => 56,  235 => 54,  229 => 52,  218 => 48,  213 => 47,  208 => 46,  203 => 45,  195 => 42,  189 => 40,  184 => 39,  178 => 38,  175 => 37,  170 => 36,  164 => 35,  146 => 34,  139 => 31,  134 => 30,  129 => 29,  123 => 25,  120 => 24,  118 => 23,  115 => 22,  111 => 21,  103 => 19,  100 => 18,  97 => 17,  79 => 16,  76 => 15,  73 => 16,  55 => 13,  50 => 10,  40 => 7,  35 => 7,  26 => 3,  19 => 1,);
+        return array (  133 => 49,  118 => 43,  98 => 31,  69 => 19,  33 => 9,  47 => 14,  100 => 32,  88 => 26,  298 => 115,  288 => 112,  281 => 111,  279 => 110,  263 => 103,  253 => 98,  244 => 94,  239 => 92,  228 => 87,  226 => 86,  220 => 83,  200 => 76,  195 => 73,  193 => 72,  177 => 61,  155 => 50,  121 => 37,  92 => 25,  44 => 10,  313 => 94,  306 => 118,  302 => 116,  299 => 88,  296 => 114,  294 => 80,  280 => 74,  274 => 71,  266 => 68,  260 => 66,  209 => 79,  178 => 43,  175 => 60,  159 => 52,  152 => 33,  148 => 32,  144 => 46,  102 => 26,  90 => 27,  78 => 23,  42 => 11,  39 => 7,  217 => 82,  211 => 80,  194 => 50,  183 => 72,  168 => 64,  161 => 61,  143 => 45,  116 => 38,  111 => 35,  93 => 27,  86 => 21,  81 => 24,  59 => 15,  287 => 106,  283 => 105,  276 => 72,  267 => 102,  254 => 97,  248 => 94,  242 => 63,  236 => 89,  233 => 88,  231 => 88,  224 => 84,  221 => 84,  216 => 82,  210 => 78,  207 => 56,  204 => 77,  202 => 53,  197 => 51,  189 => 65,  180 => 65,  176 => 60,  174 => 59,  170 => 57,  153 => 55,  140 => 47,  137 => 46,  132 => 40,  122 => 45,  112 => 36,  107 => 29,  101 => 27,  99 => 27,  95 => 26,  91 => 24,  83 => 25,  79 => 24,  58 => 15,  50 => 12,  45 => 11,  29 => 9,  25 => 3,  164 => 37,  156 => 77,  145 => 49,  139 => 44,  131 => 42,  127 => 47,  123 => 29,  114 => 33,  104 => 52,  96 => 24,  77 => 23,  74 => 21,  68 => 16,  60 => 28,  27 => 4,  66 => 16,  640 => 354,  632 => 348,  624 => 343,  615 => 336,  613 => 334,  607 => 330,  605 => 329,  602 => 328,  596 => 325,  593 => 324,  591 => 323,  588 => 322,  581 => 318,  576 => 316,  572 => 315,  569 => 314,  566 => 313,  563 => 311,  554 => 305,  545 => 299,  539 => 296,  530 => 290,  521 => 284,  516 => 281,  513 => 280,  506 => 274,  500 => 272,  493 => 269,  491 => 268,  485 => 264,  479 => 262,  472 => 259,  470 => 258,  465 => 255,  457 => 249,  449 => 244,  435 => 233,  429 => 229,  422 => 223,  416 => 221,  409 => 218,  407 => 217,  401 => 213,  395 => 211,  388 => 208,  386 => 207,  381 => 204,  375 => 199,  369 => 197,  362 => 194,  360 => 193,  355 => 190,  350 => 186,  344 => 183,  341 => 182,  335 => 179,  329 => 176,  326 => 175,  324 => 174,  320 => 172,  317 => 170,  311 => 166,  308 => 91,  300 => 159,  297 => 158,  293 => 156,  291 => 79,  284 => 75,  278 => 148,  271 => 70,  269 => 106,  264 => 67,  258 => 101,  245 => 93,  243 => 130,  238 => 127,  225 => 61,  212 => 118,  208 => 117,  203 => 78,  192 => 49,  188 => 48,  179 => 70,  166 => 57,  158 => 88,  141 => 45,  134 => 41,  124 => 46,  115 => 61,  109 => 57,  97 => 28,  80 => 24,  71 => 21,  62 => 15,  49 => 12,  35 => 7,  30 => 5,  63 => 18,  57 => 14,  54 => 12,  43 => 17,  31 => 6,  24 => 4,  21 => 2,  82 => 20,  73 => 22,  70 => 24,  64 => 15,  55 => 14,  52 => 15,  48 => 11,  46 => 18,  41 => 11,  37 => 8,  32 => 6,  22 => 2,  265 => 123,  259 => 100,  252 => 134,  250 => 97,  247 => 115,  241 => 112,  234 => 89,  232 => 122,  229 => 107,  227 => 62,  219 => 82,  213 => 81,  205 => 93,  201 => 91,  199 => 74,  196 => 77,  190 => 86,  186 => 84,  184 => 67,  181 => 82,  173 => 67,  169 => 39,  167 => 76,  162 => 54,  160 => 72,  157 => 52,  151 => 50,  149 => 47,  142 => 63,  135 => 42,  130 => 40,  128 => 38,  125 => 38,  117 => 34,  113 => 48,  108 => 33,  106 => 34,  103 => 28,  94 => 29,  89 => 26,  87 => 24,  84 => 25,  76 => 38,  72 => 27,  67 => 19,  65 => 18,  61 => 16,  56 => 16,  53 => 13,  51 => 15,  40 => 9,  34 => 7,  28 => 5,  26 => 5,  36 => 7,  23 => 3,  19 => 1,);
     }
 }
